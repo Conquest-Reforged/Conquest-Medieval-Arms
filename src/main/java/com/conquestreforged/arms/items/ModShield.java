@@ -1,15 +1,29 @@
 package com.conquestreforged.arms.items;
 
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+
+import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class ModShield extends ShieldItem {
-    public ModShield(Properties props) {
+    private final String toolTipname;
+    private final int linesAmt;
+
+    public ModShield(Properties props, String name, Integer linesAmt) {
         super(props);
+        this.toolTipname = name;
+        this.linesAmt = linesAmt;
     }
 
     @Override
@@ -20,5 +34,12 @@ public class ModShield extends ShieldItem {
     @Override
     public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
         return true;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> pTooltip, TooltipFlag pFlag) {
+        for (int i = 1; i <= linesAmt; i++) {
+            pTooltip.add(new TranslatableComponent("tooltip." + MOD_ID + ".item." + toolTipname + i));
+        }
     }
 }
