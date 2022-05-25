@@ -1,0 +1,6 @@
+{
+    "parent": "conq_medieval_arms:item/steppe_recurve_bow",
+    "textures": {
+        "layer0": "conq_medieval_arms:item/steppe_recurve_bow_3"
+    }
+}
