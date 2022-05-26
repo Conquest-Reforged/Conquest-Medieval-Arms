@@ -13,12 +13,12 @@ import java.util.List;
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class ModCrossbow extends CrossbowItem {
-    private final String toolTipname;
+    private final String toolTipName;
     private final int linesAmt;
 
     public ModCrossbow(Properties props, String name, Integer linesAmt) {
         super(props);
-        this.toolTipname = name;
+        this.toolTipName = name;
         this.linesAmt = linesAmt;
 
     }
@@ -32,7 +32,7 @@ public class ModCrossbow extends CrossbowItem {
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> pTooltip, TooltipFlag pFlag) {
         for (int i = 1; i <= linesAmt; i++) {
-            pTooltip.add(new TranslatableComponent("tooltip." + MOD_ID + ".item." + toolTipname + i));
+            pTooltip.add(new TranslatableComponent("tooltip." + MOD_ID + ".item." + toolTipName + i));
         }
     }
 }

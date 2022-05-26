@@ -21,9 +21,9 @@ public class EntityClientInit {
     @SubscribeEvent
     public static void layers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModelFlatCrestHelmet.LAYER_LOCATION, ModelFlatCrestHelmet::createHeadLayer);
-        event.registerLayerDefinition(ModelWingedHussarBoots.LAYER_LOCATION, ModelWingedHussarBoots::createBodyLayer);
+        event.registerLayerDefinition(ModelGenericBoots.LAYER_LOCATION, ModelGenericBoots::createBodyLayer);
         event.registerLayerDefinition(ModelWingedHussarChest.LAYER_LOCATION, ModelWingedHussarChest::createBodyLayer);
-        event.registerLayerDefinition(ModelWingedHussarLegs.LAYER_LOCATION, ModelWingedHussarLegs::createBodyLayer);
+        event.registerLayerDefinition(ModelGenericLegs.LAYER_LOCATION, ModelGenericLegs::createBodyLayer);
         event.registerLayerDefinition(ModelWingedHussarHelmet.LAYER_LOCATION, ModelWingedHussarHelmet::createHeadLayer);
         event.registerLayerDefinition(CRUSADER_HELM_LAYER_LOCATION, ModelGenericHelmet::createHeadLayer);
         event.registerLayerDefinition(TOURNEY_KNIGHT_HELM_LAYER_LOCATION, ModelGenericHelmet::createHeadLayer);

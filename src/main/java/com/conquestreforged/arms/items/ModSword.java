@@ -2,8 +2,9 @@ package com.conquestreforged.arms.items;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -12,13 +13,13 @@ import java.util.List;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
-public class ModBow extends BowItem {
+public class ModSword extends SwordItem {
     private final String toolTipName;
     private final int linesAmt;
 
-    public ModBow(Properties props, String name, Integer linesAmt) {
-        super(props);
-        this.toolTipName = name;
+    public ModSword(Tier tier, int dmg, float speed, Properties props, String toolTipName, int linesAmt) {
+        super(tier, dmg, speed, props);
+        this.toolTipName = toolTipName;
         this.linesAmt = linesAmt;
     }
 

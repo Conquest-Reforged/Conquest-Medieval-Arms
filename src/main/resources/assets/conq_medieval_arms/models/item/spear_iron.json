@@ -1,7 +1,7 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "conq_medieval_arms:item/spear_iron"
+        "layer0": "conq_medieval_arms:item/melee/spear_iron"
     },
     "display": {
         "thirdperson_righthand": {

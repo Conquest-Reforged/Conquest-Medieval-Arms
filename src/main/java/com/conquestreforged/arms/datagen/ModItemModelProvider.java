@@ -20,7 +20,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        simpleItem(ItemInit.CRUSADER_CHEST.get());
+        //simpleItem(ItemInit.CRUSADER_CHEST.get());
         ItemInit.dataGenItemModels.forEach(registryItem -> {
             Item item = registryItem.get();
             if (item instanceof SwordItem) {
@@ -28,16 +28,16 @@ public class ModItemModelProvider extends ItemModelProvider {
             } else if (item instanceof AxeItem) {
                 axeItem(item);
             } else {
-                simpleItem(item);
+                armorItem(item);
             }
         });
         shieldItem(ItemInit.NORMAN_SHIELD.get());
     }
 
-    private ItemModelBuilder simpleItem(Item item) {
+    private ItemModelBuilder armorItem(Item item) {
         return withExistingParent(item.getRegistryName().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(ConquestMedievalArms.MOD_ID, "item/" + item.getRegistryName().getPath()
+                new ResourceLocation(ConquestMedievalArms.MOD_ID, "item/armor/" + item.getRegistryName().getPath()
                 .replace("refined_", "")
                 .replace("exquisite_", "")
                 )
@@ -46,7 +46,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder axeItem(Item item) {
         return withExistingParent(item.getRegistryName().getPath(), new ResourceLocation(ConquestMedievalArms.MOD_ID + ":item/axe"))
-                .texture("layer0", new ResourceLocation(ConquestMedievalArms.MOD_ID, "item/" + item.getRegistryName().getPath()
+                .texture("layer0", new ResourceLocation(ConquestMedievalArms.MOD_ID, "item/melee/" + item.getRegistryName().getPath()
                                 .replace("refined_", "")
                                 .replace("exquisite_", "")
                         )
@@ -55,7 +55,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder swordItem(Item item) {
         return withExistingParent(item.getRegistryName().getPath(), new ResourceLocation(ConquestMedievalArms.MOD_ID + ":item/sword"))
-                .texture("layer0", new ResourceLocation(ConquestMedievalArms.MOD_ID, "item/" + item.getRegistryName().getPath()
+                .texture("layer0", new ResourceLocation(ConquestMedievalArms.MOD_ID, "item/melee/" + item.getRegistryName().getPath()
                         .replace("refined_", "")
                         .replace("exquisite_", "")
                         )
@@ -64,9 +64,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder shieldItem(Item item) {
         ItemModelBuilder modelNormal = withExistingParent(item.getRegistryName().getPath(), new ResourceLocation(ConquestMedievalArms.MOD_ID + ":item/shield"))
-                .texture("layer0", new ResourceLocation(ConquestMedievalArms.MOD_ID, "item/" + item.getRegistryName().getPath()));
+                .texture("layer0", new ResourceLocation(ConquestMedievalArms.MOD_ID, "item/shields/" + item.getRegistryName().getPath()));
 
-        ModelFile modelBlocking = singleTexture(item.getRegistryName().getPath() + "_blocking", modLoc("item/shield_blocking"), "layer0", modLoc("item/" + item.getRegistryName().getPath()));
+        ModelFile modelBlocking = singleTexture(item.getRegistryName().getPath() + "_blocking", modLoc("item/shield_blocking"), "layer0", modLoc("item/shields/" + item.getRegistryName().getPath()));
 
         //ItemModelBuilder modelBlocking = withExistingParent(item.getRegistryName().getPath(), new ResourceLocation(ArmsOfConquest.MOD_ID + ":item/" + item.getRegistryName().getPath() + "_blocking"))
         //        .texture("layer0", new ResourceLocation(ArmsOfConquest.MOD_ID, "item/" + item.getRegistryName().getPath()));

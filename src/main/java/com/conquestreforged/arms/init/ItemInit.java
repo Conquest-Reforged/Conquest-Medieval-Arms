@@ -45,28 +45,28 @@ public class ItemInit {
 
 
     ////////////////--------------------------START REGISTRATION----------------------------------///////////////////
-    public static final List<RegistryObject<Item>> CRUSADER_HELMET = ItemBuilders.registerArmorModelMultiMaterials(
-            "crusader_helmet", genericCombatProps, "crusader_helmet",
+    public static final List<RegistryObject<Item>> CRUSADER_HELMET = ItemBuilders.registerArmorModelMats(
+            "crusader_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             ModelGenericHelmet.class, EntityClientInit.CRUSADER_HELM_LAYER_LOCATION,
             metalMaterials);
-    public static final List<RegistryObject<Item>> WINGED_HUSSAR_BOOTS = ItemBuilders.registerArmorModelMultiMaterials(
-            "winged_hussar_boots", genericCombatProps, "winged_hussar_boots",
+    public static final List<RegistryObject<Item>> WINGED_HUSSAR_BOOTS = ItemBuilders.registerArmorModelMats(
+            "winged_hussar_boots", genericCombatProps,
             EquipmentSlot.FEET,
-            ModelWingedHussarBoots.class, ModelWingedHussarBoots.LAYER_LOCATION,
+            ModelGenericBoots.class, ModelGenericBoots.LAYER_LOCATION,
             metalMaterials);
-    public static final List<RegistryObject<Item>> WINGED_HUSSAR_CHEST = ItemBuilders.registerArmorModelMultiMaterials(
-            "winged_hussar_chestplate", genericCombatProps, "winged_hussar_chestplate",
+    public static final List<RegistryObject<Item>> WINGED_HUSSAR_CHEST = ItemBuilders.registerArmorModelMats(
+            "winged_hussar_chestplate", genericCombatProps,
             EquipmentSlot.CHEST,
             ModelWingedHussarChest.class, ModelWingedHussarChest.LAYER_LOCATION,
             metalMaterials);
-    public static final List<RegistryObject<Item>> WINGED_HUSSAR_LEGS = ItemBuilders.registerArmorModelMultiMaterials(
-            "winged_hussar_pants", genericCombatProps, "winged_hussar_pants",
+    public static final List<RegistryObject<Item>> WINGED_HUSSAR_LEGS = ItemBuilders.registerArmorModelMats(
+            "winged_hussar_pants", genericCombatProps,
             EquipmentSlot.LEGS,
-            ModelWingedHussarLegs.class, ModelWingedHussarLegs.LAYER_LOCATION,
+            ModelGenericLegs.class, ModelGenericLegs.LAYER_LOCATION,
             metalMaterials);
-    public static final List<RegistryObject<Item>> WINGED_HUSSAR_HELMET =ItemBuilders. registerArmorModelMultiMaterials(
-            "winged_hussar_helmet", genericCombatProps, "winged_hussar_helmet",
+    public static final List<RegistryObject<Item>> WINGED_HUSSAR_HELMET =ItemBuilders.registerArmorModelMats(
+            "winged_hussar_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             ModelWingedHussarHelmet.class, ModelWingedHussarHelmet.LAYER_LOCATION,
             metalMaterials);
@@ -74,14 +74,14 @@ public class ItemInit {
     public static final RegistryObject<Item> SPEAR_IRON = REGISTER.register("spear_iron", () ->
             new ModSpear(genericCombatProps, EntityTypes.SPEAR_IRON, 7.0F));
 
-    public static final List<RegistryObject<Item>> KNIGHT_ARMORS = ItemBuilders.registerArmorSetMultiMaterials(
+    public static final List<RegistryObject<Item>> KNIGHT_ARMORS = ItemBuilders.registerArmorSetMats(
             genericCombatProps, "knight", metalMaterials);
 
     public static final RegistryObject<Item> NORMAN_SHIELD = ItemBuilders.registerTierlessWeapon("norman_shield", ModShield.class,  2);
     public static final RegistryObject<Item> STEPPE_RECURVE_BOW = ItemBuilders.registerTierlessWeapon("steppe_recurve_bow", ModBow.class, 0);
     public static final RegistryObject<Item> LIGHT_CROSSBOW = ItemBuilders.registerTierlessWeapon("light_crossbow", ModCrossbow.class, 0);
-    public static final List<RegistryObject<Item>> BASTARD_SWORD = ItemBuilders.registerSwordSet("bastard_sword", 3, -2.4F, genericCombatProps, metalTiers);
-    public static final List<RegistryObject<Item>> VIKING_AXE = ItemBuilders.registerAxeSet("viking_axe", 6, -3.1F, genericCombatProps, metalTiers);
+    public static final List<RegistryObject<Item>> BASTARD_SWORD = ItemBuilders.registerSwordSet("bastard_sword", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> VIKING_AXE = ItemBuilders.registerAxeSet("viking_axe", 6, -3.1F, genericCombatProps, metalTiers, 0);
 
 
 

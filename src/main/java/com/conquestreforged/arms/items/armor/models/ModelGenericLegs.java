@@ -12,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
-public class ModelWingedHussarLegs<T extends LivingEntity> extends HumanoidModel<T> {
+public class ModelGenericLegs<T extends LivingEntity> extends HumanoidModel<T> {
     private final ModelPart chest;
     private final ModelPart rightarm;
     private final ModelPart leftarm;
@@ -21,7 +21,7 @@ public class ModelWingedHussarLegs<T extends LivingEntity> extends HumanoidModel
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "winged_hussar_legs"), "main");
 
-    public ModelWingedHussarLegs(ModelPart root) {
+    public ModelGenericLegs(ModelPart root) {
         super(root);
         this.chest = root.getChild("body");
         this.rightarm = root.getChild("right_arm");

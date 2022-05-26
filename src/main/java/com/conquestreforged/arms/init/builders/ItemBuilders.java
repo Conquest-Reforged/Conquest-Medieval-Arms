@@ -1,8 +1,14 @@
 package com.conquestreforged.arms.init.builders;
 
 import com.conquestreforged.arms.init.ItemInit;
+import com.conquestreforged.arms.items.ModAxe;
+import com.conquestreforged.arms.items.ModSword;
 import com.conquestreforged.arms.items.armor.ArmorModelItem;
 import com.conquestreforged.arms.items.armor.GenericArmorItem;
+import com.conquestreforged.arms.items.armor.models.ModelGenericBoots;
+import com.conquestreforged.arms.items.armor.models.ModelGenericChest;
+import com.conquestreforged.arms.items.armor.models.ModelWingedHussarChest;
+import com.conquestreforged.arms.items.armor.models.ModelGenericLegs;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
@@ -15,16 +21,17 @@ import java.util.List;
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class ItemBuilders {
-    public static List<RegistryObject<Item>> registerAxeSet(String name, int damage, float speed, Item.Properties props, List<Tier> tiers) {
+    public static List<RegistryObject<Item>> registerAxeSet(String name, int damage, float speed, Item.Properties props,
+                                                            List<Tier> tiers, Integer linesAmt) {
         List<RegistryObject<Item>> axeList = new ArrayList<>();
 
         tiers.forEach(tier -> {
             if (Tiers.IRON.equals(tier)) {
-                axeList.add(ItemInit.REGISTER.register(name, () -> new AxeItem(tier, damage, speed, props)));
+                axeList.add(ItemInit.REGISTER.register(name, () -> new ModAxe(tier, damage, speed, props, name, linesAmt)));
             } else if (Tiers.DIAMOND.equals(tier)) {
-                axeList.add(ItemInit.REGISTER.register("refined_" + name, () -> new AxeItem(tier, damage - 1, speed + 0.1F, props)));
+                axeList.add(ItemInit.REGISTER.register("refined_" + name, () -> new ModAxe(tier, damage - 1, speed + 0.1F, props, name, linesAmt)));
             } else if (Tiers.NETHERITE.equals(tier)) {
-                axeList.add(ItemInit.REGISTER.register("exquisite_" + name, () -> new AxeItem(tier, damage - 1, speed + 0.1F, props)));
+                axeList.add(ItemInit.REGISTER.register("exquisite_" + name, () -> new ModAxe(tier, damage - 1, speed + 0.1F, props, name, linesAmt)));
             }
         });
         ItemInit.dataGenItemModels.addAll(axeList);
@@ -32,12 +39,13 @@ public class ItemBuilders {
         return axeList;
     }
 
-    public static List<RegistryObject<Item>> registerSwordSet(String name, int dmg, float spd, Item.Properties props, List<Tier> tiers) {
+    public static List<RegistryObject<Item>> registerSwordSet(String name, int dmg, float spd, Item.Properties props,
+                                                              List<Tier> tiers, Integer linesAmt) {
         List<RegistryObject<Item>> swordsList = new ArrayList<>();
 
         tiers.forEach(tier -> {
             swordsList.add(ItemInit.REGISTER.register(getTierItemPrefix(tier) + name, () ->
-                    new SwordItem(tier, dmg, spd, props)));
+                    new ModSword(tier, dmg, spd, props, name, linesAmt)));
         });
         ItemInit.dataGenItemModels.addAll(swordsList);
         ItemInit.dataGenItemRecipes.addAll(swordsList);
@@ -69,25 +77,22 @@ public class ItemBuilders {
         return item;
     }
 
-    public static List<RegistryObject<Item>> registerArmorModelMultiMaterials(String name, Item.Properties props, String texture, EquipmentSlot slot, Class modelClass, ModelLayerLocation layerLocation, List<ArmorMaterial> armorMaterials) {
+    public static List<RegistryObject<Item>> registerArmorModelMats(String name, Item.Properties props, EquipmentSlot slot, Class modelClass, ModelLayerLocation layerLocation, List<ArmorMaterial> armorMaterials) {
         List<RegistryObject<Item>> armorsList = new ArrayList<>();
         armorMaterials.forEach(armorMaterial -> {
             switch (armorMaterial.getName()) {
+                case "bronze":
                 case "iron":
                     armorsList.add(ItemInit.REGISTER.register(name, () ->
-                            new ArmorModelItem(armorMaterial, slot, props, modelClass, layerLocation, constructArmorModelTexPath(texture, false))));
-                    break;
-                case "bronze":
-                    armorsList.add(ItemInit.REGISTER.register(name, () ->
-                            new ArmorModelItem(armorMaterial, slot, props, modelClass, layerLocation, constructArmorModelTexPath(texture, false))));
+                            new ArmorModelItem(armorMaterial, slot, props, modelClass, layerLocation, constructArmorModelTexPath(name, false))));
                     break;
                 case "diamond":
                     armorsList.add(ItemInit.REGISTER.register("refined_" + name, () ->
-                            new ArmorModelItem(armorMaterial, slot, props, modelClass, layerLocation, constructArmorModelTexPath(texture, false))));
+                            new ArmorModelItem(armorMaterial, slot, props, modelClass, layerLocation, constructArmorModelTexPath(name, false))));
                     break;
                 case "netherite":
                     armorsList.add(ItemInit.REGISTER.register("exquisite_" + name, () ->
-                            new ArmorModelItem(armorMaterial, slot, props, modelClass, layerLocation, constructArmorModelTexPath(texture, false))));
+                            new ArmorModelItem(armorMaterial, slot, props, modelClass, layerLocation, constructArmorModelTexPath(name, false))));
                     break;
             }
         });
@@ -96,30 +101,66 @@ public class ItemBuilders {
         return armorsList;
     }
 
+    public static List<RegistryObject<Item>> registerArmorModelSetMats(String nameHead, String nameBody, String nameLegs,
+                                                                       String nameFeet, Item.Properties props, Class headModelClass, List<ModelLayerLocation> layerLocation, List<ArmorMaterial> armorMaterials) {
+        List<RegistryObject<Item>> armorsList = new ArrayList<>();
+        armorMaterials.forEach(armorMaterial -> {
+            String prefix = "";
+            switch (armorMaterial.getName()) {
+                case "bronze":
+                case "iron":
+                    armorsList.addAll(registerArmorModelSet(nameHead, nameBody, nameLegs, nameFeet, props, headModelClass, layerLocation, armorMaterial));
+                    break;
+                case "diamond":
+                    prefix = "refined_";
+                    armorsList.addAll(registerArmorModelSet(prefix + nameHead, prefix + nameBody, prefix + nameLegs,prefix + nameFeet, props, headModelClass, layerLocation, armorMaterial));
+                    break;
+                case "netherite":
+                    prefix = "exquisite_";
+                    armorsList.addAll(registerArmorModelSet(prefix + nameHead, prefix + nameBody, prefix + nameLegs,prefix + nameFeet, props, headModelClass, layerLocation, armorMaterial));
+                    break;
+            }
+        });
+        ItemInit.dataGenItemModels.addAll(armorsList);
+        ItemInit.dataGenItemRecipes.addAll(armorsList);
+        return armorsList;
+    }
 
-    public static List<RegistryObject<Item>> registerArmorSetMultiMaterials(Item.Properties props, String texture, List<ArmorMaterial> armorMaterials) {
+    public static List<RegistryObject<Item>> registerArmorModelSet(String nameHead, String nameBody, String nameLegs,
+                                                                   String nameFeet, Item.Properties props, Class modelclass, List<ModelLayerLocation> layerLocation, ArmorMaterial armorMaterial) {
+        List<RegistryObject<Item>> armorsList = new ArrayList<>();
+        armorsList.add(ItemInit.REGISTER.register(nameHead, () -> new ArmorModelItem(armorMaterial, EquipmentSlot.HEAD, props, modelclass, layerLocation.get(0), constructArmorTexPath(nameHead, false))));
+        armorsList.add(ItemInit.REGISTER.register(nameBody, () -> new ArmorModelItem(armorMaterial, EquipmentSlot.CHEST, props, ModelGenericChest.class, layerLocation.get(1), constructArmorTexPath(nameBody, false))));
+        armorsList.add(ItemInit.REGISTER.register(nameLegs, () -> new ArmorModelItem(armorMaterial, EquipmentSlot.LEGS, props, ModelGenericLegs.class, layerLocation.get(2), constructArmorTexPath(nameLegs, true))));
+        armorsList.add(ItemInit.REGISTER.register(nameFeet, () -> new ArmorModelItem(armorMaterial, EquipmentSlot.FEET, props, ModelGenericBoots.class, layerLocation.get(3), constructArmorTexPath(nameFeet, false))));
+
+        return armorsList;
+    }
+
+
+    public static List<RegistryObject<Item>> registerArmorSetMats(Item.Properties props, String texture, List<ArmorMaterial> armorMaterials) {
         List<RegistryObject<Item>> armorsList = new ArrayList<>();
 
         armorMaterials.forEach(armorMaterial -> {
             switch (armorMaterial.getName()) {
                 case "iron":
-                    armorsList.addAll(registerArmorsFullSet(props, texture, armorMaterial));
+                    armorsList.addAll(registerArmorSet(props, texture, armorMaterial));
                     break;
                 case "bronze":
-                    armorsList.addAll(registerArmorsFullSet(props, texture, armorMaterial));
+                    armorsList.addAll(registerArmorSet(props, texture, armorMaterial));
                     break;
                 case "diamond":
-                    armorsList.addAll(registerArmorsFullSet(props, "refined_" + texture, armorMaterial));
+                    armorsList.addAll(registerArmorSet(props, "refined_" + texture, armorMaterial));
                     break;
                 case "netherite":
-                    armorsList.addAll(registerArmorsFullSet(props, "exquisite_" + texture, armorMaterial));
+                    armorsList.addAll(registerArmorSet(props, "exquisite_" + texture, armorMaterial));
                     break;
             }
         });
         return armorsList;
     }
 
-    private static List<RegistryObject<Item>> registerArmorsFullSet(Item.Properties props, String texture, ArmorMaterial armorMaterial) {
+    private static List<RegistryObject<Item>> registerArmorSet(Item.Properties props, String texture, ArmorMaterial armorMaterial) {
         List<RegistryObject<Item>> armorsList = new ArrayList<>();
 
         armorsList.add(ItemInit.REGISTER.register(texture + "_helmet", () -> new GenericArmorItem(armorMaterial, EquipmentSlot.HEAD, props, constructArmorTexPath(texture, false))));

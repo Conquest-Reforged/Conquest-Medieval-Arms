@@ -12,14 +12,14 @@ import net.minecraft.world.entity.LivingEntity;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
-public class ModelWingedHussarBoots<T extends LivingEntity> extends HumanoidModel<T> {
+public class ModelGenericBoots<T extends LivingEntity> extends HumanoidModel<T> {
     private final ModelPart rightleg;
     private final ModelPart leftleg;
 
     //Winged Hussar chest also uses right_leg and left_leg, so texture here needs to be separate
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "winged_hussar_boots"), "main");
 
-    public ModelWingedHussarBoots(ModelPart root) {
+    public ModelGenericBoots(ModelPart root) {
         super(root);
         this.rightleg = root.getChild("right_leg");
         this.leftleg = root.getChild("left_leg");
