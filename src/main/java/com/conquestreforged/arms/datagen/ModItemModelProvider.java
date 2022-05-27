@@ -4,9 +4,7 @@ import com.conquestreforged.arms.ConquestMedievalArms;
 import com.conquestreforged.arms.init.ItemInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -27,11 +25,13 @@ public class ModItemModelProvider extends ItemModelProvider {
                 swordItem(item);
             } else if (item instanceof AxeItem) {
                 axeItem(item);
-            } else {
+            } else if (item instanceof ShieldItem) {
+                shieldItem(item);
+            } else if (item instanceof ArmorItem){
                 armorItem(item);
             }
         });
-        shieldItem(ItemInit.NORMAN_SHIELD.get());
+
     }
 
     private ItemModelBuilder armorItem(Item item) {

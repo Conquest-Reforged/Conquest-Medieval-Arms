@@ -16,6 +16,6 @@ public class EntityCommonInit {
     }
 
     private static void registerWeapons(IForgeRegistry<EntityType<?>> registry) {
-          registry.register(EntityTypes.SPEAR_IRON);
+          //registry.register(EntityTypes.SPEAR_IRON);
     }
 }

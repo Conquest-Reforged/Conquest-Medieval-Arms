@@ -1,8 +1,7 @@
 package com.conquestreforged.arms.network;
 
-import com.conquestreforged.arms.init.ItemInit;
 import com.conquestreforged.arms.items.ModSpear;
-import com.conquestreforged.arms.items.armor.GenericArmorItem;
+import com.conquestreforged.arms.items.ModThrowingSpear;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -42,7 +41,6 @@ public class PacketOverextendedReachAttack {
                         ItemStack weapon = player.getMainHandItem();
                         {
                              { {
-                                    //temp value
                                     float reach = ((ModSpear)weapon.getItem()).getSpearLength();
                                     double distanceSquared = player.distanceToSqr(target);
                                     double reachSquared = (double)(reach * reach);

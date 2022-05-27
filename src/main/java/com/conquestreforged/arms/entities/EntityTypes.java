@@ -13,12 +13,12 @@ public class EntityTypes {
 
     }
 
-    public static final EntityType<SpearEntity> SPEAR_IRON = build(
+    /*public static final EntityType<SpearEntity> SPEAR_IRON = build(
             (MOD_ID + ":" + "spear_iron"),
             EntityType.Builder.<SpearEntity>of((entityType, world) -> new SpearEntity(
                     entityType, world, ItemInit.SPEAR_IRON.get()), MobCategory.MISC)
                     .sized(1.0F, 1.0F).setTrackingRange(256)
-    );
+    );*/
 
     private static <T extends Entity> EntityType<T> build(String name, EntityType.Builder<T> builder) {
         EntityType<T> type = builder.build(name);

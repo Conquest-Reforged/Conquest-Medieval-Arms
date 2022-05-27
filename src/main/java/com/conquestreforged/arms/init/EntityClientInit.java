@@ -33,6 +33,6 @@ public class EntityClientInit {
 
     @SubscribeEvent
     public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(EntityTypes.SPEAR_IRON, RenderSpear::new);
+        //event.registerEntityRenderer(EntityTypes.SPEAR_IRON, RenderSpear::new);
     }
 }

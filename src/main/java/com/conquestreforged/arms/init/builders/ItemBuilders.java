@@ -73,6 +73,7 @@ public class ItemBuilders {
             }
             return null;
         });
+        ItemInit.dataGenItemModels.add(item);
         ItemInit.dataGenItemRecipes.add(item);
         return item;
     }
