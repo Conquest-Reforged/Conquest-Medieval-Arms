@@ -28,37 +28,6 @@ public class ModelWingedHussarChest<T extends LivingEntity> extends HumanoidMode
         this.leftarm = root.getChild("left_arm");
         this.rightleg = root.getChild("right_leg");
         this.leftleg = root.getChild("left_leg");
-        /*super(0, 0, 128, 128);
-        texWidth = 128;
-        texHeight = 128;
-
-
-        rightarm = new ModelPart(this);
-        rightarm.setPos(0.0F, 24.0F, 0.0F);
-        rightarm.texOffs(112, 32).addBox(-3.0F, -26.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.259F, false);
-
-        leftarm = new ModelPart(this);
-        leftarm.setPos(0.0F, 24.0F, 0.0F);
-        leftarm.texOffs(112, 48).addBox(-1.0F, -26.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.259F, false);
-
-
-        rightleg = new ModelPart(this);
-        rightleg.setPos(0.0F, 24.0F, 0.0F);
-        rightleg.texOffs(80, 16).addBox(-1.98F, -24.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.261F, false);
-
-        leftleg = new ModelPart(this);
-        leftleg.setPos(0.0F, 24.0F, 0.0F);
-        leftleg.texOffs(64, 16).addBox(-2.02F, -24.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.2615F, false);
-
-        this.rightArm.addChild(rightarm);
-        this.leftArm.addChild(leftarm);
-        this.rightLeg.addChild(rightleg);
-        this.leftLeg.addChild(leftleg);
-
-        this.body.addChild(Chestplate);
-
-         */
-
     }
 
     public static LayerDefinition createBodyLayer() {

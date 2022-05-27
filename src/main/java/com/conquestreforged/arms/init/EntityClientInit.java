@@ -27,6 +27,7 @@ public class EntityClientInit {
         event.registerLayerDefinition(ModelWingedHussarHelmet.LAYER_LOCATION, ModelWingedHussarHelmet::createHeadLayer);
         event.registerLayerDefinition(CRUSADER_HELM_LAYER_LOCATION, ModelGenericHelmet::createHeadLayer);
         event.registerLayerDefinition(TOURNEY_KNIGHT_HELM_LAYER_LOCATION, ModelGenericHelmet::createHeadLayer);
+        event.registerLayerDefinition(ModelTeutonicHelmet.LAYER_LOCATION, ModelTeutonicHelmet::createHeadLayer);
         event.registerLayerDefinition(RenderSpear.modelLayerLocation, ModelSpear::createLayer);
     }
 

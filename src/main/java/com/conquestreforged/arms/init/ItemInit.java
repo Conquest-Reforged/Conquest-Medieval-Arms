@@ -70,6 +70,12 @@ public class ItemInit {
             EquipmentSlot.HEAD,
             ModelWingedHussarHelmet.class, ModelWingedHussarHelmet.LAYER_LOCATION,
             metalMaterials);
+    public static final List<RegistryObject<Item>> TEUTONIC_HORNED_GREAT_HELM =ItemBuilders.registerArmorModelMats(
+            "teutonic_horned_great_helm", genericCombatProps,
+            EquipmentSlot.HEAD,
+            ModelTeutonicHelmet.class, ModelTeutonicHelmet.LAYER_LOCATION,
+            metalMaterials);
+
 
     public static final RegistryObject<Item> SPEAR_IRON = REGISTER.register("spear_iron", () ->
             new ModSpear(genericCombatProps, EntityTypes.SPEAR_IRON, 7.0F));
