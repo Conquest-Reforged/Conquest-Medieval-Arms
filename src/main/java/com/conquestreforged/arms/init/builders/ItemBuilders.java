@@ -2,6 +2,7 @@ package com.conquestreforged.arms.init.builders;
 
 import com.conquestreforged.arms.init.ItemInit;
 import com.conquestreforged.arms.items.ModAxe;
+import com.conquestreforged.arms.items.ModSpear;
 import com.conquestreforged.arms.items.ModSword;
 import com.conquestreforged.arms.items.armor.ArmorModelItem;
 import com.conquestreforged.arms.items.armor.GenericArmorItem;
@@ -50,6 +51,19 @@ public class ItemBuilders {
         ItemInit.dataGenItemModels.addAll(swordsList);
         ItemInit.dataGenItemRecipes.addAll(swordsList);
         return swordsList;
+    }
+
+    public static List<RegistryObject<Item>> registerLongWepSet(String name, float length, int dmg, float spd, Item.Properties props,
+                                                              List<Tier> tiers, Integer linesAmt) {
+        List<RegistryObject<Item>> longWepList = new ArrayList<>();
+
+        tiers.forEach(tier -> {
+            longWepList.add(ItemInit.REGISTER.register(getTierItemPrefix(tier) + name, () ->
+                    new ModSpear(props, name, length, tier, dmg, spd, linesAmt)));
+        });
+        ItemInit.dataGenItemModels.addAll(longWepList);
+        ItemInit.dataGenItemRecipes.addAll(longWepList);
+        return longWepList;
     }
 
     private static String getTierItemPrefix(Tier tier) {

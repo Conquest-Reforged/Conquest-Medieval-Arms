@@ -2,6 +2,18 @@
   "replace": false,
   "values": [
     "conq_medieval_arms:winged_spear",
-    "conq_medieval_arms:winged_leaf_shaped_spear"
+    "conq_medieval_arms:winged_leaf_shaped_spear",
+    "conq_medieval_arms:bardiche",
+    "conq_medieval_arms:ranseur",
+    "conq_medieval_arms:glaive",
+    "conq_medieval_arms:heavy_halberd",
+    "conq_medieval_arms:heavy_voulge",
+    "conq_medieval_arms:voulge",
+    "conq_medieval_arms:war_scythe",
+    "conq_medieval_arms:simple_halberd",
+    "conq_medieval_arms:swiss_halberd",
+    "conq_medieval_arms:poleaxe",
+    "conq_medieval_arms:pitchfork",
+    "conq_medieval_arms:jousting_lance"
   ]
 }

@@ -23,6 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -33,8 +34,8 @@ public class ModThrowingSpear extends ModSpear {
 
     private EntityType spearEntity;
 
-    public ModThrowingSpear(Properties props, EntityType spearEntity, float spearLength) {
-        super(props, spearLength);
+    public ModThrowingSpear(Properties props, EntityType spearEntity, String toolTipName, float spearLength, Tier tier, int dmg, float speed, int linesAmt) {
+        super(props, toolTipName, spearLength, tier, dmg, speed, linesAmt);
         this.spearEntity = spearEntity;
     }
 
@@ -61,7 +62,7 @@ public class ModThrowingSpear extends ModSpear {
                             p_220047_1_.broadcastBreakEvent(entityLiving.getUsedItemHand());
                         });
                         if (j == 0) {
-                            SpearEntity tridententity = new SpearEntity(worldIn, playerentity, stack, spearEntity, ItemInit.WINGED_SPEAR.get());
+                            SpearEntity tridententity = new SpearEntity(worldIn, playerentity, stack, spearEntity, ItemInit.WINGED_SPEAR.get(0).get());
                             tridententity.shootFromRotation(playerentity, playerentity.xRotO, playerentity.yRotO, 0.0F, 2.5F + (float) j * 0.5F, 1.0F);
                             if (playerentity.getAbilities().instabuild) {
                                 tridententity.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;

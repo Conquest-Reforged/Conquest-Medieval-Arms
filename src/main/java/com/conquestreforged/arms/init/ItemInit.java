@@ -125,10 +125,54 @@ public class ItemInit {
     //Melee
     public static final List<RegistryObject<Item>> BASTARD_SWORD = ItemBuilders.registerSwordSet("bastard_sword", 3, -2.4F, genericCombatProps, metalTiers, 0);
     public static final List<RegistryObject<Item>> VIKING_BEARDED_AXE = ItemBuilders.registerAxeSet("viking_bearded_axe", 6, -3.1F, genericCombatProps, metalTiers, 0);
-    public static final RegistryObject<Item> WINGED_SPEAR = REGISTER.register("winged_spear", () ->
-            new ModSpear(genericCombatProps, 6.0F));
-    public static final RegistryObject<Item> WINGED_LEAF_BLADED_SPEAR = REGISTER.register("winged_leaf_shaped_spear", () ->
-            new ModSpear(genericCombatProps, 6.0F));
+    public static final List<RegistryObject<Item>> BEARDED_GREAT_AXE = ItemBuilders.registerAxeSet("bearded_great_axe", 6, -3.1F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> BEARDED_AXE = ItemBuilders.registerAxeSet("bearded_axe", 6, -3.1F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> CROWBEAK_HATCHET = ItemBuilders.registerAxeSet("crowbeak_hatchet", 6, -3.1F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> LARGE_BEC_DE_CORBIN = ItemBuilders.registerSwordSet("large_bec_de_corbin", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> BILL = ItemBuilders.registerSwordSet("bill", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> BILL_HOOK = ItemBuilders.registerSwordSet("bill_hook", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> BROADAXE = ItemBuilders.registerAxeSet("broadaxe", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> CRUSADER_SWORD = ItemBuilders.registerSwordSet("crusader_sword", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> DOUBLE_FLAIL = ItemBuilders.registerSwordSet("double_flail", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> POLEHAMMER = ItemBuilders.registerSwordSet("polehammer", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> FLAIL = ItemBuilders.registerSwordSet("flail", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> SPIKED_FLAIL = ItemBuilders.registerSwordSet("spiked_flail", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> FLAMMENSCHWERT = ItemBuilders.registerSwordSet("flammenschwert", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> FLANGED_MACE = ItemBuilders.registerSwordSet("flanged_mace", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> HORSEMANS_AXE = ItemBuilders.registerAxeSet("horsemans_axe", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> HUNTING_KNIFE = ItemBuilders.registerSwordSet("hunting_knife", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> LARGE_VIKING_SWORD = ItemBuilders.registerSwordSet("large_viking_sword", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> LEAFBLADE_CLAYMORE = ItemBuilders.registerSwordSet("leafblade_claymore", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> LONGSWORD = ItemBuilders.registerSwordSet("longsword", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> POLE_FLAIL = ItemBuilders.registerSwordSet("pole_flail", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> QUILLON_DAGGER = ItemBuilders.registerSwordSet("quillon_dagger", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> SCIMITAR = ItemBuilders.registerSwordSet("scimitar", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> SHESTOPYOR = ItemBuilders.registerSwordSet("shestopyor", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> SHORTSWORD = ItemBuilders.registerSwordSet("shortsword", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> SHORTSWORD_WITH_GILDED_HILT = ItemBuilders.registerSwordSet("shortsword_with_gilded_hilt", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> SPIKED_MACE = ItemBuilders.registerSwordSet("spiked_mace", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> STUDDED_BATTLE_AXE = ItemBuilders.registerAxeSet("studded_battle_axe", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> VIKING_SWORD = ItemBuilders.registerSwordSet("viking_sword", 3, -2.4F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> ZWEIHANDER = ItemBuilders.registerSwordSet("zweihander", 3, -2.4F, genericCombatProps, metalTiers, 0);
+
+
+    public static final List<RegistryObject<Item>> GLAIVE = ItemBuilders.registerLongWepSet("glaive", 5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> HEAVY_HALBERD = ItemBuilders.registerLongWepSet("heavy_halberd", 5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> HEAVY_VOULGE = ItemBuilders.registerLongWepSet("heavy_voulge", 5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> VOULGE = ItemBuilders.registerLongWepSet("voulge", 5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> WAR_SCYTHE = ItemBuilders.registerLongWepSet("war_scythe", 5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+
+    public static final List<RegistryObject<Item>> SIMPLE_HALBERD = ItemBuilders.registerLongWepSet("simple_halberd",5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> SWISS_HALBERD = ItemBuilders.registerLongWepSet("swiss_halberd",5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> POLEAXE = ItemBuilders.registerLongWepSet("poleaxe", 5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> RANSEUR = ItemBuilders.registerLongWepSet("ranseur",5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+
+    public static final List<RegistryObject<Item>> PITCHFORK = ItemBuilders.registerLongWepSet("pitchfork", 5.0F, 5, -2.9F, genericCombatProps, metalTiers, 0);
+
+    public static final List<RegistryObject<Item>> JOUSTING_LANCE = ItemBuilders.registerLongWepSet("jousting_lance", 7.0F, 6, -4.0F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> BARDICHE = ItemBuilders.registerLongWepSet("bardiche", 5.0F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> WINGED_SPEAR = ItemBuilders.registerLongWepSet("winged_spear", 5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
+    public static final List<RegistryObject<Item>> WINGED_LEAF_SHAPED_SPEAR = ItemBuilders.registerLongWepSet("winged_leaf_shaped_spear", 5.5F, 8, -2.9F, genericCombatProps, metalTiers, 0);
 
 
 

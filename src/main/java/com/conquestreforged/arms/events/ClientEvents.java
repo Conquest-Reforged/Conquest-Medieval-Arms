@@ -1,5 +1,6 @@
 package com.conquestreforged.arms.events;
 
+import com.conquestreforged.arms.items.ModSpear;
 import com.conquestreforged.arms.network.NetworkHandler;
 import com.conquestreforged.arms.network.PacketOverextendedReachAttack;
 import com.conquestreforged.arms.util.ModTags;
@@ -35,7 +36,7 @@ public class ClientEvents {
         Minecraft minecraft = Minecraft.getInstance();
         Player playerEntity = minecraft.player;
         ItemStack weapon = playerEntity.getMainHandItem();
-        if (isValuableBlock(weapon.getItem()) && getEntityMouseOverExtension(7.0F) instanceof EntityHitResult) {
+        if (isExtendedReachItem(weapon.getItem()) && getEntityMouseOverExtension(((ModSpear)weapon.getItem()).getSpearLength()) instanceof EntityHitResult) {
 
             if (minecraft.gameMode.getPlayerMode() != GameType.SPECTATOR || isTargetNamedMenuProvider(minecraft.hitResult)) {
                 int scaledHeight = minecraft.getWindow().getGuiScaledHeight();
@@ -96,9 +97,9 @@ public class ClientEvents {
         Player player = minecraft.player;
         if (minecraft.level != null && minecraft.screen == null && !minecraft.isPaused() && player != null) {
             ItemStack weapon = player.getMainHandItem();
-            if (isValuableBlock(weapon.getItem())) {
+            if (isExtendedReachItem(weapon.getItem())) {
                 //Log.info("Attempting Reach Attack!");
-                float reach = 7.0F;
+                float reach = ((ModSpear)weapon.getItem()).getSpearLength();
                 HitResult rayTraceResult = getEntityMouseOverExtension(reach);
                 if (rayTraceResult instanceof EntityHitResult) {
                     Entity entityHit = ((EntityHitResult)rayTraceResult).getEntity();
@@ -168,7 +169,7 @@ public class ClientEvents {
         return (HitResult)result;
     }
 
-    private static boolean isValuableBlock(Item item) {
+    private static boolean isExtendedReachItem(Item item) {
         return Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(item).get()).is(ModTags.Items.SPEARS);
     }
 
