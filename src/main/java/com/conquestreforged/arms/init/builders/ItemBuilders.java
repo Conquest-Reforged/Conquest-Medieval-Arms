@@ -22,17 +22,17 @@ import java.util.List;
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class ItemBuilders {
-    public static List<RegistryObject<Item>> registerAxeSet(String name, int damage, float speed, Item.Properties props,
+    public static List<RegistryObject<Item>> registerAxeSet(String name, int damage, float speed, double rangeMod, Item.Properties props,
                                                             List<Tier> tiers, Integer linesAmt) {
         List<RegistryObject<Item>> axeList = new ArrayList<>();
 
         tiers.forEach(tier -> {
             if (Tiers.IRON.equals(tier)) {
-                axeList.add(ItemInit.REGISTER.register(name, () -> new ModAxe(tier, damage, speed, props, name, linesAmt)));
+                axeList.add(ItemInit.REGISTER.register(name, () -> new ModAxe(tier, damage, speed, rangeMod, props, name, linesAmt)));
             } else if (Tiers.DIAMOND.equals(tier)) {
-                axeList.add(ItemInit.REGISTER.register("refined_" + name, () -> new ModAxe(tier, damage - 1, speed + 0.1F, props, name, linesAmt)));
+                axeList.add(ItemInit.REGISTER.register("refined_" + name, () -> new ModAxe(tier, damage - 1, speed + 0.1F, rangeMod, props, name, linesAmt)));
             } else if (Tiers.NETHERITE.equals(tier)) {
-                axeList.add(ItemInit.REGISTER.register("exquisite_" + name, () -> new ModAxe(tier, damage - 1, speed + 0.1F, props, name, linesAmt)));
+                axeList.add(ItemInit.REGISTER.register("exquisite_" + name, () -> new ModAxe(tier, damage - 1, speed + 0.1F, rangeMod, props, name, linesAmt)));
             }
         });
         ItemInit.dataGenItemModels.addAll(axeList);
@@ -40,20 +40,20 @@ public class ItemBuilders {
         return axeList;
     }
 
-    public static List<RegistryObject<Item>> registerSwordSet(String name, int dmg, float spd, Item.Properties props,
+    public static List<RegistryObject<Item>> registerSwordSet(String name, int dmg, float spd, double rangeMod, Item.Properties props,
                                                               List<Tier> tiers, Integer linesAmt) {
         List<RegistryObject<Item>> swordsList = new ArrayList<>();
 
         tiers.forEach(tier -> {
             swordsList.add(ItemInit.REGISTER.register(getTierItemPrefix(tier) + name, () ->
-                    new ModSword(tier, dmg, spd, props, name, linesAmt)));
+                    new ModSword(tier, dmg, spd, rangeMod, props, name, linesAmt)));
         });
         ItemInit.dataGenItemModels.addAll(swordsList);
         ItemInit.dataGenItemRecipes.addAll(swordsList);
         return swordsList;
     }
 
-    public static List<RegistryObject<Item>> registerLongWepSet(String name, float length, int dmg, float spd, Item.Properties props,
+    public static List<RegistryObject<Item>> registerLongWepSet(String name, double length, int dmg, float spd, Item.Properties props,
                                                               List<Tier> tiers, Integer linesAmt) {
         List<RegistryObject<Item>> longWepList = new ArrayList<>();
 

@@ -4,7 +4,6 @@ package com.conquestreforged.arms;
 import com.conquestreforged.arms.init.BlockInit;
 import com.conquestreforged.arms.init.ItemInit;
 import com.conquestreforged.arms.init.MenuTypeInit;
-import com.conquestreforged.arms.network.NetworkHandler;
 import com.conquestreforged.arms.recipe.ModRecipes;
 import com.conquestreforged.arms.screens.ArmorStationScreen;
 import com.conquestreforged.arms.util.ModItemProperties;
@@ -40,7 +39,7 @@ public class ConquestMedievalArms {
 
     private void onSetup(FMLCommonSetupEvent ev) {
         ev.enqueueWork(() -> {
-            NetworkHandler.init();
+            //NetworkHandler.init();
         });
     }
 
