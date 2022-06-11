@@ -1,7 +1,7 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "item/stone_sword"
+        "layer0": "conq_medieval_arms:item/melee/bastard_sword"
     },
     "display": {
         "thirdperson_righthand": {

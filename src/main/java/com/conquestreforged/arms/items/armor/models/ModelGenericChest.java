@@ -19,7 +19,7 @@ public class ModelGenericChest<T extends LivingEntity> extends HumanoidModel<T> 
     private final ModelPart rightleg;
     private final ModelPart leftleg;
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "winged_hussar_chest"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "black_haubergeon"), "main");
 
     public ModelGenericChest(ModelPart root) {
         super(root);
@@ -42,7 +42,7 @@ public class ModelGenericChest<T extends LivingEntity> extends HumanoidModel<T> 
         //Chestplate
         PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, scale0), PartPose.offset(0.0F, 0.0F, 0.0F));
         PartDefinition body1 = body.addOrReplaceChild("body1", CubeListBuilder.create().texOffs(38, 13).addBox(-4.0F, 0.0F, -2.5F, 8.0F, 14.0F, 5.0F, scale1), PartPose.offset(0.0F, 0.0F, 0.0F));
-        PartDefinition body2 = body1.addOrReplaceChild("body2", CubeListBuilder.create().texOffs(0, 20).addBox(0.0F, -19.5F, 2.5F, 0.0F, 32.0F, 12.0F), PartPose.offset(0.0F, 0.0F, 0.0F));
+        //PartDefinition body2 = body1.addOrReplaceChild("body2", CubeListBuilder.create().texOffs(0, 20).addBox(0.0F, -19.5F, 2.5F, 0.0F, 32.0F, 12.0F), PartPose.offset(0.0F, 0.0F, 0.0F));
 
         //Arms
         PartDefinition rightArm = partdefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(48, 32).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale4), PartPose.offset(0.0F, 0.0F, 0.0F));

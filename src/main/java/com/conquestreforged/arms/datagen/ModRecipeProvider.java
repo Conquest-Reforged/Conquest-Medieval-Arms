@@ -2,6 +2,7 @@ package com.conquestreforged.arms.datagen;
 
 import com.conquestreforged.arms.init.ItemInit;
 import com.conquestreforged.arms.items.ModShield;
+import com.conquestreforged.arms.items.ModSpear;
 import com.conquestreforged.arms.recipe.ModRecipes;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.DataGenerator;
@@ -26,21 +27,39 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ItemInit.dataGenItemRecipes.forEach(registryItem -> {
             Item item = registryItem.get();
-            if (item instanceof SwordItem) {
-                createSwordRecipe(recipeConsumer, (SwordItem) registryItem.get());
+            if (item instanceof SwordItem || item instanceof ModSpear) {
+                createSwordRecipe(recipeConsumer, (TieredItem) registryItem.get());
             } else if (item instanceof AxeItem) {
-                createAxeRecipe(recipeConsumer, (AxeItem) registryItem.get());
+                createAxeRecipe(recipeConsumer, (TieredItem) registryItem.get());
             } else if (item instanceof ArmorItem) {
                 createArmorRecipe(recipeConsumer, (ArmorItem) registryItem.get());
             } else if (item instanceof ModShield) {
                 armsStation(Ingredient.of(Items.SHIELD), item)
                         .unlockedBy("has_" + Items.SHIELD, inventoryTrigger(ItemPredicate.Builder.item().of(Items.SHIELD).build()))
                         .save(recipeConsumer);
+            } else if (item instanceof BowItem) {
+                createBowRecipe(recipeConsumer, registryItem.get());
+            } else if (item instanceof CrossbowItem) {
+                createXBowRecipe(recipeConsumer, registryItem.get());
             }
         });
     }
 
-    private void createAxeRecipe(Consumer<FinishedRecipe> recipeConsumer, AxeItem result) {
+    private void createBowRecipe(Consumer<FinishedRecipe> recipeConsumer, Item result) {
+        Item ingredientItem = Items.BOW;
+        armsStation(Ingredient.of(ingredientItem), result)
+                .unlockedBy("has_" + ingredientItem, inventoryTrigger(ItemPredicate.Builder.item().of(ingredientItem).build()))
+                .save(recipeConsumer);
+    }
+
+    private void createXBowRecipe(Consumer<FinishedRecipe> recipeConsumer, Item result) {
+        Item ingredientItem = Items.CROSSBOW;
+        armsStation(Ingredient.of(ingredientItem), result)
+                .unlockedBy("has_" + ingredientItem, inventoryTrigger(ItemPredicate.Builder.item().of(ingredientItem).build()))
+                .save(recipeConsumer);
+    }
+
+    private void createAxeRecipe(Consumer<FinishedRecipe> recipeConsumer, TieredItem result) {
         Item ingredientItem = Items.WOODEN_AXE;
         Tier tier = result.getTier();
 
@@ -57,7 +76,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeConsumer);
     }
 
-    private void createSwordRecipe(Consumer<FinishedRecipe> recipeConsumer, SwordItem result) {
+    private void createSwordRecipe(Consumer<FinishedRecipe> recipeConsumer, TieredItem result) {
         Item ingredientItem = Items.WOODEN_SWORD;
         Tier tier = result.getTier();
 
@@ -127,6 +146,25 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         break;
                     case "head":
                         ingredientItem = Items.NETHERITE_HELMET;
+                        break;
+                }
+                break;
+            case "quilt":
+            case "cloth":
+            case "leather":
+                switch(result.getSlot().getName()) {
+                    default:
+                    case "feet":
+                        ingredientItem = (Items.LEATHER_BOOTS);
+                        break;
+                    case "legs":
+                        ingredientItem = (Items.LEATHER_LEGGINGS);
+                        break;
+                    case "chest":
+                        ingredientItem = (Items.LEATHER_CHESTPLATE);
+                        break;
+                    case "head":
+                        ingredientItem = (Items.LEATHER_HELMET);
                         break;
                 }
                 break;

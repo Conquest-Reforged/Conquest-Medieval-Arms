@@ -1,6 +1,7 @@
 package com.conquestreforged.arms.datagen;
 
 import com.conquestreforged.arms.ConquestMedievalArms;
+import com.conquestreforged.arms.init.BlockInit;
 import com.conquestreforged.arms.init.ItemInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
@@ -21,5 +22,6 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
                     .replace("_", " ")
             ));
         });
+        add("container.arms_station", "Arms Station");
     }
 }

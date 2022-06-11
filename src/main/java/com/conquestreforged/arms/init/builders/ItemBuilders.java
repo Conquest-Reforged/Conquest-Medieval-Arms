@@ -11,6 +11,7 @@ import com.conquestreforged.arms.items.armor.models.ModelGenericChest;
 import com.conquestreforged.arms.items.armor.models.ModelWingedHussarChest;
 import com.conquestreforged.arms.items.armor.models.ModelGenericLegs;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.RegistryObject;
@@ -59,7 +60,7 @@ public class ItemBuilders {
 
         tiers.forEach(tier -> {
             longWepList.add(ItemInit.REGISTER.register(getTierItemPrefix(tier) + name, () ->
-                    new ModSpear(props, name, length, tier, dmg, spd, linesAmt)));
+                    new ModSpear(props.durability(tier.getUses()), name, length, tier, dmg, spd, linesAmt)));
         });
         ItemInit.dataGenItemModels.addAll(longWepList);
         ItemInit.dataGenItemRecipes.addAll(longWepList);
@@ -76,12 +77,12 @@ public class ItemBuilders {
         }
     }
 
-    public static <T extends Item> RegistryObject<Item> registerTierlessWeapon(String name, Class<T> type, Integer linesAmt) {
+    public static <T extends Item> RegistryObject<Item> registerTierlessWeapon(String name, Class<T> type, Item.Properties props, Integer linesAmt) {
         RegistryObject<Item> item = ItemInit.REGISTER.register(name, () ->
         {
             try {
                 return type.getConstructor(Item.Properties.class, String.class, Integer.class)
-                        .newInstance(ItemInit.genericCombatProps, name, linesAmt);
+                        .newInstance(props, name, linesAmt);
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                 e.printStackTrace();
             }
