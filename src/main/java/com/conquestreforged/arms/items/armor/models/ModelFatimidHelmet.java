@@ -12,13 +12,13 @@ import net.minecraft.world.entity.LivingEntity;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
-public class ModelLamellarHelmet<T extends LivingEntity> extends HumanoidModel<T> {
+public class ModelFatimidHelmet<T extends LivingEntity> extends HumanoidModel<T> {
+
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "fatimid_cap"), "main");
 
     private final ModelPart head;
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "lamellar_helmet"), "main");
-
-    public ModelLamellarHelmet(ModelPart root) {
+    public ModelFatimidHelmet(ModelPart root) {
         super(root);
         this.head = root.getChild("head");
     }
@@ -48,8 +48,7 @@ public class ModelLamellarHelmet<T extends LivingEntity> extends HumanoidModel<T
 
         //crest
         PartDefinition crest = head.addOrReplaceChild("crest", CubeListBuilder.create().texOffs(0, 40).addBox(-12.0F, -24.0F, 0.0F, 24, 24, 0, scale7), PartPose.offset(0.0F, 0.0F, 0.0F));
-        PartDefinition head5 = head4.addOrReplaceChild("head5", CubeListBuilder.create().texOffs(4, 26).addBox(0.0F, -11.70F, -1.5F, 0.0F, 2.0F, 3.0F, scale4), PartPose.offset(0.0F, 0.0F, 0.0F));
-
+        PartDefinition crest1 = head.addOrReplaceChild("crest1", CubeListBuilder.create().texOffs(0, 16).addBox(0.0F, -24.0F, -12.0F, 0, 24, 24, scale2x), PartPose.offset(0.0F, 0.0F, 0.0F));
 
         //Parts are unused and not rendered but necessary to "add"" to avoid crash
         partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), PartPose.offset(0.0F, 0.0F, 0.0F));
@@ -62,7 +61,6 @@ public class ModelLamellarHelmet<T extends LivingEntity> extends HumanoidModel<T
 
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
-
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {

@@ -48,6 +48,10 @@ public class ModSpear extends TieredItem implements Vanishable {
         });
     }
 
+    public double getRange() {
+        return range  + 3.0d;
+    }
+
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();

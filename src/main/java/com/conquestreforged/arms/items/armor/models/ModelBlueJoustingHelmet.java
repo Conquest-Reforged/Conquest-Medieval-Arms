@@ -12,13 +12,13 @@ import net.minecraft.world.entity.LivingEntity;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
-public class ModelJoustingHelmet<T extends LivingEntity> extends HumanoidModel<T> {
+public class ModelBlueJoustingHelmet<T extends LivingEntity> extends HumanoidModel<T> {
 
     private final ModelPart head;
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "blue_crested_jousting_helmet"), "main");
 
-    public ModelJoustingHelmet(ModelPart root) {
+    public ModelBlueJoustingHelmet(ModelPart root) {
         super(root);
         this.head = root.getChild("head");
     }

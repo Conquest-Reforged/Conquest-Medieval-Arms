@@ -3,12 +3,18 @@ package com.conquestreforged.arms.items.armor.models;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
+import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
+
 public class ModelGenericHelmet<T extends LivingEntity> extends HumanoidModel<T> {
+
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MOD_ID, "crusader_helmet"), "main");
 
     private final ModelPart head;
     private final ModelPart hat;

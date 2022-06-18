@@ -1,9 +1,11 @@
 package com.conquestreforged.arms.items.armor;
 
+import com.conquestreforged.arms.items.armor.models.ModelGenericBoots;
+import com.conquestreforged.arms.items.armor.models.ModelGenericChest;
+import com.conquestreforged.arms.items.armor.models.ModelGenericHelmet;
+import com.conquestreforged.arms.items.armor.models.ModelGenericLegs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,19 +15,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.IItemRenderProperties;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.function.Consumer;
 
-public class ArmorModelItem<T> extends ArmorItem {
+public class ArmorModelItem extends ArmorItem {
 
-    private final Class<T> model;
-    private final ModelLayerLocation layerLocation;
     private final String armorTexture;
 
-    public ArmorModelItem(ArmorMaterial material, EquipmentSlot head, Properties props, Class<T> model, ModelLayerLocation layerLocation, String armorTexture) {
+    public ArmorModelItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture) {
         super(material, head, props);
-        this.model = model;
-        this.layerLocation = layerLocation;
         this.armorTexture = armorTexture;
 
     }
@@ -36,18 +33,19 @@ public class ArmorModelItem<T> extends ArmorItem {
             @Nullable
             @Override
             public HumanoidModel<?> getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> _default) {
-                try {
-                    return getModelInstance();
-                } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
-                    e.printStackTrace();
+                switch (slot) {
+                    default:
+                    case HEAD:
+                        return new ModelGenericHelmet<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelGenericHelmet.LAYER_LOCATION));
+                    case CHEST:
+                        return new ModelGenericChest<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelGenericChest.LAYER_LOCATION));
+                    case LEGS:
+                        return new ModelGenericLegs<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelGenericLegs.LAYER_LOCATION));
+                    case FEET:
+                        return new ModelGenericBoots<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelGenericBoots.LAYER_LOCATION));
                 }
-                return null;
             }
         });
-    }
-
-    public HumanoidModel<?> getModelInstance() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        return (HumanoidModel<?>) model.getConstructor(ModelPart.class).newInstance(Minecraft.getInstance().getEntityModels().bakeLayer(layerLocation));
     }
 
     @Override
