@@ -58,8 +58,6 @@ public class ItemInit {
     //public static final RegistryObject<Item> DAGGER = REGISTER.register("dagger", () ->
     //        new ModDagger(Tiers.IRON, 3, -2.4F, genericCombatProps));
 
-    public static final RegistryObject<Item> FATIMID_CAP = REGISTER.register("fatimid_cap", () ->
-           new SaracenHelmItem(ArmorMaterials.IRON, EquipmentSlot.HEAD, genericCombatProps, MOD_ID + ":" + "textures/models/armor/fatimid_cap.png"));
     ////////////////--------------------------START REGISTRATION----------------------------------///////////////////
     public static final List<RegistryObject<Item>> WINGED_HUSSAR_BOOTS = ItemBuilders.registerArmorModelMats(
             "winged_hussar_boots", genericCombatProps,
@@ -111,11 +109,11 @@ public class ItemInit {
             EquipmentSlot.HEAD,
             GreenJoustingHelmItem.class,
             metalMaterials);
-    //public static final List<RegistryObject<Item>> FATIMID_CAP = ItemBuilders.registerArmorModelMats(
-    //        "fatimid_cap", genericCombatProps,
-    //        EquipmentSlot.HEAD,
-    //        SaracenHelmItem.class,
-    //        metalMaterials);
+    public static final List<RegistryObject<Item>> FATIMID_CAP = ItemBuilders.registerArmorModelMats(
+            "fatimid_cap", genericCombatProps,
+            EquipmentSlot.HEAD,
+            SaracenHelmItem.class,
+            metalMaterials);
     public static final List<RegistryObject<Item>> GILDED_VIKING_HELMET = ItemBuilders.registerArmorModelMats(
             "gilded_viking_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
@@ -131,8 +129,8 @@ public class ItemInit {
             EquipmentSlot.HEAD,
             MongolHelmItem.class,
             metalMaterials);
-    public static final List<RegistryObject<Item>> KNIGHTS_BASCINET = ItemBuilders.registerArmorModelMats(
-            "knights_bascinet", genericCombatProps,
+    public static final List<RegistryObject<Item>> KNIGHTS_GREAT_BASCINET = ItemBuilders.registerArmorModelMats(
+            "knights_great_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             MongolHelmItem.class,
             metalMaterials);
@@ -373,8 +371,8 @@ public class ItemInit {
             ArmorModelItem.class,
             metalMaterials);
 
-    public static final List<RegistryObject<Item>> KNIGHTS_GREAT_BASCINET = ItemBuilders.registerArmorModelMats(
-            "knights_great_bascinet", genericCombatProps,
+    public static final List<RegistryObject<Item>> KNIGHTS_BASCINET = ItemBuilders.registerArmorModelMats(
+            "knights_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
             metalMaterials);
