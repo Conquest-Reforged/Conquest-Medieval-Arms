@@ -114,6 +114,11 @@ public class ItemInit {
             EquipmentSlot.HEAD,
             SaracenHelmItem.class,
             metalMaterials);
+    public static final List<RegistryObject<Item>> ARABIAN_HELMET = ItemBuilders.registerArmorModelMats(
+            "arabian_helmet", genericCombatProps,
+            EquipmentSlot.HEAD,
+            ArabianHelmItem.class,
+            metalMaterials);
     public static final List<RegistryObject<Item>> GILDED_VIKING_HELMET = ItemBuilders.registerArmorModelMats(
             "gilded_viking_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
@@ -121,6 +126,11 @@ public class ItemInit {
             metalMaterials);
     public static final List<RegistryObject<Item>> LAMELLAR_HELMET = ItemBuilders.registerArmorModelMats(
             "lamellar_helmet", genericCombatProps,
+            EquipmentSlot.HEAD,
+            LamellarHelmItem.class,
+            metalMaterials);
+    public static final List<RegistryObject<Item>> FEATHERED_LAMELLAR_HELMET = ItemBuilders.registerArmorModelMats(
+            "feathered_lamellar_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             LamellarHelmItem.class,
             metalMaterials);

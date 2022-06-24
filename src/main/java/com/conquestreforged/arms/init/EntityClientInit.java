@@ -34,6 +34,7 @@ public class EntityClientInit {
         event.registerLayerDefinition(ModelVikingHelmet.LAYER_LOCATION, ModelVikingHelmet::createHeadLayer);
         event.registerLayerDefinition(ModelLamellarHelmet.LAYER_LOCATION, ModelLamellarHelmet::createHeadLayer);
         event.registerLayerDefinition(ModelMongolHelmet.LAYER_LOCATION, ModelMongolHelmet::createHeadLayer);
+        event.registerLayerDefinition(ModelArabianHelmet.LAYER_LOCATION, ModelArabianHelmet::createHeadLayer);
         event.registerLayerDefinition(RenderSpear.modelLayerLocation, ModelSpear::createLayer);
     }
 
