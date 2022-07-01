@@ -34,9 +34,9 @@ public class ModelGenericLegs<T extends LivingEntity> extends HumanoidModel<T> {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        CubeDeformation scale2 = new CubeDeformation(0.261F, 0.261F, 0.261F);
-        CubeDeformation scale3 = new CubeDeformation(0.253F, 0.253F, 0.253F);
-        CubeDeformation scale4 = new CubeDeformation(0.252F, 0.252F, 0.252F);
+        CubeDeformation scale2 = new CubeDeformation(0.279F, 0.279F, 0.279F);
+        CubeDeformation scale3 = new CubeDeformation(0.271F, 0.271F, 0.271F);
+        CubeDeformation scale4 = new CubeDeformation(0.270F, 0.270F, 0.270F);
 
         //Chestplate
         PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, scale2), PartPose.offset(0.0F, 0.0F, 0.0F));

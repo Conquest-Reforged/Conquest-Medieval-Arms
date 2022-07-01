@@ -8,6 +8,7 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
@@ -17,18 +18,21 @@ import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class ModSword extends SwordItem {
 
     private final double range;
+    private final double knockback;
+    private final AttackStyleEnum attackStyle;
     private final String toolTipName;
     private final int linesAmt;
 
-    public ModSword(Tier tier, int dmg, float speed, double range, Properties props, String toolTipName, int linesAmt) {
+    public ModSword(Tier tier, int dmg, float speed, double range, double knockback, AttackStyleEnum attackStyle, Properties props, String toolTipName, int linesAmt) {
         super(tier, dmg, speed, props);
+        this.knockback = knockback;
+        this.attackStyle = attackStyle;
         this.toolTipName = toolTipName;
         this.linesAmt = linesAmt;
         this.range = range;
@@ -42,6 +46,7 @@ public class ModSword extends SwordItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(ForgeMod.ATTACK_RANGE.get(), new AttributeModifier(AttributeUUID.ATK_RNG_UUID, "Attack Reach modifier", range, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(AttributeUUID.ATTACK_KNOCKBACK_UUID, "Knockback modifier", this.knockback, AttributeModifier.Operation.ADDITION));
         builder.putAll(super.getAttributeModifiers(slot, stack));
 
         return slot == EquipmentSlot.MAINHAND ? builder.build() : super.getAttributeModifiers(slot, stack);

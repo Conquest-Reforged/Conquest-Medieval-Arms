@@ -29,8 +29,8 @@ public class ModelGenericBoots<T extends LivingEntity> extends HumanoidModel<T> 
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        CubeDeformation scale1 = new CubeDeformation(0.265F, 0.265F, 0.265F);
-        CubeDeformation scale2 = new CubeDeformation(0.266F, 0.266F, 0.266F);
+        CubeDeformation scale1 = new CubeDeformation(0.283F, 0.283F, 0.283F);
+        CubeDeformation scale2 = new CubeDeformation(0.284F, 0.284F, 0.284F);
 
         //Right Foot
         PartDefinition rightLeg = partdefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(0, 16).addBox(-1.98F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale1), PartPose.offset(0.0F, 0.0F, 0.0F));

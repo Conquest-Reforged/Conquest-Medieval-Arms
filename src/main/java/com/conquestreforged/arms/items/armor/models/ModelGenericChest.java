@@ -34,10 +34,10 @@ public class ModelGenericChest<T extends LivingEntity> extends HumanoidModel<T> 
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        CubeDeformation scale0 = new CubeDeformation(0.262F, 0.262F, 0.262F);
-        CubeDeformation scale1 = new CubeDeformation(0.263F, 0.263F, 0.263F);
-        CubeDeformation scale2 = new CubeDeformation(0.261F, 0.261F, 0.261F);
-        CubeDeformation scale4 = new CubeDeformation(0.259F, 0.259F, 0.259F);
+        CubeDeformation scale0 = new CubeDeformation(0.280F, 0.280F, 0.280F);
+        CubeDeformation scale1 = new CubeDeformation(0.281F, 0.281F, 0.281F);
+        CubeDeformation scale2 = new CubeDeformation(0.279F, 0.279F, 0.279F);
+        CubeDeformation scale4 = new CubeDeformation(0.277F, 0.277F, 0.277F);
 
         //Chestplate
         PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, scale0), PartPose.offset(0.0F, 0.0F, 0.0F));

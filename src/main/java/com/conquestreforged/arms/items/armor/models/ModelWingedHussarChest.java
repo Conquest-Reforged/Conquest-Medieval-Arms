@@ -34,11 +34,13 @@ public class ModelWingedHussarChest<T extends LivingEntity> extends HumanoidMode
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        CubeDeformation scale0 = new CubeDeformation(0.262F, 0.262F, 0.262F);
-        CubeDeformation scale1 = new CubeDeformation(0.263F, 0.263F, 0.263F);
-        CubeDeformation scale2 = new CubeDeformation(0.261F, 0.261F, 0.261F);
-        CubeDeformation scale3 = new CubeDeformation(0.2615F, 0.2615F, 0.2615F);
-        CubeDeformation scale4 = new CubeDeformation(0.259F, 0.259F, 0.259F);
+        CubeDeformation scale0 = new CubeDeformation(0.280F, 0.280F, 0.280F);
+        CubeDeformation scale1 = new CubeDeformation(0.281F, 0.281F, 0.281F);
+        CubeDeformation scale2 = new CubeDeformation(0.279F, 0.279F, 0.279F);
+        CubeDeformation scale4 = new CubeDeformation(0.277F, 0.277F, 0.277F);
+
+        CubeDeformation scaleback = new CubeDeformation(0.261F, 0.261F, 0.261F);
+        CubeDeformation scaleback2 = new CubeDeformation(0.2615F, 0.2615F, 0.2615F);
 
         //Chestplate
         PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, scale0), PartPose.offset(0.0F, 0.0F, 0.0F));
@@ -46,8 +48,8 @@ public class ModelWingedHussarChest<T extends LivingEntity> extends HumanoidMode
         PartDefinition body2 = body1.addOrReplaceChild("body2", CubeListBuilder.create().texOffs(0, 20).addBox(0.0F, -19.5F, 2.5F, 0.0F, 32.0F, 12.0F), PartPose.offset(0.0F, 0.0F, 0.0F));
 
         //Wings
-        PartDefinition back1 = body2.addOrReplaceChild("back1", CubeListBuilder.create().texOffs(23, 20).addBox(3.5F, -19.5F, 2.5F, 0.0F, 32.0F, 12.0F, scale2), PartPose.offsetAndRotation(-1.0F, 0.0F, 1.0F, 0.0F, 0.3491F, 0.0F));
-        PartDefinition back2 = back1.addOrReplaceChild("back2", CubeListBuilder.create().texOffs(23, 20).addBox(-3.0302F, -19.5F, 2.329F, 0.0F, 32.0F, 12.0F, scale3), PartPose.offsetAndRotation(0.5F, 0.0F, -1.0F, 0.0F, 5.6509F, 0.0F));
+        PartDefinition back1 = body2.addOrReplaceChild("back1", CubeListBuilder.create().texOffs(23, 20).addBox(3.5F, -19.5F, 2.5F, 0.0F, 32.0F, 12.0F, scaleback), PartPose.offsetAndRotation(-1.0F, 0.0F, 1.0F, 0.0F, 0.3491F, 0.0F));
+        PartDefinition back2 = back1.addOrReplaceChild("back2", CubeListBuilder.create().texOffs(23, 20).addBox(-3.0302F, -19.5F, 2.329F, 0.0F, 32.0F, 12.0F, scaleback2), PartPose.offsetAndRotation(0.5F, 0.0F, -1.0F, 0.0F, 5.6509F, 0.0F));
 
         //Arms
         PartDefinition rightArm = partdefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(48, 32).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale4), PartPose.offset(0.0F, 0.0F, 0.0F));

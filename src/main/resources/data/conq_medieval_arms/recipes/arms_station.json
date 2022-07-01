@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "###",
+    "oio"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "o": {
+      "item": "minecraft:stick"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "conq_medieval_arms:arms_station"
+  }
+}

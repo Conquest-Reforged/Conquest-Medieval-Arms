@@ -2,8 +2,6 @@ package com.conquestreforged.arms.items;
 
 import com.conquestreforged.arms.entities.SpearEntity;
 import com.conquestreforged.arms.init.ItemInit;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -16,12 +14,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.UseAnim;
@@ -34,8 +28,8 @@ public class ModThrowingSpear extends ModSpear {
 
     private EntityType spearEntity;
 
-    public ModThrowingSpear(Properties props, EntityType spearEntity, String toolTipName, float spearLength, Tier tier, int dmg, float speed, int linesAmt) {
-        super(props, toolTipName, spearLength, tier, dmg, speed, linesAmt);
+    public ModThrowingSpear(Properties props, EntityType spearEntity, String toolTipName, float spearLength, double armorPiercing, AttackStyleEnum attackStyle, Tier tier, int dmg, float speed, int linesAmt) {
+        super(props, toolTipName, spearLength, armorPiercing, attackStyle, tier, dmg, speed, linesAmt);
         this.spearEntity = spearEntity;
     }
 

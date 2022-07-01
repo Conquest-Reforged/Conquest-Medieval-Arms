@@ -19,7 +19,6 @@ import net.minecraftforge.common.util.Lazy;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
@@ -27,14 +26,18 @@ public class ModSpear extends TieredItem implements Vanishable {
 
     private final Lazy<Multimap<Attribute, AttributeModifier>> defaultModifiers;
     private double range;
+    private final double knockback;
+    private final AttackStyleEnum attackStyle;
     private int dmg;
     private float speed;
     private final int linesAmt;
     private final String toolTipName;
 
-    public ModSpear(Properties props, String toolTipName, double range, Tier tier, int dmg, float speed, int linesAmt) {
+    public ModSpear(Properties props, String toolTipName, double range, double knockback, AttackStyleEnum attackStyle, Tier tier, int dmg, float speed, int linesAmt) {
         super(tier, props);
         this.range = range;
+        this.knockback = knockback;
+        this.attackStyle = attackStyle;
         this.dmg = dmg;
         this.speed = speed;
         this.linesAmt = linesAmt;
@@ -44,6 +47,7 @@ public class ModSpear extends TieredItem implements Vanishable {
             builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", dmg, AttributeModifier.Operation.ADDITION));
             builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", (double) speed, AttributeModifier.Operation.ADDITION));
             builder.put(ForgeMod.ATTACK_RANGE.get(), new AttributeModifier(AttributeUUID.ATK_RNG_UUID, "Attack Reach modifier", range, AttributeModifier.Operation.ADDITION));
+            builder.put(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(AttributeUUID.ATTACK_KNOCKBACK_UUID, "Knockback modifier", this.knockback, AttributeModifier.Operation.ADDITION));
             return builder.build();
         });
     }

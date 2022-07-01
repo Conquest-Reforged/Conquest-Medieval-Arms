@@ -23,5 +23,6 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             ));
         });
         add("container.arms_station", "Arms Station");
+        add("tooltip.conq_medieval_arms.block.arms_station", "\u00A7eCrafts Conquest's medieval armors, weapons, and shields\u00A7r");
     }
 }
