@@ -761,10 +761,6 @@ public class ItemInit {
     //Shields
     public static final RegistryObject<Item> ARABIAN_KITE_SHIELD = ItemBuilders.registerTierlessWeapon("arabian_kite_shield", ModShield.class, shieldProps, 0);
     public static final RegistryObject<Item> ARABIAN_ROUND_SHIELD = ItemBuilders.registerTierlessWeapon("arabian_round_shield", ModShield.class, shieldProps, 0);
-    public static final RegistryObject<Item> BLUE_AND_BLACK_ROUND_SHIELD = ItemBuilders.registerTierlessWeapon("blue_and_black_round_shield", ModShield.class, shieldProps, 0);
-    public static final RegistryObject<Item> BLUE_AND_BLACK_ROUND_SHIELD_1 = ItemBuilders.registerTierlessWeapon("blue_and_black_round_shield_1", ModShield.class, shieldProps, 0);
-    public static final RegistryObject<Item> BLUE_ROUND_SHIELD = ItemBuilders.registerTierlessWeapon("blue_round_shield", ModShield.class, shieldProps, 0);
-    public static final RegistryObject<Item> BLUE_ROUND_SHIELD_1 = ItemBuilders.registerTierlessWeapon("blue_round_shield_1", ModShield.class, shieldProps, 0);
     public static final RegistryObject<Item> BLUE_HEATER_SHIELD = ItemBuilders.registerTierlessWeapon("blue_heater_shield", ModShield.class, shieldProps, 0);
     public static final RegistryObject<Item> CRUSADERS_HEATER_SHIELD = ItemBuilders.registerTierlessWeapon("crusaders_heater_shield", ModShield.class, shieldProps, 0);
     public static final RegistryObject<Item> CRUSADERS_KITE_SHIELD = ItemBuilders.registerTierlessWeapon("crusaders_kite_shield", ModShield.class, shieldProps, 0);
@@ -793,6 +789,14 @@ public class ItemInit {
     public static final RegistryObject<Item> YELLOW_AND_BLACK_ROUND_SHIELD_1 = ItemBuilders.registerTierlessWeapon("yellow_and_black_round_shield_1", ModShield.class, shieldProps, 0);
     public static final RegistryObject<Item> YELLOW_ROUND_SHIELD = ItemBuilders.registerTierlessWeapon("yellow_round_shield", ModShield.class, shieldProps, 0);
     public static final RegistryObject<Item> YELLOW_ROUND_SHIELD_1 = ItemBuilders.registerTierlessWeapon("yellow_round_shield_1", ModShield.class, shieldProps, 0);
+    //updated models
+    public static final RegistryObject<Item> KITESHIELD_WOOD = ItemBuilders.registerTierlessWeapon("kiteshield_wood", ModShield.class, shieldProps, 0);
+    public static final RegistryObject<Item> BLUE_AND_BLACK_ROUND_SHIELD = ItemBuilders.registerTierlessWeapon("blue_and_black_round_shield", ModShield.class, shieldProps, 0);
+    public static final RegistryObject<Item> BLUE_AND_BLACK_ROUND_SHIELD_1 = ItemBuilders.registerTierlessWeapon("blue_and_black_round_shield_1", ModShield.class, shieldProps, 0);
+    public static final RegistryObject<Item> BLUE_ROUND_SHIELD = ItemBuilders.registerTierlessWeapon("blue_round_shield", ModShield.class, shieldProps, 0);
+    public static final RegistryObject<Item> BLUE_ROUND_SHIELD_1 = ItemBuilders.registerTierlessWeapon("blue_round_shield_1", ModShield.class, shieldProps, 0);
+
+
 
     //Ranged
     public static final RegistryObject<Item> STEPPE_RECURVE_BOW = ItemBuilders.registerTierlessWeapon("steppe_recurve_bow", ModBow.class, genericCombatProps.durability(384),0);
