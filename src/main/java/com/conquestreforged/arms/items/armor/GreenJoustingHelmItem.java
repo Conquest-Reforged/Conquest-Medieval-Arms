@@ -14,8 +14,12 @@ import java.util.function.Consumer;
 
 public class GreenJoustingHelmItem extends ArmorModelItem {
 
-    public GreenJoustingHelmItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture) {
-        super(material, head, props, armorTexture);
+    private float cloth;
+    private float mail;
+    private float plate;
+
+    public GreenJoustingHelmItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture, Float cloth, Float mail, Float plate) {
+        super(material, head, props, armorTexture, cloth, mail, plate);
     }
 
     @Override

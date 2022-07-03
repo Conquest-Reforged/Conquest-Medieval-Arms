@@ -17,14 +17,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class ArmorModelItem extends ArmorItem {
+public class ArmorModelItem extends GenericArmorItem {
 
-    private final String armorTexture;
 
-    public ArmorModelItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture) {
-        super(material, head, props);
-        this.armorTexture = armorTexture;
-
+    public ArmorModelItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture, Float cloth, Float mail, Float plate) {
+        super(material, head, props, armorTexture, cloth, mail, plate);
     }
 
     @Override
@@ -46,10 +43,5 @@ public class ArmorModelItem extends ArmorItem {
                 }
             }
         });
-    }
-
-    @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-        return armorTexture;
     }
 }

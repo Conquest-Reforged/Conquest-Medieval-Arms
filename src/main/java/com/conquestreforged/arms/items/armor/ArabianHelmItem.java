@@ -1,7 +1,6 @@
 package com.conquestreforged.arms.items.armor;
 
 import com.conquestreforged.arms.items.armor.models.ModelArabianHelmet;
-import com.conquestreforged.arms.items.armor.models.ModelFatimidHelmet;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,8 +14,8 @@ import java.util.function.Consumer;
 
 public class ArabianHelmItem extends ArmorModelItem {
 
-    public ArabianHelmItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture) {
-        super(material, head, props, armorTexture);
+    public ArabianHelmItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture, Float cloth, Float mail, Float plate) {
+        super(material, head, props, armorTexture, cloth, mail, plate);
     }
 
     @Override

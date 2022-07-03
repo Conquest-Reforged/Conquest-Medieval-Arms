@@ -14,8 +14,8 @@ import java.util.function.Consumer;
 
 public class VikingHelmItem extends ArmorModelItem {
 
-    public VikingHelmItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture) {
-        super(material, head, props, armorTexture);
+    public VikingHelmItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture, Float cloth, Float mail, Float plate) {
+        super(material, head, props, armorTexture, cloth, mail, plate);
     }
 
     @Override

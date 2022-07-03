@@ -63,608 +63,700 @@ public class ItemInit {
             "winged_hussar_boots", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> WINGED_HUSSAR_CHEST = ItemBuilders.registerArmorModelMats(
             "winged_hussar_chestplate", genericCombatProps,
             EquipmentSlot.CHEST,
             WingedHussarChestItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> WINGED_HUSSAR_LEGS = ItemBuilders.registerArmorModelMats(
             "winged_hussar_pants", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> WINGED_HUSSAR_HELMET = ItemBuilders.registerArmorModelMats(
             "winged_hussar_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             WingedHussarHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> TEUTONIC_HORNED_GREAT_HELM = ItemBuilders.registerArmorModelMats(
             "teutonic_horned_great_helm", genericCombatProps,
             EquipmentSlot.HEAD,
             TeutonicHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CICAK_HELMET = ItemBuilders.registerArmorModelMats(
             "cicak_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             CicakHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BLUE_CRESTED_JOUSTING_HELMET = ItemBuilders.registerArmorModelMats(
             "blue_crested_jousting_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             BlueJoustingHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> RED_CRESTED_JOUSTING_HELMET = ItemBuilders.registerArmorModelMats(
             "red_crested_jousting_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             RedJoustingHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> YELLOW_CRESTED_JOUSTING_HELMET = ItemBuilders.registerArmorModelMats(
             "yellow_crested_jousting_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             YellowJoustingHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> GREEN_CRESTED_JOUSTING_HELMET = ItemBuilders.registerArmorModelMats(
             "green_crested_jousting_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             GreenJoustingHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> FATIMID_CAP = ItemBuilders.registerArmorModelMats(
             "fatimid_cap", genericCombatProps,
             EquipmentSlot.HEAD,
             SaracenHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ARABIAN_HELMET = ItemBuilders.registerArmorModelMats(
             "arabian_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArabianHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> GILDED_VIKING_HELMET = ItemBuilders.registerArmorModelMats(
             "gilded_viking_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             VikingHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> LAMELLAR_HELMET = ItemBuilders.registerArmorModelMats(
             "lamellar_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             LamellarHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> FEATHERED_LAMELLAR_HELMET = ItemBuilders.registerArmorModelMats(
             "feathered_lamellar_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             LamellarHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> MONGOLIAN_SPIKED_HELMET = ItemBuilders.registerArmorModelMats(
             "mongolian_spiked_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             MongolHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> KNIGHTS_GREAT_BASCINET = ItemBuilders.registerArmorModelMats(
             "knights_great_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             MongolHelmItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PLAIN_BASCINET = ItemBuilders.registerArmorModelMats(
             "plain_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BLACK_HAUBERGEON = ItemBuilders.registerArmorModelMats(
             "black_haubergeon", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BLACK_PLATELEGS = ItemBuilders.registerArmorModelMats(
             "black_platelegs", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BLACK_SABATONS = ItemBuilders.registerArmorModelMats(
             "black_sabatons", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CHAINMAIL_COIF = ItemBuilders.registerArmorModelMats(
             "chainmail_coif", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CHAINMAIL_HAUBERK = ItemBuilders.registerArmorModelMats(
             "chainmail_hauberk", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CHAINMAIL_HAUBERK_LEGGINGS = ItemBuilders.registerArmorModelMats(
             "chainmail_hauberk_leggings", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CHAINMAIL_CHAUSSES = ItemBuilders.registerArmorModelMats(
             "chainmail_chausses", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CRUSADER_GREAT_HELM = ItemBuilders.registerArmorModelMats(
             "crusader_great_helm", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CRUSADER_HAUBERGEON = ItemBuilders.registerArmorModelMats(
             "crusader_haubergeon", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CRUSADER_PADDED_LEGGINGS = ItemBuilders.registerArmorModelMats(
             "crusader_padded_leggings", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CRUSADER_BOOTS = ItemBuilders.registerArmorModelMats(
             "crusader_boots", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> GILDED_VISOR_BASCINET = ItemBuilders.registerArmorModelMats(
             "gilded_visor_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> GILDED_CUIRASS_AND_HAUBERK = ItemBuilders.registerArmorModelMats(
             "gilded_cuirass_and_hauberk", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> GILDED_PLATELEGS = ItemBuilders.registerArmorModelMats(
             "gilded_platelegs", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> GILDED_SABATONS = ItemBuilders.registerArmorModelMats(
             "gilded_sabatons", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_KNIGHTS_VISORED_BASCINET = ItemBuilders.registerArmorModelMats(
             "english_knights_visored_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_KNIGHTS_CHESTPLATE = ItemBuilders.registerArmorModelMats(
             "english_knights_chestplate", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_KNIGHTS_PLATELEGS = ItemBuilders.registerArmorModelMats(
             "english_knights_platelegs", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_TAPERED_SABATONS = ItemBuilders.registerArmorModelMats(
             "english_tapered_sabatons", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PEASANTS_COIF = ItemBuilders.registerArmorModelMats(
             "peasants_coif", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            clothMaterials);
+            clothMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PADDED_GAMBESON = ItemBuilders.registerArmorModelMats(
             "padded_gambeson", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            quiltMaterials);
+            quiltMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PEASANTS_PANTS = ItemBuilders.registerArmorModelMats(
             "peasants_pants", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            clothMaterials);
+            clothMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PEASANTS_LEATHER_BOOTS = ItemBuilders.registerArmorModelMats(
             "peasants_leather_boots", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BLACK_HAUBERK = ItemBuilders.registerArmorModelMats(
             "black_hauberk", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> LEATHER_PANTS = ItemBuilders.registerArmorModelMats(
             "leather_pants", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            leatherMaterials);
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> LEATHER_POULAINES = ItemBuilders.registerArmorModelMats(
             "leather_poulaines", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BURGUNDIAN_GILDED_BASCINET = ItemBuilders.registerArmorModelMats(
             "burgundian_gilded_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BURGUNDIAN_BLUE_BRIGANDINE = ItemBuilders.registerArmorModelMats(
             "burgundian_blue_brigandine", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BURGUNDIAN_PADDED_LEGGINGS = ItemBuilders.registerArmorModelMats(
             "burgundian_padded_leggings", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            quiltMaterials);
+            quiltMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BLACK_LEATHER_BOOTS = ItemBuilders.registerArmorModelMats(
             "black_leather_boots", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> FRENCH_KNIGHTS_VISORED_BASCINET = ItemBuilders.registerArmorModelMats(
             "french_knights_round_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> FRENCH_KNIGHTS_CHESTPLATE = ItemBuilders.registerArmorModelMats(
             "french_knights_chestplate", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> FRENCH_KNIGHTS_PLATELEGS = ItemBuilders.registerArmorModelMats(
             "french_knights_platelegs", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> FRENCH_TAPERED_SABATONS = ItemBuilders.registerArmorModelMats(
             "french_tapered_sabatons", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
 
     public static final List<RegistryObject<Item>> IRON_CAP_AND_COIF = ItemBuilders.registerArmorModelMats(
             "iron_cap_and_coif", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PADDED_LEATHER_GAMBESON = ItemBuilders.registerArmorModelMats(
             "padded_leather_gambeson", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            leatherMaterials);
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PADDED_TROUSERS = ItemBuilders.registerArmorModelMats(
             "padded_trousers", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            quiltMaterials);
+            quiltMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> LEATHER_SHOES = ItemBuilders.registerArmorModelMats(
             "leather_shoes", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> RED_HAUBERK = ItemBuilders.registerArmorModelMats(
             "red_hauberk", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PADDED_SOLLERETS = ItemBuilders.registerArmorModelMats(
             "padded_sollerets", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> KETTLE_HELMET_AND_COIF = ItemBuilders.registerArmorModelMats(
             "kettle_helmet_and_coif", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> RED_AND_WHITE_HAUBERK = ItemBuilders.registerArmorModelMats(
             "red_and_white_hauberk", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> LEATHER_PANTS_WITH_POLEYNS = ItemBuilders.registerArmorModelMats(
             "leather_pants_with_poleyns", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PADDED_CHAUSSES = ItemBuilders.registerArmorModelMats(
             "padded_chausses", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> KNIGHTS_BASCINET = ItemBuilders.registerArmorModelMats(
             "knights_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> KNIGHTS_CHESTPLATE = ItemBuilders.registerArmorModelMats(
             "knights_chestplate", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> KNIGHTS_PLATELEGS = ItemBuilders.registerArmorModelMats(
             "knights_platelegs", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> KNIGHTS_SOLLERETS = ItemBuilders.registerArmorModelMats(
             "knights_sollerets", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_LONGBOWMANS_BASCINET = ItemBuilders.registerArmorModelMats(
             "english_longbowmans_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_LONGBOWMANS_GAMBESON = ItemBuilders.registerArmorModelMats(
             "english_longbowmans_gambeson", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            quiltMaterials);
+            quiltMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_LONGBOWMANS_TROUSERS = ItemBuilders.registerArmorModelMats(
             "english_longbowmans_trousers", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            quiltMaterials);
+            quiltMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_LONGBNOWMANS_SHOES = ItemBuilders.registerArmorModelMats(
             "english_longbowmans_shoes", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> WHITE_SUGAR_LOAF_HELMET = ItemBuilders.registerArmorModelMats(
             "white_sugar_loaf_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CRIMSON_HAUBERK = ItemBuilders.registerArmorModelMats(
             "crimson_hauberk", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> RED_TROUSERS_WITH_GREAVES = ItemBuilders.registerArmorModelMats(
             "red_trousers_with_greaves", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> SABATONS = ItemBuilders.registerArmorModelMats(
             "sabatons", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ROUND_BASCINET = ItemBuilders.registerArmorModelMats(
             "round_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> RED_AND_WHITE_CHESTPLATE = ItemBuilders.registerArmorModelMats(
             "red_and_white_chestplate", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PLATELEGS = ItemBuilders.registerArmorModelMats(
             "platelegs", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> SABATONS_1 = ItemBuilders.registerArmorModelMats(
             "sabatons_1", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> CROWN = ItemBuilders.registerArmorModelMats(
             "crown", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            ornamentalMaterials);
+            ornamentalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> RED_AND_WHITE_BRIGANDINE = ItemBuilders.registerArmorModelMats(
             "red_and_white_brigandine", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> RED_BREECHES_WITH_GREAVES = ItemBuilders.registerArmorModelMats(
             "red_breeches_with_greaves", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> STRAPPED_MAIL_CHAUSSES = ItemBuilders.registerArmorModelMats(
             "strapped_mail_chausses", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> NORMAN_NASAL_HELMET = ItemBuilders.registerArmorModelMats(
             "norman_nasal_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> NORMAN_MAIL_HAUBERK = ItemBuilders.registerArmorModelMats(
             "norman_mail_hauberk", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> NORMAN_PADDED_BREECHES = ItemBuilders.registerArmorModelMats(
             "norman_padded_breeches", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            quiltMaterials);
+            quiltMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> NORMAN_LEATHER_BOOTS = ItemBuilders.registerArmorModelMats(
             "norman_leather_boots", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BLACK_COIF = ItemBuilders.registerArmorModelMats(
             "black_coif", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            leatherMaterials);
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> BLACK_GAMBESON = ItemBuilders.registerArmorModelMats(
             "black_gambeson", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            leatherMaterials);
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> DARK_BREECHES = ItemBuilders.registerArmorModelMats(
             "dark_breeches", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            leatherMaterials);
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> STRAPPED_DARK_LEATHER_BOOTS = ItemBuilders.registerArmorModelMats(
             "strapped_dark_leather_boots", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> POLISH_KNIGHTS_BASCINET = ItemBuilders.registerArmorModelMats(
             "polish_knights_bascinet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> POLISH_KNIGHTS_CHESTPLATE = ItemBuilders.registerArmorModelMats(
             "polish_knights_chestplate", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> POLISH_KNIGHTS_CUISSES = ItemBuilders.registerArmorModelMats(
             "polish_knights_cuisses", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> POLISH_KNIGHTS_PLATED_BOOTS = ItemBuilders.registerArmorModelMats(
             "polish_knights_plated_boots", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_SALLET = ItemBuilders.registerArmorModelMats(
             "english_sallet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_CHESTPLATE = ItemBuilders.registerArmorModelMats(
             "english_chestplate", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_CUISSES = ItemBuilders.registerArmorModelMats(
             "english_cuisses", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> ENGLISH_PLATED_BOOTS = ItemBuilders.registerArmorModelMats(
             "english_plated_boots", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
 
     public static final List<RegistryObject<Item>> FATIMID_SCALE_BRIGANDINE = ItemBuilders.registerArmorModelMats(
             "fatimid_scale_brigandine", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> FATIMID_BREECHES = ItemBuilders.registerArmorModelMats(
             "fatimid_breeches", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            quiltMaterials);
+            quiltMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> FATIMID_LEATHER_SHOES = ItemBuilders.registerArmorModelMats(
             "fatimid_leather_shoes", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> RED_AND_WHITE_SALLET = ItemBuilders.registerArmorModelMats(
             "red_and_white_sallet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
-
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> LAMELLAR_BRIGANDINE = ItemBuilders.registerArmorModelMats(
             "lamellar_brigandine", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> WOOLEN_BREECHES = ItemBuilders.registerArmorModelMats(
             "woolen_breeches", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            quiltMaterials);
+            quiltMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> FUR_LINED_POULAINES = ItemBuilders.registerArmorModelMats(
             "fur_lined_poulaines", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            clothMaterials);
-
+            clothMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> SUGAR_LOAF_HELMET = ItemBuilders.registerArmorModelMats(
             "sugar_loaf_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> RED_HERALDIC_HAUBERK = ItemBuilders.registerArmorModelMats(
             "red_heraldic_hauberk", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> SLEEVELESS_HAUBERK = ItemBuilders.registerArmorModelMats(
             "sleeveless_hauberk", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> LEATHER_SHOES_1 = ItemBuilders.registerArmorModelMats(
             "leather_shoes_1", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PURPLE_NASAL_HELMET = ItemBuilders.registerArmorModelMats(
             "purple_nasal_helmet", genericCombatProps,
             EquipmentSlot.HEAD,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> PURPLE_HAUBERK = ItemBuilders.registerArmorModelMats(
             "purple_hauberk", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> VIKING_LEATHER_BREECHES = ItemBuilders.registerArmorModelMats(
             "viking_leather_breeches", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            leatherMaterials);
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> VIKING_LEATHER_WRAPPED_SHOES = ItemBuilders.registerArmorModelMats(
             "viking_leather_wrapped_shoes", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            leatherMaterials);
-
+            leatherMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> KNIGHTS_CHESTPLATE_1 = ItemBuilders.registerArmorModelMats(
             "knights_chestplate_1", genericCombatProps,
             EquipmentSlot.CHEST,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> KNIGHTS_PLATELEGS_1 = ItemBuilders.registerArmorModelMats(
             "knights_platelegs_1", genericCombatProps,
             EquipmentSlot.LEGS,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
     public static final List<RegistryObject<Item>> KNIGHTS_SOLLERETS_1 = ItemBuilders.registerArmorModelMats(
             "knights_sollerets_1", genericCombatProps,
             EquipmentSlot.FEET,
             ArmorModelItem.class,
-            metalMaterials);
+            metalMaterials,
+            0.0f, 0.0f, 0.0f);
 
     //Shields
     public static final RegistryObject<Item> ARABIAN_KITE_SHIELD = ItemBuilders.registerTierlessWeapon("arabian_kite_shield", ModShield.class, shieldProps, 0);

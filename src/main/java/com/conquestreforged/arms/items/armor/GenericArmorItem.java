@@ -10,10 +10,16 @@ import org.jetbrains.annotations.Nullable;
 public class GenericArmorItem extends ArmorItem {
 
     private String armorTexture;
+    private float cloth;
+    private float mail;
+    private float plate;
 
-    public GenericArmorItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture) {
-        super(material, head, props);
+    public GenericArmorItem(ArmorMaterial material, EquipmentSlot equipmentSlot, Properties props, String armorTexture, Float cloth, Float mail, Float plate) {
+        super(material, equipmentSlot, props);
         this.armorTexture = armorTexture;
+        this.cloth = cloth;
+        this.mail = mail;
+        this.plate = plate;
     }
 
     @Nullable

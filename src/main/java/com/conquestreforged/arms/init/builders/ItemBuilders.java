@@ -88,7 +88,7 @@ public class ItemBuilders {
         return item;
     }
 
-    public static List<RegistryObject<Item>> registerArmorModelMats(String name, Item.Properties props, EquipmentSlot slot, Class<? extends ArmorModelItem> itemClass, List<ArmorMaterial> armorMaterials) {
+    public static List<RegistryObject<Item>> registerArmorModelMats(String name, Item.Properties props, EquipmentSlot slot, Class<? extends ArmorModelItem> itemClass, List<ArmorMaterial> armorMaterials, float cloth, float mail, float plate) {
         List<RegistryObject<Item>> armorsList = new ArrayList<>();
         armorMaterials.forEach(armorMaterial -> {
             switch (armorMaterial.getName()) {
@@ -100,8 +100,8 @@ public class ItemBuilders {
                     armorsList.add(ItemInit.REGISTER.register(name, () ->
                     {
                         try {
-                            return (itemClass.getConstructor(ArmorMaterial.class, EquipmentSlot.class, Item.Properties.class, String.class)
-                                    .newInstance(armorMaterial, slot, props, constructArmorModelTexPath(name, false)));
+                            return (itemClass.getConstructor(ArmorMaterial.class, EquipmentSlot.class, Item.Properties.class, String.class, Float.class, Float.class, Float.class)
+                                    .newInstance(armorMaterial, slot, props, constructArmorModelTexPath(name, false), cloth, mail, plate));
                         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                             e.printStackTrace();
                         }
@@ -112,8 +112,8 @@ public class ItemBuilders {
                     armorsList.add(ItemInit.REGISTER.register("refined_" + name, () ->
                     {
                         try {
-                            return (itemClass.getConstructor(ArmorMaterial.class, EquipmentSlot.class, Item.Properties.class, String.class)
-                                    .newInstance(armorMaterial, slot, props, constructArmorModelTexPath(name, false)));
+                            return (itemClass.getConstructor(ArmorMaterial.class, EquipmentSlot.class, Item.Properties.class, String.class, Float.class, Float.class, Float.class)
+                                    .newInstance(armorMaterial, slot, props, constructArmorModelTexPath(name, false), cloth, mail, plate));
                         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                             e.printStackTrace();
                         }
@@ -124,8 +124,8 @@ public class ItemBuilders {
                     armorsList.add(ItemInit.REGISTER.register("exquisite_" + name, () ->
                     {
                         try {
-                            return (itemClass.getConstructor(ArmorMaterial.class, EquipmentSlot.class, Item.Properties.class, String.class)
-                                    .newInstance(armorMaterial, slot, props, constructArmorModelTexPath(name, false)));
+                            return (itemClass.getConstructor(ArmorMaterial.class, EquipmentSlot.class, Item.Properties.class, String.class, Float.class, Float.class, Float.class)
+                                    .newInstance(armorMaterial, slot, props, constructArmorModelTexPath(name, false), cloth, mail, plate));
                         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                             e.printStackTrace();
                         }
@@ -137,51 +137,6 @@ public class ItemBuilders {
         ItemInit.dataGenItemModels.addAll(armorsList);
         ItemInit.dataGenItemRecipes.addAll(armorsList);
         return armorsList;
-    }
-
-    public static List<RegistryObject<Item>> registerArmorSetMats(Item.Properties props, String texture, List<ArmorMaterial> armorMaterials) {
-        List<RegistryObject<Item>> armorsList = new ArrayList<>();
-
-        armorMaterials.forEach(armorMaterial -> {
-            switch (armorMaterial.getName()) {
-                case "iron":
-                    armorsList.addAll(registerArmorSet(props, texture, armorMaterial));
-                    break;
-                case "bronze":
-                    armorsList.addAll(registerArmorSet(props, texture, armorMaterial));
-                    break;
-                case "diamond":
-                    armorsList.addAll(registerArmorSet(props, "refined_" + texture, armorMaterial));
-                    break;
-                case "netherite":
-                    armorsList.addAll(registerArmorSet(props, "exquisite_" + texture, armorMaterial));
-                    break;
-            }
-        });
-        return armorsList;
-    }
-
-    private static List<RegistryObject<Item>> registerArmorSet(Item.Properties props, String texture, ArmorMaterial armorMaterial) {
-        List<RegistryObject<Item>> armorsList = new ArrayList<>();
-
-        armorsList.add(ItemInit.REGISTER.register(texture + "_helmet", () -> new GenericArmorItem(armorMaterial, EquipmentSlot.HEAD, props, constructArmorTexPath(texture, false))));
-        armorsList.add(ItemInit.REGISTER.register(texture + "_chest", () -> new GenericArmorItem(armorMaterial, EquipmentSlot.CHEST, props, constructArmorTexPath(texture, false))));
-        armorsList.add(ItemInit.REGISTER.register(texture + "_legs", () -> new GenericArmorItem(armorMaterial, EquipmentSlot.LEGS, props, constructArmorTexPath(texture, true))));
-        armorsList.add(ItemInit.REGISTER.register(texture + "_boots", () -> new GenericArmorItem(armorMaterial, EquipmentSlot.FEET, props, constructArmorTexPath(texture, false))));
-
-        ItemInit.dataGenItemModels.addAll(armorsList);
-        ItemInit.dataGenItemRecipes.addAll(armorsList);
-        return armorsList;
-    }
-
-    private static String constructArmorTexPath(String textureName, boolean isPants) {
-        String path = MOD_ID + ":" + "textures/models/armor/";
-
-        if (isPants) {
-            return path + textureName + "_layer_2.png";
-        } else {
-            return path + textureName + "_layer_1.png";
-        }
     }
 
     private static String constructArmorModelTexPath(String textureName, boolean isPants) {
