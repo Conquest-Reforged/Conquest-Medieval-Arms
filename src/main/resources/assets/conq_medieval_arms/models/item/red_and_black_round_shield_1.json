@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "conq_medieval_arms:item/shields/blue_round_shield",
+		"0": "conq_medieval_arms:item/shields/red_and_black_round_shield_1",
 		"1": "conq_medieval_arms:item/shields/shield_round_back_woodgrip",
-		"particle": "conq_medieval_arms:item/shields/blue_round_shield"
+		"particle": "conq_medieval_arms:item/shields/red_and_black_round_shield_1"
 	},
 	"elements": [
 		{
@@ -338,28 +338,28 @@
 			"predicate": {
 				"minecraft:blocking": 1
 			},
-			"model": "conquestarmory:item/big_round_birds_shield_blocking"
+			"model": "conq_medieval_arms:item/red_and_black_round_shield_1_blocking"
 		}
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [45, 135, 0],
-			"translation": [5.75, 2.5, -6.75],
+			"rotation": [-168.38, 81.35, -101.74],
+			"translation": [9.25, 0, -2.75],
 			"scale": [0.9, 0.9, 1]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [45, 135, 0],
-			"translation": [9, 0.75, -4.75],
-			"scale": [0.8, 0.8, 1]
+			"rotation": [-168.38, 81.35, -101.74],
+			"translation": [9.25, -3.75, -2.75],
+			"scale": [0.9, 0.9, 1]
 		},
 		"firstperson_righthand": {
-			"rotation": [0, -180, 0],
-			"translation": [-9, -2.75, -1],
+			"rotation": [89, 90, 0],
+			"translation": [8.5, -1.5, 3.75],
 			"scale": [0.8, 0.8, 1]
 		},
 		"firstperson_lefthand": {
-			"rotation": [0, -180, 0],
-			"translation": [-6, -2.75, -1],
+			"rotation": [89, 90, 0],
+			"translation": [8.5, -3.75, 3.75],
 			"scale": [0.8, 0.8, 1]
 		},
 		"ground": {
@@ -371,10 +371,14 @@
 			"translation": [-3.5, 2, 0],
 			"scale": [0.6, 0.6, 1]
 		},
+		"head": {
+			"rotation": [5.5, 0, 0],
+			"translation": [1.75, -20.25, 13.5]
+		},
 		"fixed": {
-			"rotation": [0, -180, 0],
-			"translation": [-3.25, -3.75, -8.75],
-			"scale": [1.5, 1.5, 1]
+			"rotation": [-177.5, 2.5, -180],
+			"translation": [-4, -6.5, -9.5],
+			"scale": [1.7, 1.7, 1]
 		}
 	}
 }

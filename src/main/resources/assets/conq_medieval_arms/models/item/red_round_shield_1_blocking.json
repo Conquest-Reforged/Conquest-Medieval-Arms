@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "conq_medieval_arms:item/shields/blue_round_shield",
+		"0": "conq_medieval_arms:item/shields/red_round_shield_1",
 		"1": "conq_medieval_arms:item/shields/shield_round_back_woodgrip",
-		"particle": "conq_medieval_arms:item/shields/blue_round_shield"
+		"particle": "conq_medieval_arms:item/shields/red_round_shield_1"
 	},
 	"elements": [
 		{

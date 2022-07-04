@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "conq_medieval_arms:item/shields/kiteshield_wood",
+		"0": "conq_medieval_arms:item/shields/yellow_kiteshield",
 		"1": "conq_medieval_arms:item/shields/kiteshield_wood_back",
-		"particle": "conq_medieval_arms:item/shields/kiteshield_wood"
+		"particle": "conq_medieval_arms:item/shields/yellow_kiteshield"
 	},
 	"elements": [
 		{
