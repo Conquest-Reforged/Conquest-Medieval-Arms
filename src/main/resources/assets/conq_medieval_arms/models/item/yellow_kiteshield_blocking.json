@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "conq_medieval_arms:item/shields/kiteshield_wood",
-		"1": "conq_medieval_arms:item/shields/kiteshield_wood_back",
-		"particle": "conq_medieval_arms:item/shields/kiteshield_wood"
+		"0": "conq_medieval_arms:item/shields/yellow_kiteshield",
+		"1": "conq_medieval_arms:item/shields/wooden_kiteshield_back",
+		"particle": "conq_medieval_arms:item/shields/yellow_kiteshield"
 	},
 	"elements": [
 		{
@@ -369,30 +369,22 @@
 			}
 		}
 	],
-	"overrides": [
-		{
-			"predicate": {
-				"minecraft:blocking": 1
-			},
-			"model": "conq_medieval_arms:item/kiteshield_wood_blocking"
-		}
-	],
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [1, 98, 0],
-			"translation": [5.25, -11, -0.5]
+			"rotation": [45, 135, 0],
+			"translation": [5, -3.75, -5.5]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [1, 108, 0],
-			"translation": [5.75, -11, -0.5]
+			"rotation": [45, 135, 0],
+			"translation": [5, -3.75, -5.5]
 		},
 		"firstperson_righthand": {
-			"rotation": [-21, 108, 0],
-			"translation": [5.75, -14, 6]
+			"rotation": [0, 170, 0],
+			"translation": [-6.25, -11, 2.75]
 		},
 		"firstperson_lefthand": {
-			"rotation": [-21, 108, 0],
-			"translation": [5.75, -14, 6]
+			"rotation": [0, -170, 0],
+			"translation": [-8.25, -11, 2.75]
 		},
 		"ground": {
 			"translation": [0, 2.75, 0],
@@ -408,9 +400,9 @@
 			"translation": [1.75, -23.5, 11.25]
 		},
 		"fixed": {
-			"rotation": [-177.5, 11, -180],
-			"translation": [1, -27, -7],
-			"scale": [2.2, 2.2, 1]
+			"rotation": [-180, 7.25, -180],
+			"translation": [0.5, -17.25, -6.5],
+			"scale": [1.5, 1.5, 1]
 		}
 	}
 }

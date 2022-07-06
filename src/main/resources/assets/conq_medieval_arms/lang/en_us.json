@@ -3,7 +3,6 @@
   "container.arms_station": "Arms Station",
   "generic.armor_piercing": "Armor Piercing",
   "item.conq_medieval_arms.arabian_helmet": "Arabian Helmet",
-  "item.conq_medieval_arms.arabian_kite_shield": "Arabian Kite Shield",
   "item.conq_medieval_arms.arabian_round_shield": "Arabian Round Shield",
   "item.conq_medieval_arms.bardiche": "Bardiche",
   "item.conq_medieval_arms.bastard_sword": "Bastard Sword",
@@ -470,10 +469,12 @@
   "item.conq_medieval_arms.yellow_round_shield": "Yellow Round Shield",
   "item.conq_medieval_arms.yellow_round_shield_1": "Yellow Round Shield 1",
   "item.conq_medieval_arms.zweihander": "Zweihander",
-
-  "item.conq_medieval_arms.kiteshield_wood": "Wood Kiteshield ",
+  "item.conq_medieval_arms.wooden_kiteshield": "Wooden Kiteshield ",
+  "item.conq_medieval_arms.yellow_kiteshield": "Yellow Kiteshield ",
+  "item.conq_medieval_arms.arabian_kite_shield": "Arabian Kite Shield",
   "item.conq_medieval_arms.blue_and_black_round_shield": "Blue And Black Round Shield",
-
+  "item.conq_medieval_arms.green_round_shield": "Green Round Shield",
+  "item.conq_medieval_arms.green_round_shield_1": "Green Round Shield 1",
 
   "tooltip.conq_medieval_arms.block.arms_station": "\u00A7eCrafts Conquest's medieval armors, weapons, and shields\u00A7r"
 }

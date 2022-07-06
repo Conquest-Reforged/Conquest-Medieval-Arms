@@ -3,7 +3,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "conq_medieval_arms:item/shields/yellow_kiteshield",
-		"1": "conq_medieval_arms:item/shields/kiteshield_wood_back",
+		"1": "conq_medieval_arms:item/shields/wooden_kiteshield_back",
 		"particle": "conq_medieval_arms:item/shields/yellow_kiteshield"
 	},
 	"elements": [
@@ -374,7 +374,7 @@
 			"predicate": {
 				"minecraft:blocking": 1
 			},
-			"model": "conq_medieval_arms:item/kiteshield_wood_blocking"
+			"model": "conq_medieval_arms:item/yellow_kiteshield_blocking"
 		}
 	],
 	"display": {
