@@ -1,19 +1,7 @@
 package com.conquestreforged.arms.network;
 
-import com.conquestreforged.arms.items.ModAxe;
-import com.conquestreforged.arms.items.ModSpear;
-import com.conquestreforged.arms.items.ModSword;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.network.NetworkEvent;
-import org.jline.utils.Log;
-
-import java.util.function.Supplier;
-
 public class PacketOverextendedReachAttack {
+    /*
     private int entityID;
 
     public PacketOverextendedReachAttack(int entityID) {
@@ -66,5 +54,5 @@ public class PacketOverextendedReachAttack {
                 });
             }
         }
-    }
+    }*/
 }

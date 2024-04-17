@@ -4,234 +4,239 @@ import com.conquestreforged.arms.init.BlockInit;
 import com.conquestreforged.arms.init.MenuTypeInit;
 import com.conquestreforged.arms.recipe.ArmorStationRecipe;
 import com.google.common.collect.Lists;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.*;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.StonecutterRecipe;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.CraftingResultInventory;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.Property;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.screen.slot.Slot;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Map;
 
-public class ArmorStationMenu extends AbstractContainerMenu {
+public class ArmorStationMenu extends ScreenHandler {
     public static final int INPUT_SLOT = 0;
     public static final int RESULT_SLOT = 1;
     private static final int INV_SLOT_START = 2;
     private static final int INV_SLOT_END = 29;
     private static final int USE_ROW_SLOT_START = 29;
     private static final int USE_ROW_SLOT_END = 38;
-    private final ContainerLevelAccess access;
-    private final DataSlot selectedRecipeIndex = DataSlot.standalone();
-    private final Level level;
+    private final ScreenHandlerContext access;
+    private final Property selectedRecipe = Property.create();
+    private final World level;
     private List<ArmorStationRecipe> recipes = Lists.newArrayList();
-    private ItemStack input = ItemStack.EMPTY;
+    private ItemStack inputStack = ItemStack.EMPTY;
     long lastSoundTime;
     final Slot inputSlot;
     final Slot resultSlot;
     Runnable slotUpdateListener = () -> {
     };
-    public final Container container = new SimpleContainer(1) {
-        public void setChanged() {
-            super.setChanged();
-            ArmorStationMenu.this.slotsChanged(this);
-            ArmorStationMenu.this.slotUpdateListener.run();
-        }
-    };
-    final ResultContainer resultContainer = new ResultContainer();
+    public final Inventory input;
+    final CraftingResultInventory output;
 
-    public ArmorStationMenu(int i, Inventory inventory) {
-        this(i, inventory, ContainerLevelAccess.NULL);
+    public ArmorStationMenu(int i, PlayerInventory inventory) {
+        this(i, inventory, ScreenHandlerContext.EMPTY);
     }
 
 
-    public ArmorStationMenu(int p_40297_, Inventory p_40298_, final ContainerLevelAccess p_40299_) {
-        super(MenuTypeInit.ARMS_STATION_MENU.get(), p_40297_);
-        this.access = p_40299_;
-        this.level = p_40298_.player.level;
-        this.inputSlot = this.addSlot(new Slot(this.container, 0, 20, 33));
-        this.resultSlot = this.addSlot(new Slot(this.resultContainer, 1, 143, 33) {
-            public boolean mayPlace(ItemStack p_40362_) {
+    public ArmorStationMenu(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+        super(MenuTypeInit.ARMS_STATION_MENU, syncId);
+        this.access = context;
+        this.level = playerInventory.player.getWorld();
+        this.input = new SimpleInventory(1) {
+            public void markDirty() {
+                super.markDirty();
+                ArmorStationMenu.this.onContentChanged(this);
+                ArmorStationMenu.this.slotUpdateListener.run();
+            }
+        };
+        this.output = new CraftingResultInventory();
+        this.inputSlot = this.addSlot(new Slot(this.input, 0, 20, 33));
+        this.resultSlot = this.addSlot(new Slot(this.output, 1, 143, 33) {
+            public boolean canInsert(ItemStack stack) {
                 return false;
             }
 
-            public void onTake(Player p_150672_, ItemStack p_150673_) {
-                p_150673_.onCraftedBy(p_150672_.level, p_150672_, p_150673_.getCount());
-                ArmorStationMenu.this.resultContainer.awardUsedRecipes(p_150672_);
-                ItemStack itemstack = ArmorStationMenu.this.inputSlot.remove(1);
-                if (!itemstack.isEmpty()) {
-                    ArmorStationMenu.this.setupResultSlot();
+            public void onTakeItem(PlayerEntity player, ItemStack stack) {
+                stack.onCraft(player.getWorld(), player, stack.getCount());
+                ArmorStationMenu.this.output.unlockLastRecipe(player, this.getInputStacks());
+                ItemStack itemStack = ArmorStationMenu.this.inputSlot.takeStack(1);
+                if (!itemStack.isEmpty()) {
+                    ArmorStationMenu.this.populateResult();
                 }
 
-                p_40299_.execute((p_40364_, p_40365_) -> {
-                    long l = p_40364_.getGameTime();
+                context.run((world, pos) -> {
+                    long l = world.getTime();
                     if (ArmorStationMenu.this.lastSoundTime != l) {
-                        p_40364_.playSound((Player)null, p_40365_, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        world.playSound((PlayerEntity)null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundCategory.BLOCKS, 1.0F, 1.0F);
                         ArmorStationMenu.this.lastSoundTime = l;
                     }
 
                 });
-                super.onTake(p_150672_, p_150673_);
+                super.onTakeItem(player, stack);
+            }
+
+            private List<ItemStack> getInputStacks() {
+                return List.of(ArmorStationMenu.this.inputSlot.getStack());
             }
         });
 
+
         for(int i = 0; i < 3; ++i) {
             for(int j = 0; j < 9; ++j) {
-                this.addSlot(new Slot(p_40298_, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+                this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
 
         for(int k = 0; k < 9; ++k) {
-            this.addSlot(new Slot(p_40298_, k, 8 + k * 18, 142));
+            this.addSlot(new Slot(playerInventory, k, 8 + k * 18, 142));
         }
 
-        this.addDataSlot(this.selectedRecipeIndex);
+        this.addProperty(this.selectedRecipe);
     }
 
 
 
-    public int getSelectedRecipeIndex() {
-        return this.selectedRecipeIndex.get();
+    public int getSelectedRecipe() {
+        return this.selectedRecipe.get();
     }
 
-    public List<ArmorStationRecipe> getRecipes() {
+    public List<ArmorStationRecipe> getAvailableRecipes() {
         return this.recipes;
     }
 
-    public int getNumRecipes() {
+    public int getAvailableRecipeCount() {
         return this.recipes.size();
     }
 
-    public boolean hasInputItem() {
-        return this.inputSlot.hasItem() && !this.recipes.isEmpty();
+    public boolean canCraft() {
+        return this.inputSlot.hasStack() && !this.recipes.isEmpty();
     }
 
-    public boolean stillValid(Player p_40307_) {
-        return stillValid(this.access, p_40307_, BlockInit.ARMS_STATION_BLOCK.get());
+    public boolean canUse(PlayerEntity player) {
+        return canUse(this.access, player, BlockInit.ARMS_STATION_BLOCK);
     }
 
-    public boolean clickMenuButton(Player p_40309_, int p_40310_) {
-        if (this.isValidRecipeIndex(p_40310_)) {
-            this.selectedRecipeIndex.set(p_40310_);
-            this.setupResultSlot();
+    public boolean onButtonClick(PlayerEntity player, int id) {
+        if (this.isInBounds(id)) {
+            this.selectedRecipe.set(id);
+            this.populateResult();
         }
 
         return true;
     }
 
-    private boolean isValidRecipeIndex(int p_40335_) {
-        return p_40335_ >= 0 && p_40335_ < this.recipes.size();
+    private boolean isInBounds(int id) {
+        return id >= 0 && id < this.recipes.size();
     }
 
-    public void slotsChanged(Container p_40302_) {
-        ItemStack itemstack = this.inputSlot.getItem();
-        if (!itemstack.is(this.input.getItem())) {
-            this.input = itemstack.copy();
-            this.setupRecipeList(p_40302_, itemstack);
+    public void onContentChanged(Inventory inventory) {
+        ItemStack itemstack = this.inputSlot.getStack();
+        if (!itemstack.isOf(this.inputStack.getItem())) {
+            this.inputStack = itemstack.copy();
+            this.updateInput(inventory, itemstack);
         }
 
     }
 
-    private void setupRecipeList(Container p_40304_, ItemStack p_40305_) {
+    private void updateInput(Inventory input, ItemStack stack) {
         this.recipes.clear();
-        this.selectedRecipeIndex.set(-1);
-        this.resultSlot.set(ItemStack.EMPTY);
-        if (!p_40305_.isEmpty()) {
-            this.recipes = this.level.getRecipeManager().getRecipesFor(ArmorStationRecipe.Type.INSTANCE, p_40304_, this.level);
+        this.selectedRecipe.set(-1);
+        this.resultSlot.setStackNoCallbacks(ItemStack.EMPTY);
+        if (!stack.isEmpty()) {
+            this.recipes = this.level.getRecipeManager().getAllMatches(ArmorStationRecipe.Type.INSTANCE, input, this.level);
         }
 
     }
 
-    void setupResultSlot() {
-        ItemStack inputStack = this.container.getItem(0);
-        int damage = inputStack.getDamageValue();
-        Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(inputStack);
-        if (!this.recipes.isEmpty() && this.isValidRecipeIndex(this.selectedRecipeIndex.get())) {
-            ArmorStationRecipe stonecutterrecipe = this.recipes.get(this.selectedRecipeIndex.get());
-            this.resultContainer.setRecipeUsed(stonecutterrecipe);
-            ItemStack itemStack = stonecutterrecipe.assemble(this.container);
-            itemStack.setDamageValue(damage);
-            EnchantmentHelper.setEnchantments(map, itemStack);
-            this.resultContainer.setItem(0, itemStack);
+    void populateResult() {
+        if (!this.recipes.isEmpty() && this.isInBounds(this.selectedRecipe.get())) {
+            ArmorStationRecipe stonecuttingRecipe = this.recipes.get(this.selectedRecipe.get());
+            ItemStack itemStack = stonecuttingRecipe.craft(this.input, this.level.getRegistryManager());
+            if (itemStack.isItemEnabled(this.level.getEnabledFeatures())) {
+                this.output.setLastRecipe(stonecuttingRecipe);
+                this.resultSlot.setStackNoCallbacks(itemStack);
+            } else {
+                this.resultSlot.setStackNoCallbacks(ItemStack.EMPTY);
+            }
         } else {
-            this.resultContainer.setItem(0, ItemStack.EMPTY);
+            this.resultSlot.setStackNoCallbacks(ItemStack.EMPTY);
         }
 
-        this.broadcastChanges();
+        this.sendContentUpdates();
     }
 
-    public MenuType<?> getType() {
-        return MenuTypeInit.ARMS_STATION_MENU.get();
+    public ScreenHandlerType<?> getType() {
+        return MenuTypeInit.ARMS_STATION_MENU;
     }
 
-    public void registerUpdateListener(Runnable p_40324_) {
-        this.slotUpdateListener = p_40324_;
+    public void setContentsChangedListener(Runnable contentsChangedListener) {
+        this.slotUpdateListener = contentsChangedListener;
     }
 
-    public boolean canTakeItemForPickAll(ItemStack p_40321_, Slot p_40322_) {
-        return p_40322_.container != this.resultContainer && super.canTakeItemForPickAll(p_40321_, p_40322_);
+    public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
+        return slot.inventory != this.output && super.canInsertIntoSlot(stack, slot);
     }
 
-    public ItemStack quickMoveStack(Player p_40328_, int p_40329_) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(p_40329_);
-        if (slot != null && slot.hasItem()) {
-            ItemStack itemstack1 = slot.getItem();
-            Item item = itemstack1.getItem();
-            itemstack = itemstack1.copy();
-            if (p_40329_ == 1) {
-                item.onCraftedBy(itemstack1, p_40328_.level, p_40328_);
-                if (!this.moveItemStackTo(itemstack1, 2, 38, true)) {
+    public ItemStack quickMove(PlayerEntity player, int slot) {
+        ItemStack itemStack = ItemStack.EMPTY;
+        Slot slot2 = this.slots.get(slot);
+        if (slot2 != null && slot2.hasStack()) {
+            ItemStack itemStack2 = slot2.getStack();
+            Item item = itemStack2.getItem();
+            itemStack = itemStack2.copy();
+            if (slot == 1) {
+                item.onCraft(itemStack2, player.getWorld(), player);
+                if (!this.insertItem(itemStack2, 2, 38, true)) {
                     return ItemStack.EMPTY;
                 }
 
-                slot.onQuickCraft(itemstack1, itemstack);
-            } else if (p_40329_ == 0) {
-                if (!this.moveItemStackTo(itemstack1, 2, 38, false)) {
+                slot2.onQuickTransfer(itemStack2, itemStack);
+            } else if (slot == 0) {
+                if (!this.insertItem(itemStack2, 2, 38, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (this.level.getRecipeManager().getRecipeFor(ArmorStationRecipe.Type.INSTANCE, new SimpleContainer(itemstack1), this.level).isPresent()) {
-                if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
+            } else if (this.level.getRecipeManager().getFirstMatch(ArmorStationRecipe.Type.INSTANCE, new SimpleInventory(new ItemStack[]{itemStack2}), this.level).isPresent()) {
+                if (!this.insertItem(itemStack2, 0, 1, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (p_40329_ >= 2 && p_40329_ < 29) {
-                if (!this.moveItemStackTo(itemstack1, 29, 38, false)) {
+            } else if (slot >= 2 && slot < 29) {
+                if (!this.insertItem(itemStack2, 29, 38, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (p_40329_ >= 29 && p_40329_ < 38 && !this.moveItemStackTo(itemstack1, 2, 29, false)) {
+            } else if (slot >= 29 && slot < 38 && !this.insertItem(itemStack2, 2, 29, false)) {
                 return ItemStack.EMPTY;
             }
 
-            if (itemstack1.isEmpty()) {
-                slot.set(ItemStack.EMPTY);
+            if (itemStack2.isEmpty()) {
+                slot2.setStack(ItemStack.EMPTY);
             }
 
-            slot.setChanged();
-            if (itemstack1.getCount() == itemstack.getCount()) {
+            slot2.markDirty();
+            if (itemStack2.getCount() == itemStack.getCount()) {
                 return ItemStack.EMPTY;
             }
 
-            slot.onTake(p_40328_, itemstack1);
-            this.broadcastChanges();
+            slot2.onTakeItem(player, itemStack2);
+            this.sendContentUpdates();
         }
 
-        return itemstack;
+        return itemStack;
     }
 
-    public void removed(Player p_40326_) {
-        super.removed(p_40326_);
-        this.resultContainer.removeItemNoUpdate(1);
-        this.access.execute((p_40313_, p_40314_) -> {
-            this.clearContainer(p_40326_, this.container);
+    public void onClosed(PlayerEntity player) {
+        super.onClosed(player);
+        this.output.removeStack(1);
+        this.access.run((world, pos) -> {
+            this.dropInventory(player, this.input);
         });
     }
 }

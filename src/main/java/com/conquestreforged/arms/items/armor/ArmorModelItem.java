@@ -1,47 +1,65 @@
 package com.conquestreforged.arms.items.armor;
 
-import com.conquestreforged.arms.items.armor.models.ModelGenericBoots;
-import com.conquestreforged.arms.items.armor.models.ModelGenericChest;
-import com.conquestreforged.arms.items.armor.models.ModelGenericHelmet;
-import com.conquestreforged.arms.items.armor.models.ModelGenericLegs;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.IItemRenderProperties;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import software.bernie.example.client.renderer.armor.GeckoArmorRenderer;
+import software.bernie.geckolib.animatable.GeoItem;
+import software.bernie.geckolib.animatable.client.RenderProvider;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.renderer.GeoArmorRenderer;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
-public class ArmorModelItem extends GenericArmorItem {
+public class ArmorModelItem extends GenericArmorItem implements GeoItem {
 
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
+    public final ArmorMaterial customMaterial;
 
-    public ArmorModelItem(ArmorMaterial material, EquipmentSlot head, Properties props, String armorTexture, Float cloth, Float mail, Float plate) {
+    public ArmorModelItem(ArmorMaterial material, ArmorItem.Type head, Item.Settings props, String armorTexture, Float cloth, Float mail, Float plate) {
         super(material, head, props, armorTexture, cloth, mail, plate);
+        this.customMaterial = material;
     }
 
     @Override
-    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-        consumer.accept(new IItemRenderProperties() {
-            @Nullable
+    public void createRenderer(Consumer<Object> consumer) {
+        consumer.accept(new RenderProvider() {
+            private GeoArmorRenderer<?> renderer;
+
             @Override
-            public HumanoidModel<?> getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> _default) {
-                switch (slot) {
-                    default:
-                    case HEAD:
-                        return new ModelGenericHelmet<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelGenericHelmet.LAYER_LOCATION));
-                    case CHEST:
-                        return new ModelGenericChest<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelGenericChest.LAYER_LOCATION));
-                    case LEGS:
-                        return new ModelGenericLegs<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelGenericLegs.LAYER_LOCATION));
-                    case FEET:
-                        return new ModelGenericBoots<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelGenericBoots.LAYER_LOCATION));
-                }
+            public BipedEntityModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, BipedEntityModel<LivingEntity> original) {
+                if(this.renderer == null)
+                    this.renderer = new ModArmorRenderer();
+
+                // This prepares our GeoArmorRenderer for the current render frame.
+                // These parameters may be null however, so we don't do anything further with them
+                this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
+
+                return this.renderer;
             }
         });
+    }
+
+    @Override
+    public Supplier<Object> getRenderProvider() {
+        return renderProvider;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
     }
 }

@@ -1,21 +1,22 @@
 package com.conquestreforged.arms.init;
 
-import com.conquestreforged.arms.ConquestMedievalArms;
 import com.conquestreforged.arms.screens.ArmorStationMenu;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraftforge.common.extensions.IForgeMenuType;
-import net.minecraftforge.network.IContainerFactory;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.resource.featuretoggle.FeatureSet;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.util.Identifier;
+
+import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class MenuTypeInit {
-    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.CONTAINERS, ConquestMedievalArms.MOD_ID);
+    public static final ScreenHandlerType<ArmorStationMenu> ARMS_STATION_MENU = register("arms_station_menu",
+            new ScreenHandlerType<>(ArmorStationMenu::new, FeatureSet.empty()));
 
-    public static final RegistryObject<MenuType<ArmorStationMenu>> ARMS_STATION_MENU = registerMenuType((p1, p2, p3) -> new ArmorStationMenu(p1, p2), "arms_station_menu");
-
-    private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
-        return MENUS.register(name, () -> IForgeMenuType.create(factory));
+    private static <SH extends ScreenHandler> ScreenHandlerType<SH> register(String name, ScreenHandlerType<SH> type) {
+        return Registry.register(Registries.SCREEN_HANDLER, new Identifier(MOD_ID, name), type);
     }
+
+    static void init() {}
 }

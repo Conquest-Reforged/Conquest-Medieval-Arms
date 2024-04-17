@@ -1,40 +1,19 @@
 package com.conquestreforged.arms.datagen;
 
-import com.conquestreforged.arms.ConquestMedievalArms;
 import com.conquestreforged.arms.init.ItemInit;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.*;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.item.*;
 
-public class ModItemModelProvider extends ItemModelProvider {
+public class ModItemModelProvider extends FabricModelProvider {
 
-    public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, ConquestMedievalArms.MOD_ID, existingFileHelper);
+    public ModItemModelProvider(FabricDataOutput output) {
+        super(output);
     }
 
-    @Override
-    protected void registerModels() {
-        //simpleItem(ItemInit.CRUSADER_CHEST.get());
-        ItemInit.dataGenItemModels.forEach(registryItem -> {
-            Item item = registryItem.get();
-            if (item instanceof SwordItem) {
-                swordItem(item);
-            } else if (item instanceof AxeItem) {
-                axeItem(item);
-            } else if (item instanceof ShieldItem) {
-                shieldItem(item);
-            } else if (item instanceof ArmorItem){
-                armorItem(item);
-            }
-        });
-
-    }
-
-    private ItemModelBuilder armorItem(Item item) {
+    /*private ItemModelBuilder armorItem(Item item) {
         return withExistingParent(item.getRegistryName().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(ConquestMedievalArms.MOD_ID, "item/armor/" + item.getRegistryName().getPath()
@@ -76,5 +55,28 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .predicate(new ResourceLocation("blocking"), 1)
                 .model(modelBlocking)
                 .end();
+    }*/
+
+    @Override
+    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+
+    }
+
+    @Override
+    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        ItemInit.dataGenItemModels.forEach(registryItem -> {
+            Item item = registryItem.asItem();
+            if (item instanceof SwordItem) {
+                //swordItem(item);
+            } else if (item instanceof AxeItem) {
+                //axeItem(item);
+            } else if (item instanceof ShieldItem) {
+                //shieldItem(item);
+            } else if (item instanceof ArmorItem){
+                //armorItem(item);
+            }
+        });
+
+        itemModelGenerator.register();
     }
 }

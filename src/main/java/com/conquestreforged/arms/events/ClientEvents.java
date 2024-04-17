@@ -1,37 +1,11 @@
 package com.conquestreforged.arms.events;
 
-import com.conquestreforged.arms.items.ModAxe;
-import com.conquestreforged.arms.items.ModSpear;
-import com.conquestreforged.arms.items.ModSword;
-import com.conquestreforged.arms.network.NetworkHandler;
-import com.conquestreforged.arms.network.PacketOverextendedReachAttack;
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.AttackIndicatorStatus;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.*;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+//This stuff handled extra range on weapons.
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+//@Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ClientEvents {
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void onMouseOver(RenderGameOverlayEvent.Post overlayEvent) {
         Minecraft minecraft = Minecraft.getInstance();
         Player playerEntity = minecraft.player;
@@ -186,6 +160,6 @@ public class ClientEvents {
 
     private static boolean isExtendedReachItem(Item item) {
         return item instanceof ModSpear || item instanceof ModSword || item instanceof ModAxe;
-    }
+    }*/
 
 }

@@ -1,20 +1,9 @@
 package com.conquestreforged.arms.init;
 
-import com.conquestreforged.arms.entities.render.ModelSpear;
-import com.conquestreforged.arms.entities.render.RenderSpear;
-import com.conquestreforged.arms.items.armor.models.*;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-
-import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
-
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = MOD_ID, value = {Dist.CLIENT})
+//@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = MOD_ID, value = {Dist.CLIENT})
 public class EntityClientInit {
 
+    /*
     @SubscribeEvent
     public static void layers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModelFatimidHelmet.LAYER_LOCATION, ModelFatimidHelmet::createHeadLayer);
@@ -41,5 +30,5 @@ public class EntityClientInit {
     @SubscribeEvent
     public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         //event.registerEntityRenderer(EntityTypes.SPEAR_IRON, RenderSpear::new);
-    }
+    }*/
 }

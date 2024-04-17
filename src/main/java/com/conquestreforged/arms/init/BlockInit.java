@@ -1,42 +1,44 @@
 package com.conquestreforged.arms.init;
 
+import com.conquestreforged.arms.ConquestMedievalArms;
 import com.conquestreforged.arms.block.entity.custom.ArmorStationBlock;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class BlockInit {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
 
-    public static final RegistryObject<Block> ARMS_STATION_BLOCK = registerBlock("arms_station",
-            () -> new ArmorStationBlock(BlockBehaviour.Properties.copy(Blocks.SMITHING_TABLE)), CreativeModeTab.TAB_COMBAT,
-            "tooltip." + MOD_ID + ".block.arms_station");
+    public static final Block ARMS_STATION_BLOCK = registerBlock("arms_station", new ArmorStationBlock(FabricBlockSettings.copyOf(Blocks.SMITHING_TABLE)), "tooltip." + MOD_ID + ".block.arms_station");
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab, String tooltipKey) {
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn, tab, tooltipKey);
-        return toReturn;
+    private static Block registerBlock(String name, Block block, String tooltipKey) {
+        registerBlockItem(name, block, tooltipKey);
+        return Registry.register(Registries.BLOCK, new Identifier(MOD_ID, name), block);
     }
-
-    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block, CreativeModeTab tab, String tooltipKey) {
-        return ItemInit.REGISTER.register(name, (() -> new BlockItem(block.get(), new Item.Properties().tab(tab)) {
+    private static Item registerBlockItem(String name, Block block, String tooltipKey) {
+        return Registry.register(Registries.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new FabricItemSettings()) {
             @Override
-            public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> pTooltip, TooltipFlag pFlag) {
-                pTooltip.add(new TranslatableComponent(tooltipKey));
+            public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+                tooltip.add(Text.translatable(tooltipKey));
             }
-        }));
+        });
     }
+    public static void registerModBlocks() {
+        ConquestMedievalArms.LOGGER.info("Registering Conquest Medieval Arms Blocks");
+    }
+
 }

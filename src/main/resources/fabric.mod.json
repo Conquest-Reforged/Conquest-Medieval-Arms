@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "conq_medieval_arms-mod",
+	"version": "${version}",
+	"name": "Conquest's Medieval Arms",
+	"description": "A mod that adds realistic medieval weapons and armors",
+	"authors": [
+		"Hippokleides",
+		"Monsterfish_",
+		"Kurgahn"
+	],
+	"contact": {
+		"homepage": "https://conquestreforged.com/"
+	},
+	"license": "All Rights Reserved",
+	"icon": "assets/user/logo.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.conquestreforged.arms.ConquestMedievalArms"
+		],
+		"client": [
+			"com.conquestreforged.arms.ConquestMedievalArmsClient"
+		],
+		"fabric-datagen": [
+			"com.conquestreforged.arms.ModDataGenerator"
+		]
+	},
+	"mixins": [
+		"template-mod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.3",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

@@ -1,11 +1,11 @@
 package com.conquestreforged.arms.items;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.item.CrossbowItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -16,23 +16,22 @@ public class ModCrossbow extends CrossbowItem {
     private final String toolTipName;
     private final int linesAmt;
 
-    public ModCrossbow(Properties props, String name, Integer linesAmt) {
+    public ModCrossbow(Item.Settings props, String name, Integer linesAmt) {
         super(props);
         this.toolTipName = name;
         this.linesAmt = linesAmt;
 
     }
-
     @Override
-    public int getUseDuration(ItemStack itemStack) {
-        return 72000;
-        //return super.getUseDuration(itemStack);
+    public int getMaxUseTime(ItemStack stack) {
+        //return 72000;
+        return super.getMaxUseTime(stack);
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> pTooltip, TooltipFlag pFlag) {
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         for (int i = 1; i <= linesAmt; i++) {
-            pTooltip.add(new TranslatableComponent("tooltip." + MOD_ID + ".item." + toolTipName + i));
+            tooltip.add(Text.translatable("tooltip." + MOD_ID + ".item." + toolTipName + i));
         }
     }
 }

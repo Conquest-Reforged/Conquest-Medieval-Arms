@@ -1,27 +1,17 @@
 package com.conquestreforged.arms.datagen;
 
-import com.conquestreforged.arms.init.ItemInit;
-import com.conquestreforged.arms.items.ModShield;
-import com.conquestreforged.arms.items.ModSpear;
-import com.conquestreforged.arms.recipe.ModRecipes;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.SingleItemRecipeBuilder;
-import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.data.server.recipe.RecipeJsonProvider;
 
 import java.util.function.Consumer;
 
-public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(DataGenerator dataGenerator) {
+public class ModRecipeProvider extends FabricRecipeProvider {
+    public ModRecipeProvider(FabricDataOutput dataGenerator) {
         super(dataGenerator);
     }
 
-    @Override
+    /*@Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> recipeConsumer) {
         //armsStation(Ingredient.of(Items.IRON_CHESTPLATE), ItemInit.CRUSADER_CHEST.get()).save(recipeConsumer);
 
@@ -176,6 +166,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public static SingleItemRecipeBuilder armsStation(Ingredient ingredient, ItemLike itemLike) {
-        return new SingleItemRecipeBuilder(ModRecipes.ARMS_STATION_SERIALIZER.get(), ingredient, itemLike, 1);
+        return new SingleItemRecipeBuilder(ModRecipes.ARMS_STATION_SERIALIZER, ingredient, itemLike, 1);
+    }*/
+
+    @Override
+    public void generate(Consumer<RecipeJsonProvider> exporter) {
+
     }
 }
