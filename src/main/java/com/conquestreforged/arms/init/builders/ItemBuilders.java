@@ -19,15 +19,11 @@ public class ItemBuilders {
                                             double knockback, AttackStyleEnum attackStyle, Item.Settings props, List<ToolMaterial> tiers, Integer linesAmt) {
         List<Item> axeList = new ArrayList<>();
 
-        tiers.forEach(tier -> {
-            if (ToolMaterials.IRON.equals(tier)) {
-                ItemInit.registerItem(name, new ModAxe(tier, damage, speed, rangeMod, knockback, attackStyle, props, name, linesAmt));
-            } else if (ToolMaterials.DIAMOND.equals(tier)) {
-                ItemInit.registerItem("refined_" + name, new ModAxe(tier, damage - 1, speed + 0.1F, rangeMod, knockback, attackStyle, props, name, linesAmt));
-            } else if (ToolMaterials.NETHERITE.equals(tier)) {
-                ItemInit.registerItem("exquisite_" + name, new ModAxe(tier, damage  - 1, speed + 0.1F, rangeMod, knockback, attackStyle, props, name, linesAmt));
+        {
+            {
+                ItemInit.registerItem(name, new ModAxe(ToolMaterials.IRON, damage, speed, rangeMod, knockback, attackStyle, props, name, linesAmt));
             }
-        });
+        };
         ItemInit.dataGenItemModels.addAll(axeList);
         ItemInit.dataGenItemRecipes.addAll(axeList);
         return axeList;
@@ -37,9 +33,9 @@ public class ItemBuilders {
                                                               List<ToolMaterial> tiers, Integer linesAmt) {
         List<Item> swordsList = new ArrayList<>();
 
-        tiers.forEach(tier -> {
-            ItemInit.registerItem(getTierItemPrefix(tier) + name, new ModSword(tier, dmg, spd, rangeMod, knockback, attackStyle, props, name, linesAmt));
-        });
+        {
+            ItemInit.registerItem(name, new ModSword(ToolMaterials.IRON, dmg, spd, rangeMod, knockback, attackStyle, props, name, linesAmt));
+        };
         ItemInit.dataGenItemModels.addAll(swordsList);
         ItemInit.dataGenItemRecipes.addAll(swordsList);
         return swordsList;
@@ -49,9 +45,9 @@ public class ItemBuilders {
                                                               List<ToolMaterial> tiers, Integer linesAmt) {
         List<Item> longWepList = new ArrayList<>();
 
-        tiers.forEach(tier -> {
-            ItemInit.registerItem(getTierItemPrefix(tier) + name, new ModSpear(props.maxDamage(tier.getDurability()), name, length, knockback, attackStyle, tier, dmg, spd, linesAmt));
-        });
+        {
+            ItemInit.registerItem(name, new ModSpear(props.maxDamage(ToolMaterials.IRON.getDurability()), name, length, knockback, attackStyle, ToolMaterials.IRON, dmg, spd, linesAmt));
+        };
         //ItemInit.dataGenItemModels.addAll(longWepList);
         //ItemInit.dataGenItemRecipes.addAll(longWepList);
         return longWepList;
@@ -96,24 +92,6 @@ public class ItemBuilders {
                         item = itemClass.getConstructor(ArmorMaterial.class, ArmorItem.Type.class, Item.Settings.class, String.class, Float.class, Float.class, Float.class)
                                 .newInstance(armorMaterial, slot, props, constructArmorModelTexPath(name, false), cloth, mail, plate);
                         ItemInit.registerItem(name, item);
-                    } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case "diamond":
-                    try {
-                        item = itemClass.getConstructor(ArmorMaterial.class, ArmorItem.Type.class, Item.Settings.class, String.class, Float.class, Float.class, Float.class)
-                                .newInstance(armorMaterial, slot, props, constructArmorModelTexPath(name, false), cloth, mail, plate);
-                        ItemInit.registerItem("refined_" + name, item);
-                    } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case "netherite":
-                    try {
-                        item = itemClass.getConstructor(ArmorMaterial.class, ArmorItem.Type.class, Item.Settings.class, String.class, Float.class, Float.class, Float.class)
-                                .newInstance(armorMaterial, slot, props, constructArmorModelTexPath(name, false), cloth, mail, plate);
-                        ItemInit.registerItem("exquisite_" + name, item);
                     } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                         e.printStackTrace();
                     }

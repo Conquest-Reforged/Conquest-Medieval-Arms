@@ -52,7 +52,7 @@ public class ModSword extends SwordItem {
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         if (slot == EquipmentSlot.MAINHAND) {
-            builder.put(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, new EntityAttributeModifier(AttributeUUID.ATTACK_KNOCKBACK_UUID, "Knockback modifier", this.knockback, EntityAttributeModifier.Operation.ADDITION));
+            //builder.put(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, new EntityAttributeModifier(AttributeUUID.ATTACK_KNOCKBACK_UUID, "Knockback modifier", this.knockback, EntityAttributeModifier.Operation.ADDITION));
         }
         return builder.build();
     }

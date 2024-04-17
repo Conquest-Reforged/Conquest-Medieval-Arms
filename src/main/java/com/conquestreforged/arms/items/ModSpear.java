@@ -52,7 +52,7 @@ public class ModSpear extends ToolItem implements Vanishable {
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
         Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers = super.getAttributeModifiers(slot);
         //attributeModifiers.put(ForgeMod.ATTACK_RANGE.get(), new EntityAttributeModifier(AttributeUUID.ATK_RNG_UUID, "Attack Reach modifier", range, EntityAttributeModifier.Operation.ADDITION));
-        attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, new EntityAttributeModifier(AttributeUUID.ATTACK_KNOCKBACK_UUID, "Knockback modifier", this.knockback, EntityAttributeModifier.Operation.ADDITION));
+        //attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, new EntityAttributeModifier(AttributeUUID.ATTACK_KNOCKBACK_UUID, "Knockback modifier", this.knockback, EntityAttributeModifier.Operation.ADDITION));
         return slot == EquipmentSlot.MAINHAND ? attributeModifiers : super.getAttributeModifiers(stack, slot);
     }
 

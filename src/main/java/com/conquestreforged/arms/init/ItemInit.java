@@ -30,7 +30,7 @@ public class ItemInit {
 
     public static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         //entries.add()
-        entries.add(BlockInit.ARMS_STATION_BLOCK);
+        //entries.add(BlockInit.ARMS_STATION_BLOCK);
     }
     public static void registerModItems() {
         ConquestMedievalArms.LOGGER.info("Registering Conquest Medieval Arms items.");

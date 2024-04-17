@@ -122,7 +122,8 @@ public class ArmorStationMenu extends ScreenHandler {
     }
 
     public boolean canUse(PlayerEntity player) {
-        return canUse(this.access, player, BlockInit.ARMS_STATION_BLOCK);
+        return true;
+        //return canUse(this.access, player, BlockInit.ARMS_STATION_BLOCK);
     }
 
     public boolean onButtonClick(PlayerEntity player, int id) {
