@@ -13,7 +13,6 @@
 		"homepage": "https://conquestreforged.com/"
 	},
 	"license": "All Rights Reserved",
-	"icon": "assets/user/logo.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -23,7 +22,7 @@
 			"com.conquestreforged.arms.ConquestMedievalArmsClient"
 		],
 		"fabric-datagen": [
-			"com.conquestreforged.arms.ModDataGenerator"
+			"com.conquestreforged.arms.datagen.ModDataGenerators"
 		]
 	},
 	"mixins": [

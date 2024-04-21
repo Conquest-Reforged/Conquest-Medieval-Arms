@@ -1,0 +1,6 @@
+{
+  "parent": "conq_medieval_arms:item/sword",
+  "textures": {
+    "layer0": "conq_medieval_arms:item/melee/viking_sword"
+  }
+}

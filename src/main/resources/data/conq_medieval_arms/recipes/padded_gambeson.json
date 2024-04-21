@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "item": "minecraft:leather_chestplate"
+  },
+  "result": "conq_medieval_arms:padded_gambeson",
+  "count": 1
+}

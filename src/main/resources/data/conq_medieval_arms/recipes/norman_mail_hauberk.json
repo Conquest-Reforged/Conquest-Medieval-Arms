@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "tag": "conq_medieval_arms:metal_chestplates"
+  },
+  "result": "conq_medieval_arms:norman_mail_hauberk",
+  "count": 1
+}

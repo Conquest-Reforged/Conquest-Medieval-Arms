@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "tag": "conq_medieval_arms:metal_helmets"
+  },
+  "result": "conq_medieval_arms:burgundian_gilded_bascinet",
+  "count": 1
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "conq_medieval_arms:item/axe",
+  "textures": {
+    "layer0": "conq_medieval_arms:item/melee/studded_battle_axe"
+  }
+}

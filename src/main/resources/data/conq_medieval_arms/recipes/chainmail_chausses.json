@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "tag": "conq_medieval_arms:metal_boots"
+  },
+  "result": "conq_medieval_arms:chainmail_chausses",
+  "count": 1
+}

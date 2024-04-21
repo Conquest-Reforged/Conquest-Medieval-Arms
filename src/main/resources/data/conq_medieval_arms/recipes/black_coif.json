@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "item": "minecraft:leather_helmet"
+  },
+  "result": "conq_medieval_arms:black_coif",
+  "count": 1
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "conq_medieval_arms:item/shield_blocking",
+  "textures": {
+    "layer0": "conq_medieval_arms:item/shields/heraldic_rounded_heater_shield"
+  }
+}

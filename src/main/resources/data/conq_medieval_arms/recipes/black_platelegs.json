@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "tag": "conq_medieval_arms:metal_leggings"
+  },
+  "result": "conq_medieval_arms:black_platelegs",
+  "count": 1
+}

@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "tag": "conq_medieval_arms:metal_chestplates"
+  },
+  "result": "conq_medieval_arms:burgundian_blue_brigandine",
+  "count": 1
+}

@@ -1,14 +1,47 @@
 package com.conquestreforged.arms.datagen;
 
+import com.conquestreforged.arms.init.ItemInit;
+import com.conquestreforged.arms.init.ModTags;
+import com.conquestreforged.arms.items.ModSpear;
+import com.conquestreforged.arms.items.ModSword;
+import com.conquestreforged.arms.recipe.ModRecipeSerializer;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.SingleItemRecipeJsonBuilder;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.SwordItem;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
     public ModRecipeProvider(FabricDataOutput dataGenerator) {
         super(dataGenerator);
+    }
+
+    @Override
+    public void generate(Consumer<RecipeJsonProvider> exporter) {
+        Registries.ITEM.stream().filter(item -> Registries.ITEM.getId(item).getNamespace().equals("conquest")).forEach(item -> {
+            Item itemOutput = item.asItem();
+            if (itemOutput instanceof ModSword || itemOutput instanceof ModSpear) {
+                this.offerArmsStationRecipe(exporter, RecipeCategory.COMBAT, itemOutput, ModTags.Items.METAL_SWORDS);
+            }
+        });
+    }
+
+    public static void offerArmsStationRecipe(Consumer<RecipeJsonProvider> exporter, RecipeCategory category, ItemConvertible output, TagKey<Item> input) {
+        SingleItemRecipeJsonBuilder var10000 = createArmsStation(Ingredient.fromTag(input), category, output);
+        String var10002 = getItemPath(output) + "_from_" + input.toString();
+        var10000.offerTo(exporter, var10002);
+    }
+
+    public static SingleItemRecipeJsonBuilder createArmsStation(Ingredient input, RecipeCategory category, ItemConvertible output) {
+        return new SingleItemRecipeJsonBuilder(category, ModRecipeSerializer.ARMS_STATION, input, output, 1);
     }
 
     /*@Override
@@ -168,9 +201,4 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static SingleItemRecipeBuilder armsStation(Ingredient ingredient, ItemLike itemLike) {
         return new SingleItemRecipeBuilder(ModRecipes.ARMS_STATION_SERIALIZER, ingredient, itemLike, 1);
     }*/
-
-    @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
-
-    }
 }

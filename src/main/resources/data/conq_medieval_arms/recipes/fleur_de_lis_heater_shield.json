@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "item": "minecraft:shield"
+  },
+  "result": "conq_medieval_arms:fleur_de_lis_heater_shield",
+  "count": 1
+}

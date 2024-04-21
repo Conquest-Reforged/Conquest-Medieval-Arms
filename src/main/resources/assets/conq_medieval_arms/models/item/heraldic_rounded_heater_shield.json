@@ -1,0 +1,14 @@
+{
+  "parent": "conq_medieval_arms:item/shield",
+  "textures": {
+    "layer0": "conq_medieval_arms:item/shields/heraldic_rounded_heater_shield"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:blocking": 1.0
+      },
+      "model": "conq_medieval_arms:item/heraldic_rounded_heater_shield_blocking"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "tag": "conq_medieval_arms:metal_swords"
+  },
+  "result": "conq_medieval_arms:winged_leaf_shaped_spear",
+  "count": 1
+}

@@ -1,5 +1,10 @@
 package com.conquestreforged.arms.items.armor;
 
+import mod.azure.azurelibarmor.animatable.GeoItem;
+import mod.azure.azurelibarmor.animatable.client.RenderProvider;
+import mod.azure.azurelibarmor.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelibarmor.core.animation.AnimatableManager;
+import mod.azure.azurelibarmor.util.AzureLibUtil;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -7,20 +12,14 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import software.bernie.example.client.renderer.armor.GeckoArmorRenderer;
-import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.animatable.client.RenderProvider;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.renderer.GeoArmorRenderer;
-import software.bernie.geckolib.util.GeckoLibUtil;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class ArmorModelItem extends GenericArmorItem implements GeoItem {
 
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
     private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
     public final ArmorMaterial customMaterial;
 
@@ -32,17 +31,15 @@ public class ArmorModelItem extends GenericArmorItem implements GeoItem {
     @Override
     public void createRenderer(Consumer<Object> consumer) {
         consumer.accept(new RenderProvider() {
-            private GeoArmorRenderer<?> renderer;
+            private ModArmorRenderer renderer;
 
             @Override
+            @NotNull
             public BipedEntityModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, BipedEntityModel<LivingEntity> original) {
-                if(this.renderer == null)
-                    this.renderer = new ModArmorRenderer();
-
-                // This prepares our GeoArmorRenderer for the current render frame.
-                // These parameters may be null however, so we don't do anything further with them
-                this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
-
+                if (renderer == null) {
+                    renderer = new ModArmorRenderer();
+                }
+                renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
                 return this.renderer;
             }
         });
@@ -53,8 +50,9 @@ public class ArmorModelItem extends GenericArmorItem implements GeoItem {
         return renderProvider;
     }
 
+
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
 
     }
 

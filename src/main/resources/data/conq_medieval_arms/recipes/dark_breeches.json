@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "item": "minecraft:leather_leggings"
+  },
+  "result": "conq_medieval_arms:dark_breeches",
+  "count": 1
+}

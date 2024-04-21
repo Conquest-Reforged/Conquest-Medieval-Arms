@@ -1,0 +1,8 @@
+{
+  "type": "conq_medieval_arms:arms_station",
+  "ingredient": {
+    "item": "minecraft:shield"
+  },
+  "result": "conq_medieval_arms:round_shield_with_birds",
+  "count": 1
+}
