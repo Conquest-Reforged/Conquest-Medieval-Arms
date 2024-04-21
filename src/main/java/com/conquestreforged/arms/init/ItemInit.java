@@ -844,7 +844,7 @@ public class ItemInit {
     public static final List<Item> FLAIL = ItemBuilders.registerSwordSet("flail", 3, -2.4F, 0.0D, 0.0D, AttackStyleEnum.SLASH, genericCombatProps, metalTiers, 0);
     public static final List<Item> SPIKED_FLAIL = ItemBuilders.registerSwordSet("spiked_flail", 3, -2.4F, 0.0D, 0.0D, AttackStyleEnum.SLASH, genericCombatProps, metalTiers, 0);
     public static final List<Item> FLAMMENSCHWERT = ItemBuilders.registerSwordSet("flammenschwert", 3, -2.4F,0.0D, 0.0D, AttackStyleEnum.SLASH, genericCombatProps, metalTiers, 0);
-    public static final List<Item> FLANGED_MACE = ItemBuilders.registerSwordSet("flanged_mace", 3, -2.4F,0.0D, 0.0D, AttackStyleEnum.SLASH, genericCombatProps, metalTiers, 0);
+    public static final List<Item> FLANGED_MACE = ItemBuilders.registerSwordSet("flanged_mace", 0, -2.4F,0.0D, 0.0D, AttackStyleEnum.SLASH, genericCombatProps, metalTiers, 0);
     public static final List<Item> HORSEMANS_AXE = ItemBuilders.registerAxeSet("horsemans_axe", 3, -2.4F, 0.0D, 0.0D, AttackStyleEnum.SLASH, genericCombatProps, metalTiers, 0);
     public static final List<Item> HUNTING_KNIFE = ItemBuilders.registerSwordSet("hunting_knife", 3, -2.4F, 0.0D, 0.0D, AttackStyleEnum.SLASH, genericCombatProps, metalTiers, 0);
     public static final List<Item> LARGE_VIKING_SWORD = ItemBuilders.registerSwordSet("large_viking_sword", 3, -2.4F, 0.0D, 0.0D, AttackStyleEnum.SLASH, genericCombatProps, metalTiers, 0);

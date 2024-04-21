@@ -23,7 +23,7 @@ import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class BlockInit {
 
-    //public static final Block ARMS_STATION_BLOCK = registerBlock("arms_station", new ArmorStationBlock(FabricBlockSettings.copyOf(Blocks.SMITHING_TABLE)), "tooltip." + MOD_ID + ".block.arms_station");
+    public static final Block ARMS_STATION_BLOCK = registerBlock("arms_station", new ArmorStationBlock(FabricBlockSettings.copyOf(Blocks.SMITHING_TABLE)), "tooltip." + MOD_ID + ".block.arms_station");
 
     private static Block registerBlock(String name, Block block, String tooltipKey) {
         registerBlockItem(name, block, tooltipKey);

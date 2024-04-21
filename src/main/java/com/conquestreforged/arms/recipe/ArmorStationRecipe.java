@@ -1,78 +1,58 @@
 package com.conquestreforged.arms.recipe;
 
-import com.conquestreforged.arms.ConquestMedievalArms;
-import com.google.gson.JsonObject;
+import com.conquestreforged.arms.init.BlockInit;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.CuttingRecipe;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.registry.Registries;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
-public class ArmorStationRecipe extends CuttingRecipe {
-
-    public ArmorStationRecipe(Identifier id, String string, Ingredient recipeItems, ItemStack output) {
-        super(Type.INSTANCE, ModRecipes.ARMS_STATION_SERIALIZER, id, string, recipeItems, output);
+public class ArmorStationRecipe extends SingleItemRecipe {
+    public ArmorStationRecipe(Identifier id, String group, Ingredient ingredient, ItemStack result) {
+        super(ModRecipeType.ARMS_STATION, ModRecipeSerializer.ARMS_STATION, id, group, ingredient, result);
     }
+
     @Override
     public boolean matches(Inventory inventory, World world) {
-        if (world.isClient()) {
-            return false;
-        }
         return this.input.test(inventory.getStack(0));
     }
 
-    public static class Type implements RecipeType<ArmorStationRecipe> {
-        private Type() {}
-        public static final Type INSTANCE = new Type();
-        public static final String ID = "arms_station";
+    @Override
+    public ItemStack createIcon() {
+        return new ItemStack(BlockInit.ARMS_STATION_BLOCK);
     }
 
-    public static class Serializer implements RecipeSerializer<ArmorStationRecipe> {
-        public static final Serializer INSTANCE = new Serializer();
-        public static final Identifier ID =
-                new Identifier(ConquestMedievalArms.MOD_ID, "arms_station");
+    //Suppress warnings being logged due to MC not knowing into which category to put these recipes
+    //Armor Station doesn't use the recipe book, regardless
+    @Override
+    public boolean isIgnoredInRecipeBook() {
+        return true;
+    }
 
-        @Override
-        public ArmorStationRecipe read(Identifier id, JsonObject json) {
-            String group = JsonHelper.getString(json, "group", "");
+    @Override
+    public ItemStack craft(Inventory inventory, DynamicRegistryManager registryManager) {
+        ItemStack resultItem = this.output.copy();
+        ItemStack inputItemStack = inventory.getStack(0);
+        Item inputItem = inputItemStack.getItem();
+        NbtCompound nbt = inputItemStack.getNbt();
 
-            Ingredient ingredient;
-            if (JsonHelper.hasArray(json, "ingredient")) {
-                ingredient = Ingredient.fromJson(JsonHelper.getArray(json, "ingredient"));
-            } else {
-                ingredient = Ingredient.fromJson(JsonHelper.getObject(json, "ingredient"));
-            }
+        //copy over existing NBT (eg: trims, enchants, renames)
+        resultItem.setNbt(nbt.copy());
 
-            String s1 = JsonHelper.getString(json, "result");
-            int i = JsonHelper.getInt(json, "count");
-            ItemStack itemstack = new ItemStack(Registries.ITEM.get(new Identifier(s1)), i);
-
-            return new ArmorStationRecipe(id, group , ingredient, itemstack);
+        //check material of input item and add it as NBT to be read elsewhere
+        if (inputItem.getName().toString().contains("iron")) {
+            resultItem.getOrCreateNbt().putString("material", "iron");
+        }
+        else if (inputItem.getName().toString().contains("netherite")) {
+            resultItem.getOrCreateNbt().putString("material", "netherite");
+        }
+        else if (inputItem.getName().toString().contains("diamond")) {
+            resultItem.getOrCreateNbt().putString("material", "diamond");
         }
 
-        @Nullable
-        @Override
-        public ArmorStationRecipe read(Identifier id, PacketByteBuf buf) {
-            String group = buf.readString();
-            Ingredient ingredient = Ingredient.fromPacket(buf);
-            ItemStack itemstack = buf.readItemStack();
-
-            return new ArmorStationRecipe(id, group, ingredient, itemstack);
-        }
-
-        @Override
-        public void write(PacketByteBuf buf, ArmorStationRecipe recipe) {
-            buf.writeString(recipe.group);
-            recipe.input.write(buf);
-            buf.writeItemStack(recipe.output);
-        }
-
+        return resultItem;
     }
 }
