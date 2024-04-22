@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "conq_medieval_arms:item/armor/english_knights_visored_bascinet"
-  }
-}

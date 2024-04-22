@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:crossbow"
+  },
+  "result": "conquest_armory:medium_crossbow",
+  "count": 1
+}

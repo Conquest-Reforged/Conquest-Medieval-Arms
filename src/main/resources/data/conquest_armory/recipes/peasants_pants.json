@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:leather_leggings"
+  },
+  "result": "conquest_armory:peasants_pants",
+  "count": 1
+}

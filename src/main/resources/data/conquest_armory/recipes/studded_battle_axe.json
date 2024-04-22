@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "tag": "conquest_armory:metal_axes"
+  },
+  "result": "conquest_armory:studded_battle_axe",
+  "count": 1
+}

@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:shield"
+  },
+  "result": "conquest_armory:round_shield_with_triskele",
+  "count": 1
+}

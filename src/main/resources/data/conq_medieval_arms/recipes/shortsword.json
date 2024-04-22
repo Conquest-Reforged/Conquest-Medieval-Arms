@@ -1,8 +1,0 @@
-{
-  "type": "conq_medieval_arms:arms_station",
-  "ingredient": {
-    "tag": "conq_medieval_arms:metal_swords"
-  },
-  "result": "conq_medieval_arms:shortsword",
-  "count": 1
-}

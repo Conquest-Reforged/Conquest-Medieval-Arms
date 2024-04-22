@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "tag": "conquest_armory:metal_axes"
+  },
+  "result": "conquest_armory:crowbeak_hatchet",
+  "count": 1
+}

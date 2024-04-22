@@ -1,8 +1,0 @@
-{
-  "type": "conq_medieval_arms:arms_station",
-  "ingredient": {
-    "item": "minecraft:bow"
-  },
-  "result": "conq_medieval_arms:heavy_warbow",
-  "count": 1
-}

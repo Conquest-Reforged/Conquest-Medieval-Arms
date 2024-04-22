@@ -1,8 +1,0 @@
-{
-  "type": "conq_medieval_arms:arms_station",
-  "ingredient": {
-    "item": "minecraft:leather_boots"
-  },
-  "result": "conq_medieval_arms:fur_lined_poulaines",
-  "count": 1
-}

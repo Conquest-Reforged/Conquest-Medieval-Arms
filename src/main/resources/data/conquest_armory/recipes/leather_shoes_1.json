@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:leather_boots"
+  },
+  "result": "conquest_armory:leather_shoes_1",
+  "count": 1
+}

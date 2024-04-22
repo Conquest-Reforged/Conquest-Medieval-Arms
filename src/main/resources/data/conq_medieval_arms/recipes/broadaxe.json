@@ -1,8 +1,0 @@
-{
-  "type": "conq_medieval_arms:arms_station",
-  "ingredient": {
-    "tag": "conq_medieval_arms:metal_axes"
-  },
-  "result": "conq_medieval_arms:broadaxe",
-  "count": 1
-}

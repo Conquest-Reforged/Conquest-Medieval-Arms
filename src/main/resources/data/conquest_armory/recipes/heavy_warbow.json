@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:bow"
+  },
+  "result": "conquest_armory:heavy_warbow",
+  "count": 1
+}

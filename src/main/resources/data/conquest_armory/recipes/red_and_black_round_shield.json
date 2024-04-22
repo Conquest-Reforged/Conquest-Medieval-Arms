@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:shield"
+  },
+  "result": "conquest_armory:red_and_black_round_shield",
+  "count": 1
+}

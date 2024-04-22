@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "tag": "conquest_armory:metal_boots"
+  },
+  "result": "conquest_armory:winged_hussar_boots",
+  "count": 1
+}

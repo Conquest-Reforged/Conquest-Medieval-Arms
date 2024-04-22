@@ -11,7 +11,7 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 
 public class ConquestMedievalArmsClient implements ClientModInitializer {
-    public static final String MOD_ID = "conq_medieval_arms";
+    public static final String MOD_ID = "conquest_armory";
 
     public ConquestMedievalArmsClient() {
     }
@@ -20,7 +20,7 @@ public class ConquestMedievalArmsClient implements ClientModInitializer {
     public void onInitializeClient() {
         ModItemProperties.addCustomItemProperties();
         HandledScreens.register(ModScreenHandlerType.ARMS_STATION_SCREEN, ArmorStationScreen::new);
-        Registries.ITEM.stream().filter(block -> Registries.ITEM.getId(block).getNamespace().equals("conq_medieval_arms")).forEach(item -> {
+        Registries.ITEM.stream().filter(block -> Registries.ITEM.getId(block).getNamespace().equals("conquest_armory")).forEach(item -> {
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
                 entries.add(item);
             });

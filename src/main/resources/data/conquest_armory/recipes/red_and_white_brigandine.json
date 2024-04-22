@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "tag": "conquest_armory:metal_chestplates"
+  },
+  "result": "conquest_armory:red_and_white_brigandine",
+  "count": 1
+}

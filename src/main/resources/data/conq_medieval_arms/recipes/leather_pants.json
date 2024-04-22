@@ -1,8 +1,0 @@
-{
-  "type": "conq_medieval_arms:arms_station",
-  "ingredient": {
-    "item": "minecraft:leather_leggings"
-  },
-  "result": "conq_medieval_arms:leather_pants",
-  "count": 1
-}

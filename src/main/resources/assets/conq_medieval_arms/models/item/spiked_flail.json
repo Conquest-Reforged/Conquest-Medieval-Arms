@@ -1,6 +1,0 @@
-{
-    "parent": "conq_medieval_arms:item/flail_small",
-    "textures": {
-        "layer0": "conq_medieval_arms:item/melee/spiked_flail"
-    }
-}

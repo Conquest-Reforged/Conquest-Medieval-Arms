@@ -1,6 +1,0 @@
-{
-    "parent": "conq_medieval_arms:item/medium_crossbow",
-    "textures": {
-        "layer0": "conq_medieval_arms:item/ranged/medium_crossbow_3"
-    }
-}

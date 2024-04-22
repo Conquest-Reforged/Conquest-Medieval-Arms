@@ -1,8 +1,0 @@
-{
-  "type": "conq_medieval_arms:arms_station",
-  "ingredient": {
-    "item": "minecraft:shield"
-  },
-  "result": "conq_medieval_arms:red_round_shield_1",
-  "count": 1
-}

@@ -1,0 +1,8 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "tag": "conquest_armory:metal_swords"
+  },
+  "result": "conquest_armory:simple_halberd",
+  "count": 1
+}

@@ -1,6 +1,0 @@
-{
-    "parent": "conq_medieval_arms:item/small_warbow",
-    "textures": {
-        "layer0": "conq_medieval_arms:item/ranged/small_warbow_1"
-    }
-}

@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ConquestMedievalArms implements ModInitializer {
-    public static final String MOD_ID = "conq_medieval_arms";
+    public static final String MOD_ID = "conquest_armory";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     @Override
@@ -25,6 +25,6 @@ public class ConquestMedievalArms implements ModInitializer {
         ModRecipeType.register();
         ModRecipeSerializer.register();
         ModScreenHandlerType.register();
-        AttackEntityCallback.EVENT.register(new AttackEntityHandler());
+        //AttackEntityCallback.EVENT.register(new AttackEntityHandler());
     }
 }
