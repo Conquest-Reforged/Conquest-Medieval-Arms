@@ -1,21 +1,21 @@
 package com.conquestreforged.arms.items.armor.models;
 
 import com.conquestreforged.arms.items.armor.ArmorModelItem;
+import com.conquestreforged.arms.items.armor.VanillaHelmetItem;
 import mod.azure.azurelibarmor.model.GeoModel;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.Identifier;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
-public class ModArmorModel extends GeoModel<ArmorModelItem> {
+public class VanillaHelmetModel extends GeoModel<VanillaHelmetItem> {
 
     @Override
-    public Identifier getModelResource(ArmorModelItem animatable) {
+    public Identifier getModelResource(VanillaHelmetItem animatable) {
         var texture = animatable.getArmorTexture();
 
         switch (animatable.getSlotType()) {
             case HEAD:
-                return new Identifier(MOD_ID, "geo/helmet_generic.geo.json");
+                return new Identifier(MOD_ID, "geo/helmet_vanilla.geo.json");
             case CHEST:
                 return new Identifier(MOD_ID, "geo/chestplate_generic.geo.json");
             case LEGS:
@@ -27,14 +27,14 @@ public class ModArmorModel extends GeoModel<ArmorModelItem> {
     }
 
     @Override
-    public Identifier getTextureResource(ArmorModelItem animatable) {
+    public Identifier getTextureResource(VanillaHelmetItem animatable) {
         var texture = animatable.getArmorTexture();
         return new Identifier(texture);
 
     }
 
     @Override
-    public Identifier getAnimationResource(ArmorModelItem animatable) {
+    public Identifier getAnimationResource(VanillaHelmetItem animatable) {
         return null;
     }
 }

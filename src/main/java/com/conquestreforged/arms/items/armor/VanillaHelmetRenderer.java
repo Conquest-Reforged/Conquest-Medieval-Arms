@@ -1,12 +1,13 @@
 package com.conquestreforged.arms.items.armor;
 
 import com.conquestreforged.arms.items.armor.models.ModArmorModel;
+import com.conquestreforged.arms.items.armor.models.VanillaHelmetModel;
 import mod.azure.azurelibarmor.renderer.GeoArmorRenderer;
 import net.minecraft.entity.EquipmentSlot;
 
-public class ModArmorRenderer extends GeoArmorRenderer<ArmorModelItem> {
-    public ModArmorRenderer() {
-        super(new ModArmorModel());
+public class VanillaHelmetRenderer extends GeoArmorRenderer<VanillaHelmetItem> {
+    public VanillaHelmetRenderer() {
+        super(new VanillaHelmetModel());
     }
 
     @Override

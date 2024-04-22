@@ -6,6 +6,7 @@ import com.conquestreforged.arms.items.ModAxe;
 import com.conquestreforged.arms.items.ModSpear;
 import com.conquestreforged.arms.items.ModSword;
 import com.conquestreforged.arms.items.armor.ArmorModelItem;
+import com.conquestreforged.arms.items.armor.GenericArmorItem;
 import net.minecraft.item.*;
 
 import java.lang.reflect.InvocationTargetException;
@@ -77,11 +78,11 @@ public class ItemBuilders {
         return item;
     }
 
-    public static List<Item> registerArmorModelMats(String name, Item.Settings props, ArmorItem.Type slot, Class<? extends ArmorModelItem> itemClass, List<ArmorMaterial> armorMaterials, float cloth, float mail, float plate) {
+    public static List<Item> registerArmorModelMats(String name, Item.Settings props, ArmorItem.Type slot, Class<? extends GenericArmorItem> itemClass, List<ArmorMaterial> armorMaterials, float cloth, float mail, float plate) {
         List<Item> armorsList = new ArrayList<>();
 
         armorMaterials.forEach(armorMaterial -> {
-            ArmorModelItem item = null;
+            GenericArmorItem item = null;
             switch (armorMaterial.getName()) {
                 case "bronze":
                 case "quilt":

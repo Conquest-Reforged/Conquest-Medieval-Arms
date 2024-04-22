@@ -7,6 +7,8 @@ import com.conquestreforged.arms.items.ModBow;
 import com.conquestreforged.arms.items.ModCrossbow;
 import com.conquestreforged.arms.items.ModShield;
 import com.conquestreforged.arms.items.armor.ArmorModelItem;
+import com.conquestreforged.arms.items.armor.GenericArmorItem;
+import com.conquestreforged.arms.items.armor.VanillaHelmetItem;
 import com.conquestreforged.arms.items.armor.materials.ModArmorMaterials;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
@@ -180,7 +182,7 @@ public class ItemInit {
     public static final List<Item> PLAIN_BASCINET = ItemBuilders.registerArmorModelMats(
             "plain_bascinet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> BLACK_HAUBERGEON = ItemBuilders.registerArmorModelMats(
@@ -204,7 +206,7 @@ public class ItemInit {
     public static final List<Item> CHAINMAIL_COIF = ItemBuilders.registerArmorModelMats(
             "chainmail_coif", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> CHAINMAIL_HAUBERK = ItemBuilders.registerArmorModelMats(
@@ -228,7 +230,7 @@ public class ItemInit {
     public static final List<Item> CRUSADER_GREAT_HELM = ItemBuilders.registerArmorModelMats(
             "crusader_great_helm", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> CRUSADER_HAUBERGEON = ItemBuilders.registerArmorModelMats(
@@ -252,7 +254,7 @@ public class ItemInit {
     public static final List<Item> GILDED_VISOR_BASCINET = ItemBuilders.registerArmorModelMats(
             "gilded_visor_bascinet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> GILDED_CUIRASS_AND_HAUBERK = ItemBuilders.registerArmorModelMats(
@@ -276,7 +278,7 @@ public class ItemInit {
     public static final List<Item> ENGLISH_KNIGHTS_VISORED_BASCINET = ItemBuilders.registerArmorModelMats(
             "english_knights_visored_bascinet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> ENGLISH_KNIGHTS_CHESTPLATE = ItemBuilders.registerArmorModelMats(
@@ -300,7 +302,7 @@ public class ItemInit {
     public static final List<Item> PEASANTS_COIF = ItemBuilders.registerArmorModelMats(
             "peasants_coif", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             clothMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> PADDED_GAMBESON = ItemBuilders.registerArmorModelMats(
@@ -342,7 +344,7 @@ public class ItemInit {
     public static final List<Item> BURGUNDIAN_GILDED_BASCINET = ItemBuilders.registerArmorModelMats(
             "burgundian_gilded_bascinet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> BURGUNDIAN_BLUE_BRIGANDINE = ItemBuilders.registerArmorModelMats(
@@ -366,7 +368,7 @@ public class ItemInit {
     public static final List<Item> FRENCH_KNIGHTS_VISORED_BASCINET = ItemBuilders.registerArmorModelMats(
             "french_knights_round_bascinet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> FRENCH_KNIGHTS_CHESTPLATE = ItemBuilders.registerArmorModelMats(
@@ -391,7 +393,7 @@ public class ItemInit {
     public static final List<Item> IRON_CAP_AND_COIF = ItemBuilders.registerArmorModelMats(
             "iron_cap_and_coif", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> PADDED_LEATHER_GAMBESON = ItemBuilders.registerArmorModelMats(
@@ -427,7 +429,7 @@ public class ItemInit {
     public static final List<Item> KETTLE_HELMET_AND_COIF = ItemBuilders.registerArmorModelMats(
             "kettle_helmet_and_coif", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> RED_AND_WHITE_HAUBERK = ItemBuilders.registerArmorModelMats(
@@ -451,7 +453,7 @@ public class ItemInit {
     public static final List<Item> KNIGHTS_BASCINET = ItemBuilders.registerArmorModelMats(
             "knights_bascinet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> KNIGHTS_CHESTPLATE = ItemBuilders.registerArmorModelMats(
@@ -475,7 +477,7 @@ public class ItemInit {
     public static final List<Item> ENGLISH_LONGBOWMANS_BASCINET = ItemBuilders.registerArmorModelMats(
             "english_longbowmans_bascinet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> ENGLISH_LONGBOWMANS_GAMBESON = ItemBuilders.registerArmorModelMats(
@@ -499,7 +501,7 @@ public class ItemInit {
     public static final List<Item> WHITE_SUGAR_LOAF_HELMET = ItemBuilders.registerArmorModelMats(
             "white_sugar_loaf_helmet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> CRIMSON_HAUBERK = ItemBuilders.registerArmorModelMats(
@@ -523,7 +525,7 @@ public class ItemInit {
     public static final List<Item> ROUND_BASCINET = ItemBuilders.registerArmorModelMats(
             "round_bascinet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> RED_AND_WHITE_CHESTPLATE = ItemBuilders.registerArmorModelMats(
@@ -547,7 +549,7 @@ public class ItemInit {
     public static final List<Item> CROWN = ItemBuilders.registerArmorModelMats(
             "crown", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             ornamentalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> RED_AND_WHITE_BRIGANDINE = ItemBuilders.registerArmorModelMats(
@@ -571,7 +573,7 @@ public class ItemInit {
     public static final List<Item> NORMAN_NASAL_HELMET = ItemBuilders.registerArmorModelMats(
             "norman_nasal_helmet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> NORMAN_MAIL_HAUBERK = ItemBuilders.registerArmorModelMats(
@@ -595,7 +597,7 @@ public class ItemInit {
     public static final List<Item> BLACK_COIF = ItemBuilders.registerArmorModelMats(
             "black_coif", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             leatherMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> BLACK_GAMBESON = ItemBuilders.registerArmorModelMats(
@@ -619,7 +621,7 @@ public class ItemInit {
     public static final List<Item> POLISH_KNIGHTS_BASCINET = ItemBuilders.registerArmorModelMats(
             "polish_knights_bascinet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> POLISH_KNIGHTS_CHESTPLATE = ItemBuilders.registerArmorModelMats(
@@ -643,7 +645,7 @@ public class ItemInit {
     public static final List<Item> ENGLISH_SALLET = ItemBuilders.registerArmorModelMats(
             "english_sallet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> ENGLISH_CHESTPLATE = ItemBuilders.registerArmorModelMats(
@@ -686,7 +688,7 @@ public class ItemInit {
     public static final List<Item> RED_AND_WHITE_SALLET = ItemBuilders.registerArmorModelMats(
             "red_and_white_sallet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> LAMELLAR_BRIGANDINE = ItemBuilders.registerArmorModelMats(
@@ -710,7 +712,7 @@ public class ItemInit {
     public static final List<Item> SUGAR_LOAF_HELMET = ItemBuilders.registerArmorModelMats(
             "sugar_loaf_helmet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> RED_HERALDIC_HAUBERK = ItemBuilders.registerArmorModelMats(
@@ -734,7 +736,7 @@ public class ItemInit {
     public static final List<Item> PURPLE_NASAL_HELMET = ItemBuilders.registerArmorModelMats(
             "purple_nasal_helmet", genericCombatProps,
             ArmorItem.Type.HELMET,
-            ArmorModelItem.class,
+            VanillaHelmetItem.class,
             metalMaterials,
             0.0f, 0.0f, 0.0f);
     public static final List<Item> PURPLE_HAUBERK = ItemBuilders.registerArmorModelMats(
