@@ -27,6 +27,8 @@ public class ModSpear extends ToolItem implements Vanishable {
     private float speed;
     private final int linesAmt;
     private final String toolTipName;
+    private ToolMaterials nbtMaterial;
+
 
     public ModSpear(Item.Settings props, String toolTipName, double range, double knockback, AttackStyleEnum attackStyle, ToolMaterial tier, int dmg, float speed, int linesAmt) {
         super(tier, props);
@@ -37,6 +39,33 @@ public class ModSpear extends ToolItem implements Vanishable {
         this.speed = speed;
         this.linesAmt = linesAmt;
         this.toolTipName = toolTipName;
+    }
+
+    @Override
+    public int getEnchantability() {
+        if (nbtMaterial != null) {
+            return nbtMaterial.getEnchantability();
+        } else {
+            return super.getEnchantability();
+        }
+    }
+
+    @Override
+    public ToolMaterial getMaterial() {
+        if (nbtMaterial != null) {
+            return nbtMaterial;
+        } else {
+            return super.getMaterial();
+        }
+    }
+
+    @Override
+    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+        if (nbtMaterial != null) {
+            return nbtMaterial.getRepairIngredient().test(ingredient);
+        } else {
+            return super.canRepair(stack, ingredient);
+        }
     }
 
     @Override
@@ -77,12 +106,15 @@ public class ModSpear extends ToolItem implements Vanishable {
                 switch (nbtelement.asString()) {
                     case "iron":
                         attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.dmg + 3, EntityAttributeModifier.Operation.ADDITION));
+                        this.nbtMaterial = ToolMaterials.IRON;
                         break;
                     case "diamond":
                         attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.dmg + 4, EntityAttributeModifier.Operation.ADDITION));
+                        this.nbtMaterial = ToolMaterials.DIAMOND;
                         break;
                     case "netherite":
                         attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.dmg + 5, EntityAttributeModifier.Operation.ADDITION));
+                        this.nbtMaterial = ToolMaterials.NETHERITE;
                         break;
 
                 }

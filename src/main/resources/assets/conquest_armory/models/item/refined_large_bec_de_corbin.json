@@ -1,0 +1,6 @@
+{
+  "parent": "conquest_armory:item/axe",
+  "textures": {
+    "layer0": "conquest_armory:item/melee/large_bec_de_corbin"
+  }
+}

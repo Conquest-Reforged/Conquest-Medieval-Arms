@@ -1,0 +1,6 @@
+{
+  "parent": "conquest_armory:item/flail_big",
+  "textures": {
+    "layer0": "conquest_armory:item/melee/pole_flail"
+  }
+}

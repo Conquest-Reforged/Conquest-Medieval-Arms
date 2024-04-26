@@ -1,0 +1,6 @@
+{
+  "parent": "conquest_armory:item/pole",
+  "textures": {
+    "layer0": "conquest_armory:item/melee/glaive"
+  }
+}

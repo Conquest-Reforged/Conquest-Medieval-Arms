@@ -1,0 +1,6 @@
+{
+    "parent": "conquest_armory:item/shortbow",
+    "textures": {
+        "layer0": "conquest_armory:item/ranged/shortbow_2"
+    }
+}

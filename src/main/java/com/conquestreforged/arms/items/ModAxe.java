@@ -8,10 +8,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.text.Text;
@@ -30,6 +27,7 @@ public class ModAxe extends AxeItem {
     private final String toolTipName;
     private final int linesAmt;
     private final float speed;
+    private ToolMaterial nbtMaterial;
 
     public ModAxe(ToolMaterial tier, float dmg, float speed, double range, double knockback, AttackStyleEnum attackStyle, Item.Settings props, String toolTipName, int linesAmt) {
         super(tier, dmg, speed, props);
@@ -39,6 +37,33 @@ public class ModAxe extends AxeItem {
         this.attackStyle = attackStyle;
         this.range = range;
         this.speed = speed;
+    }
+
+    @Override
+    public int getEnchantability() {
+        if (nbtMaterial != null) {
+            return nbtMaterial.getEnchantability();
+        } else {
+            return super.getEnchantability();
+        }
+    }
+
+    @Override
+    public ToolMaterial getMaterial() {
+        if (nbtMaterial != null) {
+            return nbtMaterial;
+        } else {
+            return super.getMaterial();
+        }
+    }
+
+    @Override
+    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+        if (nbtMaterial != null) {
+            return nbtMaterial.getRepairIngredient().test(ingredient);
+        } else {
+            return super.canRepair(stack, ingredient);
+        }
     }
 
     @Override
@@ -79,12 +104,15 @@ public class ModAxe extends AxeItem {
                 switch (nbtelement.asString()) {
                     case "iron":
                         attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.getAttackDamage() + 3, EntityAttributeModifier.Operation.ADDITION));
+                        this.nbtMaterial = ToolMaterials.IRON;
                         break;
                     case "diamond":
                         attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.getAttackDamage() + 4, EntityAttributeModifier.Operation.ADDITION));
+                        this.nbtMaterial = ToolMaterials.DIAMOND;
                         break;
                     case "netherite":
                         attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.getAttackDamage() + 5, EntityAttributeModifier.Operation.ADDITION));
+                        this.nbtMaterial = ToolMaterials.NETHERITE;
                         break;
 
                 }

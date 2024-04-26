@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "conquest_armory:item/melee/shortsword_with_gilded_hilt"
+  }
+}

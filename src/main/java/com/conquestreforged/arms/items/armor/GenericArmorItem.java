@@ -34,6 +34,7 @@ public class GenericArmorItem extends ArmorItem {
     private float cloth;
     private float mail;
     private float plate;
+    private ArmorMaterial nbtMaterial;
 
     public GenericArmorItem(ArmorMaterial material, ArmorItem.Type equipmentSlot, Item.Settings props, String armorTexture, Float cloth, Float mail, Float plate) {
         super(material, equipmentSlot, props);
@@ -68,6 +69,35 @@ public class GenericArmorItem extends ArmorItem {
     }
 
     @Override
+    public int getEnchantability() {
+        if (nbtMaterial != null) {
+            return nbtMaterial.getEnchantability();
+        } else {
+            return super.getEnchantability();
+        }
+    }
+
+    @Override
+    public ArmorMaterial getMaterial() {
+        if (nbtMaterial != null) {
+            return nbtMaterial;
+        } else {
+            return super.getMaterial();
+        }
+    }
+
+    @Override
+    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+        if (nbtMaterial != null) {
+            return nbtMaterial.getRepairIngredient().test(ingredient);
+        } else {
+            return super.canRepair(stack, ingredient);
+        }
+    }
+
+
+
+    @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
         Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers = HashMultimap.create();
         if (slot == this.type.getEquipmentSlot()) {
@@ -78,15 +108,18 @@ public class GenericArmorItem extends ArmorItem {
                 switch (nbtelement.asString()) {
                     case "iron":
                         attributeModifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uUID, "Armor modifier", ArmorMaterials.IRON.getProtection(type), EntityAttributeModifier.Operation.ADDITION));
+                        this.nbtMaterial = ArmorMaterials.IRON;
                         break;
                     case "diamond":
                         attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uUID, "Armor toughness", 2, EntityAttributeModifier.Operation.ADDITION));
                         attributeModifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uUID, "Armor modifier", ArmorMaterials.DIAMOND.getProtection(type), EntityAttributeModifier.Operation.ADDITION));
+                        this.nbtMaterial = ArmorMaterials.DIAMOND;
                         break;
                     case "netherite":
                         attributeModifiers.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uUID, "Armor knockback resistance", 0.1, EntityAttributeModifier.Operation.ADDITION));
                         attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uUID, "Armor toughness", 3, EntityAttributeModifier.Operation.ADDITION));
                         attributeModifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uUID, "Armor modifier", ArmorMaterials.NETHERITE.getProtection(type), EntityAttributeModifier.Operation.ADDITION));
+                        this.nbtMaterial = ArmorMaterials.NETHERITE;
                         break;
 
                 }

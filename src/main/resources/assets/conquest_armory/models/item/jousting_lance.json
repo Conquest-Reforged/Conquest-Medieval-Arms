@@ -1,0 +1,6 @@
+{
+    "parent": "conquest_armory:item/longspear",
+    "textures": {
+        "layer0": "conquest_armory:item/melee/jousting_lance"
+    }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "conquest_armory:item/shield_blocking",
+  "textures": {
+    "layer0": "conquest_armory:item/shields/heraldic_wankel_shield"
+  }
+}

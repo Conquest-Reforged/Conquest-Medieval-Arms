@@ -1,0 +1,6 @@
+{
+    "parent": "conquest_armory:item/small_warbow",
+    "textures": {
+        "layer0": "conquest_armory:item/ranged/small_warbow_2"
+    }
+}

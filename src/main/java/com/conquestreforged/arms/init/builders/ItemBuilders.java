@@ -88,6 +88,7 @@ public class ItemBuilders {
                 case "quilt":
                 case "cloth":
                 case "leather":
+                default:
                 case "iron":
                     try {
                         item = itemClass.getConstructor(ArmorMaterial.class, ArmorItem.Type.class, Item.Settings.class, String.class, Float.class, Float.class, Float.class)

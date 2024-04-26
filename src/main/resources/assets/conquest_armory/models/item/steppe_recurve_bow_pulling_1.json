@@ -1,0 +1,6 @@
+{
+    "parent": "conquest_armory:item/steppe_recurve_bow",
+    "textures": {
+        "layer0": "conquest_armory:item/ranged/steppe_recurve_bow_2"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "conquest_armory:item/winged_spear",
+    "textures": {
+        "layer0": "conquest_armory:item/melee/winged_leaf_shaped_spear"
+    }
+}

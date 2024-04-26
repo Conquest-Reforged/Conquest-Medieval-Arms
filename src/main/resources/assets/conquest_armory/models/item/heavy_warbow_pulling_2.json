@@ -1,0 +1,6 @@
+{
+    "parent": "conquest_armory:item/heavy_warbow",
+    "textures": {
+        "layer0": "conquest_armory:item/ranged/heavy_warbow_3"
+    }
+}

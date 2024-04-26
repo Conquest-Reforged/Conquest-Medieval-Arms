@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 public enum ModArmorMaterials implements ArmorMaterial {
 
+    METAL_GENERIC("metal_generic", 500, new int[] {0, 0, 0, 0}, 25, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0f, Items.IRON_INGOT),
     BRONZE("bronze", 800, new int[] {2, 2, 2, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0f, Items.IRON_INGOT),
     QUILT("quilt", 800, new int[] {2, 2, 2, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, Items.LEATHER),
     CLOTH("cloth", 800, new int[] {2, 2, 2, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, Items.LEATHER);

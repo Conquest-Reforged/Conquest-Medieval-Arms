@@ -1,0 +1,6 @@
+{
+    "parent": "conquest_armory:item/english_longbow",
+    "textures": {
+        "layer0": "conquest_armory:item/ranged/english_longbow_3"
+    }
+}

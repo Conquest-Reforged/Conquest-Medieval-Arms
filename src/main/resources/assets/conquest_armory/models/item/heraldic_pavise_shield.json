@@ -1,0 +1,14 @@
+{
+  "parent": "conquest_armory:item/shield",
+  "textures": {
+    "layer0": "conquest_armory:item/shields/heraldic_pavise_shield"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:blocking": 1.0
+      },
+      "model": "conquest_armory:item/heraldic_pavise_shield_blocking"
+    }
+  ]
+}

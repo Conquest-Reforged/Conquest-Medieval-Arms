@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "conquest_armory:item/armor/kettle_helmet_and_coif"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "conquest_armory:item/armor/viking_leather_wrapped_shoes"
+  }
+}
