@@ -95,7 +95,7 @@ public class ModAxe extends AxeItem {
     }
 
     @Override
-    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
         Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers = HashMultimap.create();
         if (slot == EquipmentSlot.MAINHAND) {
             NbtCompound nbt = stack.getNbt();

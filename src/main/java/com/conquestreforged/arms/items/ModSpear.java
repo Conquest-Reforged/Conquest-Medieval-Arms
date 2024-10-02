@@ -97,7 +97,7 @@ public class ModSpear extends ToolItem implements Vanishable {
     }
 
     @Override
-    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
         Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers = HashMultimap.create();
         if (slot == EquipmentSlot.MAINHAND) {
             NbtCompound nbt = stack.getNbt();

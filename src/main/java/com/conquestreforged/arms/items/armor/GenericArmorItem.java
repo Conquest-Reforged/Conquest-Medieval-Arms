@@ -98,7 +98,7 @@ public class GenericArmorItem extends ArmorItem {
 
 
     @Override
-    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
         Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers = HashMultimap.create();
         if (slot == this.type.getEquipmentSlot()) {
             NbtCompound nbt = stack.getNbt();

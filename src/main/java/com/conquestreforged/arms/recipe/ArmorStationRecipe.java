@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public class ArmorStationRecipe extends SingleItemRecipe {
     public ArmorStationRecipe(Identifier id, String group, Ingredient ingredient, ItemStack result) {
-        super(ModRecipeType.ARMS_STATION, ModRecipeSerializer.ARMS_STATION, id, group, ingredient, result);
+        super(ModRecipeType.ARMS_STATION.get(), ModRecipeSerializer.ARMS_STATION.get(), id, group, ingredient, result);
     }
 
     @Override
@@ -22,7 +22,7 @@ public class ArmorStationRecipe extends SingleItemRecipe {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(BlockInit.ARMS_STATION_BLOCK);
+        return new ItemStack(BlockInit.ARMS_STATION_BLOCK.get());
     }
 
     //Suppress warnings being logged due to MC not knowing into which category to put these recipes

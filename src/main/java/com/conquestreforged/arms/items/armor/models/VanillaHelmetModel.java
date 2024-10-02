@@ -1,6 +1,5 @@
 package com.conquestreforged.arms.items.armor.models;
 
-import com.conquestreforged.arms.items.armor.ArmorModelItem;
 import com.conquestreforged.arms.items.armor.VanillaHelmetItem;
 import mod.azure.azurelibarmor.model.GeoModel;
 import net.minecraft.util.Identifier;

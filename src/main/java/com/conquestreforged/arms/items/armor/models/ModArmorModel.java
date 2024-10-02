@@ -2,7 +2,6 @@ package com.conquestreforged.arms.items.armor.models;
 
 import com.conquestreforged.arms.items.armor.ArmorModelItem;
 import mod.azure.azurelibarmor.model.GeoModel;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.Identifier;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;

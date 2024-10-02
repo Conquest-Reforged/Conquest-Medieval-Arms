@@ -49,7 +49,7 @@ public class ArmorStationScreenHandler extends ScreenHandler {
 
 
     public ArmorStationScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-        super(ModScreenHandlerType.ARMS_STATION_SCREEN, syncId);
+        super(ModScreenHandlerType.ARMS_STATION_SCREEN.get(), syncId);
         int i;
         this.context  = context;
         this.world  = playerInventory.player.getWorld();
@@ -111,7 +111,7 @@ public class ArmorStationScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return ArmorStationScreenHandler.canUse(this.context, player, BlockInit.ARMS_STATION_BLOCK);
+        return ArmorStationScreenHandler.canUse(this.context, player, BlockInit.ARMS_STATION_BLOCK.get());
     }
 
     @Override
@@ -141,7 +141,7 @@ public class ArmorStationScreenHandler extends ScreenHandler {
         this.selectedRecipe.set(-1);
         this.outputSlot.setStackNoCallbacks(ItemStack.EMPTY);
         if (!stack.isEmpty()) {
-            this.availableRecipes = this.world.getRecipeManager().getAllMatches(ModRecipeType.ARMS_STATION, input, this.world);
+            this.availableRecipes = this.world.getRecipeManager().getAllMatches(ModRecipeType.ARMS_STATION.get(), input, this.world);
         }
     }
 
@@ -163,7 +163,7 @@ public class ArmorStationScreenHandler extends ScreenHandler {
 
     @Override
     public ScreenHandlerType<?> getType() {
-        return ModScreenHandlerType.ARMS_STATION_SCREEN;
+        return ModScreenHandlerType.ARMS_STATION_SCREEN.get();
     }
 
     public void setContentsChangedListener(Runnable contentsChangedListener) {
@@ -189,7 +189,7 @@ public class ArmorStationScreenHandler extends ScreenHandler {
                     return ItemStack.EMPTY;
                 }
                 slot2.onQuickTransfer(itemStack2, itemStack);
-            } else if (slot == 0 ? !this.insertItem(itemStack2, 2, 38, false) : (this.world.getRecipeManager().getFirstMatch(ModRecipeType.ARMS_STATION, new SimpleInventory(itemStack2), this.world).isPresent() ? !this.insertItem(itemStack2, 0, 1, false) : (slot >= 2 && slot < 29 ? !this.insertItem(itemStack2, 29, 38, false) : slot >= 29 && slot < 38 && !this.insertItem(itemStack2, 2, 29, false)))) {
+            } else if (slot == 0 ? !this.insertItem(itemStack2, 2, 38, false) : (this.world.getRecipeManager().getFirstMatch(ModRecipeType.ARMS_STATION.get(), new SimpleInventory(itemStack2), this.world).isPresent() ? !this.insertItem(itemStack2, 0, 1, false) : (slot >= 2 && slot < 29 ? !this.insertItem(itemStack2, 29, 38, false) : slot >= 29 && slot < 38 && !this.insertItem(itemStack2, 2, 29, false)))) {
                 return ItemStack.EMPTY;
             }
             if (itemStack2.isEmpty()) {

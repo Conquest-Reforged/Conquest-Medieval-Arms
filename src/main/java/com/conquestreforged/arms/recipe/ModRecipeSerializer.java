@@ -1,20 +1,18 @@
 package com.conquestreforged.arms.recipe;
 
 import com.conquestreforged.arms.ConquestMedievalArms;
-import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModRecipeSerializer {
-    public static RecipeSerializer<ArmorStationRecipe> ARMS_STATION;
+    public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ConquestMedievalArms.MOD_ID);
 
-    private static <S extends RecipeSerializer<T>, T extends Recipe<?>> S registerSerializer(String id, S serializer) {
-        return Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(ConquestMedievalArms.MOD_ID, id), serializer);
-    }
+    public static RegistryObject<RecipeSerializer<ArmorStationRecipe>> ARMS_STATION = SERIALIZERS.register("arms_station", () -> new SingleItemRecipe.Serializer<>(ArmorStationRecipe::new));
 
-    public static void register() {
-        ARMS_STATION = registerSerializer("arms_station", new SingleItemRecipe.Serializer<>(ArmorStationRecipe::new));
+    public static void register(IEventBus eventBus) {
+        SERIALIZERS.register(eventBus);
     }
 }
