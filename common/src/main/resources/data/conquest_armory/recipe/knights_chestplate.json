@@ -1,0 +1,10 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "tag": "conquest_armory:metal_chestplates"
+  },
+  "result": {
+    "id": "conquest_armory:knights_chestplate",
+    "count": 1
+}
+}

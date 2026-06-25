@@ -1,0 +1,10 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "tag": "conquest_armory:metal_boots"
+  },
+  "result": {
+    "id": "conquest_armory:gilded_sabatons",
+    "count": 1
+}
+}

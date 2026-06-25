@@ -13,11 +13,11 @@ import net.minecraft.world.entity.player.Inventory;
 import java.util.List;
 
 public class ArmorStationScreen extends AbstractContainerScreen<ArmorStationScreenHandler> {
-    private static final ResourceLocation SCROLLER_SPRITE = ResourceLocation.fromNamespaceAndPath("conquest", "container/arms_station/scroller");
-    private static final ResourceLocation SCROLLER_DISABLED_SPRITE = ResourceLocation.fromNamespaceAndPath("conquest", "container/arms_station/scroller_disabled");
-    private static final ResourceLocation RECIPE_SELECTED_SPRITE = ResourceLocation.fromNamespaceAndPath("conquest", "container/arms_station/recipe_selected");
-    private static final ResourceLocation RECIPE_HIGHLIGHTED_SPRITE = ResourceLocation.fromNamespaceAndPath("conquest", "container/arms_station/recipe_highlighted");
-    private static final ResourceLocation RECIPE_SPRITE = ResourceLocation.fromNamespaceAndPath("conquest", "container/arms_station/recipe");
+    private static final ResourceLocation SCROLLER_SPRITE = ResourceLocation.fromNamespaceAndPath("minecraft", "container/stonecutter/scroller");
+    private static final ResourceLocation SCROLLER_DISABLED_SPRITE = ResourceLocation.fromNamespaceAndPath("minecraft", "container/stonecutter/scroller_disabled");
+    private static final ResourceLocation RECIPE_SELECTED_SPRITE = ResourceLocation.fromNamespaceAndPath("minecraft", "container/stonecutter/recipe_selected");
+    private static final ResourceLocation RECIPE_HIGHLIGHTED_SPRITE = ResourceLocation.fromNamespaceAndPath("minecraft", "container/stonecutter/recipe_highlighted");
+    private static final ResourceLocation RECIPE_SPRITE = ResourceLocation.fromNamespaceAndPath("minecraft", "container/stonecutter/recipe");
     private static final ResourceLocation BG_LOCATION = ResourceLocation.parse("textures/gui/container/stonecutter.png");
 
     private float scrollOffs;

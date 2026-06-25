@@ -14,6 +14,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -137,7 +138,8 @@ public class ArmorStationScreenHandler extends AbstractContainerMenu {
         this.selectedRecipe.set(-1);
         this.outputSlot.set(ItemStack.EMPTY);
         if (!stack.isEmpty()) {
-            this.availableRecipes = this.world.getRecipeManager().getRecipesFor(ModRecipeType.ARMS_STATION, new ArmorStationRecipe.Input(stack), this.world);
+            this.availableRecipes = this.world.getRecipeManager().getRecipesFor(ModRecipeType.ARMS_STATION, new SingleRecipeInput(stack), this.world);
+            System.out.println("Recipes found for " + stack + ": " + this.availableRecipes.size());
         }
     }
 
@@ -145,7 +147,7 @@ public class ArmorStationScreenHandler extends AbstractContainerMenu {
         if (!this.availableRecipes.isEmpty() && this.isInBounds(this.selectedRecipe.get())) {
             RecipeHolder<ArmorStationRecipe> recipeHolder = this.availableRecipes.get(this.selectedRecipe.get());
             ArmorStationRecipe recipe = recipeHolder.value();
-            ItemStack result = recipe.assemble(new ArmorStationRecipe.Input(this.inputSlot.getItem()), this.world.registryAccess());
+            ItemStack result = recipe.assemble(new SingleRecipeInput(this.inputSlot.getItem()), this.world.registryAccess());
             if (result.isItemEnabled(this.world.enabledFeatures())) {
                 this.output.setRecipeUsed(recipeHolder);
                 this.outputSlot.set(result);
@@ -191,7 +193,7 @@ public class ArmorStationScreenHandler extends AbstractContainerMenu {
                     return ItemStack.EMPTY;
                 }
             } else {
-                if (this.world.getRecipeManager().getRecipeFor(ModRecipeType.ARMS_STATION, new ArmorStationRecipe.Input(itemStack2), this.world).isPresent()) {
+                if (this.world.getRecipeManager().getRecipeFor(ModRecipeType.ARMS_STATION, new SingleRecipeInput(itemStack2), this.world).isPresent()) {
                     if (!this.moveItemStackTo(itemStack2, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }

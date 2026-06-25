@@ -1,11 +1,10 @@
 package com.conquestreforged.arms.recipe;
 
+// Make sure this imports YOUR SingleItemRecipe, not vanilla's
 import com.conquestreforged.arms.init.BlockInit;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Container;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -16,9 +15,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 
-public class ArmorStationRecipe extends SingleItemRecipe {
+public class ArmorStationRecipe extends SingleItemRecipe {  // YOUR SingleItemRecipe
     public ArmorStationRecipe(String group, Ingredient ingredient, ItemStack result) {
         super(ModRecipeType.ARMS_STATION, ModRecipeSerializer.ARMS_STATION, group, ingredient, result);
     }
@@ -34,19 +34,19 @@ public class ArmorStationRecipe extends SingleItemRecipe {
     }
 
     @Override
-    public boolean matches(Input recipeInput, Level level) {
-        return this.input.test(recipeInput.getItem(0));
+    public boolean matches(SingleRecipeInput recipeInput, Level level) {
+        return this.ingredient.test(recipeInput.getItem(0));  // ingredient, not input
     }
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return this.output;
+        return this.result;  // result, not output
     }
 
     @Override
-    public ItemStack assemble(Input inventory, HolderLookup.Provider provider) {
-        ItemStack resultItem = this.output.copy();
-        ItemStack inputItemStack = inventory.stack();
+    public ItemStack assemble(SingleRecipeInput recipeInput, HolderLookup.Provider provider) {
+        ItemStack resultItem = this.result.copy();  // result, not output
+        ItemStack inputItemStack = recipeInput.getItem(0);  // getItem(0), not .stack()
         Item inputItem = inputItemStack.getItem();
 
         // Copy existing components
@@ -65,7 +65,7 @@ public class ArmorStationRecipe extends SingleItemRecipe {
 
         // Detect and write material
         String material = null;
-        String description = inputItem.getDescription().getString();
+        String description = inputItem.getDescription().getString().toLowerCase();
         if (description.contains("iron")) material = "iron";
         else if (description.contains("netherite")) material = "netherite";
         else if (description.contains("diamond")) material = "diamond";
@@ -79,17 +79,14 @@ public class ArmorStationRecipe extends SingleItemRecipe {
         if (resultItem.getItem() instanceof ArmorItem armorItem) {
             ArmorItem.Type armorType = armorItem.getType();
             EquipmentSlotGroup slotGroup = EquipmentSlotGroup.bySlot(armorType.getSlot());
-
             ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
 
             switch (material != null ? material : "") {
-                case "iron" -> {
-                    builder.add(Attributes.ARMOR,
-                            new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.body"),
-                                    ArmorMaterials.IRON.value().getDefense(armorType),
-                                    AttributeModifier.Operation.ADD_VALUE),
-                            slotGroup);
-                }
+                case "iron" -> builder.add(Attributes.ARMOR,
+                        new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.body"),
+                                ArmorMaterials.IRON.value().getDefense(armorType),
+                                AttributeModifier.Operation.ADD_VALUE),
+                        slotGroup);
                 case "diamond" -> {
                     builder.add(Attributes.ARMOR,
                             new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.body"),
@@ -116,18 +113,16 @@ public class ArmorStationRecipe extends SingleItemRecipe {
                                     0.1, AttributeModifier.Operation.ADD_VALUE),
                             slotGroup);
                 }
-                default -> {
-                    // Fall back to the result item's own material defaults
-                    builder.add(Attributes.ARMOR,
-                            new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.body"),
-                                    armorItem.getMaterial().value().getDefense(armorType),
-                                    AttributeModifier.Operation.ADD_VALUE),
-                            slotGroup);
-                }
+                default -> builder.add(Attributes.ARMOR,
+                        new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.body"),
+                                armorItem.getMaterial().value().getDefense(armorType),
+                                AttributeModifier.Operation.ADD_VALUE),
+                        slotGroup);
             }
 
             resultItem.set(DataComponents.ATTRIBUTE_MODIFIERS, builder.build());
         }
 
         return resultItem;
-    }}
+    }
+}

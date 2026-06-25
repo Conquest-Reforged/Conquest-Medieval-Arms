@@ -1,0 +1,10 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "tag": "conquest_armory:metal_helmets"
+  },
+  "result": {
+    "id": "conquest_armory:feathered_lamellar_helmet",
+    "count": 1
+}
+}

@@ -1,0 +1,10 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:shield"
+  },
+  "result": {
+    "id": "conquest_armory:yellow_and_black_round_shield_1",
+    "count": 1
+}
+}

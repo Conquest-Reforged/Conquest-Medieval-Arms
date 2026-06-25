@@ -1,0 +1,10 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:bow"
+  },
+  "result": {
+    "id": "conquest_armory:english_longbow",
+    "count": 1
+}
+}

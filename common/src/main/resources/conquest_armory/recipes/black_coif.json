@@ -1,8 +1,0 @@
-{
-  "type": "conquest_armory:arms_station",
-  "ingredient": {
-    "item": "minecraft:leather_helmet"
-  },
-  "result": "conquest_armory:black_coif",
-  "count": 1
-}

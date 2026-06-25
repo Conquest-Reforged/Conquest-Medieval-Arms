@@ -39,16 +39,16 @@ public class ConquestMedievalArmsClient implements ClientModInitializer {
                     case ArmorItem.Type.LEGGINGS -> AzArmorRendererRegistry.register(() -> new ModArmorRenderer("leggings_generic", armorModelItem.getArmorTexture()), armorModelItem);
                     case ArmorItem.Type.BOOTS -> AzArmorRendererRegistry.register(() -> new ModArmorRenderer("boots_generic", armorModelItem.getArmorTexture()), armorModelItem);
                 }
-                String geoName = switch (armorModelItem.getType()) {
-                    case ArmorItem.Type.HELMET -> "helmet_generic";
-                    case ArmorItem.Type.CHESTPLATE -> "chestplate_generic";
-                    case ArmorItem.Type.LEGGINGS -> "leggings_generic";
-                    case ArmorItem.Type.BOOTS -> "boots_generic";
-                    default -> "unknown";
-                };
-                System.out.println("Registering renderer for: " + BuiltInRegistries.ITEM.getKey(armorModelItem)
-                        + " | geo: conquest_armory:geo/armor/" + geoName + ".geo.json"
-                        + " | texture: " + armorModelItem.getArmorTexture());
+//                String geoName = switch (armorModelItem.getType()) {
+//                    case ArmorItem.Type.HELMET -> "helmet_generic";
+//                    case ArmorItem.Type.CHESTPLATE -> "chestplate_generic";
+//                    case ArmorItem.Type.LEGGINGS -> "leggings_generic";
+//                    case ArmorItem.Type.BOOTS -> "boots_generic";
+//                    default -> "unknown";
+//                };
+//                System.out.println("Registering renderer for: " + BuiltInRegistries.ITEM.getKey(armorModelItem)
+//                        + " | geo: conquest_armory:geo/armor/" + geoName + ".geo.json"
+//                        + " | texture: " + armorModelItem.getArmorTexture());
             }
             if (item instanceof VanillaHelmetItem vanillaHelmetItem) {
                 if (vanillaHelmetItem.getType() == ArmorItem.Type.HELMET) {

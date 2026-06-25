@@ -1,0 +1,10 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:shield"
+  },
+  "result": {
+    "id": "conquest_armory:round_shield_with_birds",
+    "count": 1
+}
+}

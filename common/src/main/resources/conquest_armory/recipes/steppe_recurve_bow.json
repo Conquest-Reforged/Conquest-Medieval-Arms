@@ -1,8 +1,0 @@
-{
-  "type": "conquest_armory:arms_station",
-  "ingredient": {
-    "item": "minecraft:bow"
-  },
-  "result": "conquest_armory:steppe_recurve_bow",
-  "count": 1
-}

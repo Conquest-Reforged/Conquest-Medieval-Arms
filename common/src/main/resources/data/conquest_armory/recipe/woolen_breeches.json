@@ -1,0 +1,10 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "item": "minecraft:leather_leggings"
+  },
+  "result": {
+    "id": "conquest_armory:woolen_breeches",
+    "count": 1
+}
+}

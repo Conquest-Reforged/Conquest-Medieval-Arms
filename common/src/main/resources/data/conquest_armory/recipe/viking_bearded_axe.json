@@ -1,0 +1,10 @@
+{
+  "type": "conquest_armory:arms_station",
+  "ingredient": {
+    "tag": "conquest_armory:metal_axes"
+  },
+  "result": {
+    "id": "conquest_armory:viking_bearded_axe",
+    "count": 1
+}
+}

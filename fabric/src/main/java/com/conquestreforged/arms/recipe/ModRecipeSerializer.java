@@ -16,5 +16,6 @@ public class ModRecipeSerializer {
 
     public static void register() {
         ARMS_STATION = registerSerializer("arms_station", new SingleItemRecipe.Serializer<>(ArmorStationRecipe::new));
+        System.out.println("Registered " + ARMS_STATION);
     }
 }
