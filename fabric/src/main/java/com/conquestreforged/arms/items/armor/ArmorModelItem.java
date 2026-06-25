@@ -1,63 +1,56 @@
 package com.conquestreforged.arms.items.armor;
 
-import mod.azure.azurelibarmor.animatable.GeoItem;
-import mod.azure.azurelibarmor.animatable.client.RenderProvider;
-import mod.azure.azurelibarmor.core.animatable.instance.AnimatableInstanceCache;
-import mod.azure.azurelibarmor.core.animation.AnimatableManager;
-import mod.azure.azurelibarmor.util.AzureLibUtil;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.core.Holder;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+public class ArmorModelItem extends GenericArmorItem {
 
-public class ArmorModelItem extends GenericArmorItem implements GeoItem {
+    public final Holder<ArmorMaterial> customMaterial;
+    public final ArmorModelDispatcher dispatcher;
 
-    private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
-    private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
-    public final ArmorMaterial customMaterial;
 
-    public ArmorModelItem(ArmorMaterial material, ArmorItem.Type head, Item.Settings props, String armorTexture, Float cloth, Float mail, Float plate) {
-        super(material, head, props, armorTexture, cloth, mail, plate);
+    public ArmorModelItem(Holder<ArmorMaterial> material, Type type, Item.Properties props,
+                          String armorTexture, Float cloth, Float mail, Float plate) {
+        super(material, type, props, armorTexture, cloth, mail, plate);
         this.customMaterial = material;
-    }
-
-    @Override
-    public void createRenderer(Consumer<Object> consumer) {
-        consumer.accept(new RenderProvider() {
-            private ModArmorRenderer renderer;
-
-            @Override
-            @NotNull
-            public BipedEntityModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, BipedEntityModel<LivingEntity> original) {
-                if (renderer == null) {
-                    renderer = new ModArmorRenderer();
-                }
-                renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
-                return this.renderer;
-            }
-        });
-    }
-
-    @Override
-    public Supplier<Object> getRenderProvider() {
-        return renderProvider;
-    }
-
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        this.dispatcher = new ArmorModelDispatcher();
 
     }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
+    public @NotNull InteractionResultHolder<ItemStack> swapWithEquipmentSlot(
+            Item item,
+            Level level,
+            Player player,
+            InteractionHand hand
+    ) {
+        var result = super.swapWithEquipmentSlot(item, level, player, hand);
+
+        if (!level.isClientSide) {
+            var slot = getEquipmentSlot();
+            var itemStack = player.getItemBySlot(slot);
+            // This is where you now trigger an animation to play
+            dispatcher.equip(player, itemStack);
+        }
+
+        return result;
     }
+
+//    // Remove this override entirely if you have no equip animation to trigger.
+//    @Override
+//    public @NotNull InteractionResultHolder<ItemStack> swapWithEquipmentSlot(
+//            Item item, Level level, LivingEntity entity, InteractionHand hand) {
+//        var result = super.swapWithEquipmentSlot(item, level, entity, hand);
+//        if (!level.isClientSide) {
+//            dispatcher.equip(entity, entity.getItemBySlot(getEquipmentSlot()));
+//        }
+//        return result;
+//    }
 }

@@ -1,25 +1,15 @@
 package com.conquestreforged.arms.items.armor;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.*;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.text.Text;
-import net.minecraft.util.Util;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.CustomData;
 
 import java.util.EnumMap;
 import java.util.List;
 import java.util.UUID;
-
-import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class GenericArmorItem extends ArmorItem {
 
@@ -34,9 +24,9 @@ public class GenericArmorItem extends ArmorItem {
     private float cloth;
     private float mail;
     private float plate;
-    private ArmorMaterial nbtMaterial;
+    private Holder<ArmorMaterial> nbtMaterial;
 
-    public GenericArmorItem(ArmorMaterial material, ArmorItem.Type equipmentSlot, Item.Settings props, String armorTexture, Float cloth, Float mail, Float plate) {
+    public GenericArmorItem(Holder<ArmorMaterial> material, Type equipmentSlot, Properties props, String armorTexture, Float cloth, Float mail, Float plate) {
         super(material, equipmentSlot, props);
         this.armorTexture = armorTexture;
         this.cloth = cloth;
@@ -45,19 +35,18 @@ public class GenericArmorItem extends ArmorItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        NbtCompound nbt = stack.getNbt();
-        NbtElement nbtelement = nbt.get("material");
-        if (nbtelement != null) {
-            switch (nbtelement.asString()) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        CustomData customData = stack.get(DataComponents.CUSTOM_DATA);
+        if (customData != null) {
+            switch (customData.copyTag().getString("material")) {
                 case "iron":
-                    tooltip.add(Text.translatable("\u00A7eMaterial: Iron\u00A7r"));
+                    tooltip.add(Component.translatable("\u00A7eMaterial: Iron\u00A7r"));
                     break;
                 case "diamond":
-                    tooltip.add(Text.translatable("\u00A7eMaterial: Diamond\u00A7r"));
+                    tooltip.add(Component.translatable("\u00A7eMaterial: Diamond\u00A7r"));
                     break;
                 case "netherite":
-                    tooltip.add(Text.translatable("\u00A7eMaterial: Netherite\u00A7r"));
+                    tooltip.add(Component.translatable("\u00A7eMaterial: Netherite\u00A7r"));
                     break;
 
             }
@@ -69,16 +58,16 @@ public class GenericArmorItem extends ArmorItem {
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         if (nbtMaterial != null) {
-            return nbtMaterial.getEnchantability();
+            return nbtMaterial.value().enchantmentValue();
         } else {
-            return super.getEnchantability();
+            return super.getEnchantmentValue();
         }
     }
 
     @Override
-    public ArmorMaterial getMaterial() {
+    public Holder<ArmorMaterial> getMaterial() {
         if (nbtMaterial != null) {
             return nbtMaterial;
         } else {
@@ -87,47 +76,12 @@ public class GenericArmorItem extends ArmorItem {
     }
 
     @Override
-    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+    public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) {
         if (nbtMaterial != null) {
-            return nbtMaterial.getRepairIngredient().test(ingredient);
+            return nbtMaterial.value().repairIngredient().get().test(ingredient);
         } else {
-            return super.canRepair(stack, ingredient);
+            return super.isValidRepairItem(stack, ingredient);
         }
-    }
-
-
-
-    @Override
-    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-        Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers = HashMultimap.create();
-        if (slot == this.type.getEquipmentSlot()) {
-            NbtCompound nbt = stack.getNbt();
-            NbtElement nbtelement = nbt.get("material");
-            UUID uUID = (UUID)MODIFIERS.get(type);
-            if (nbtelement != null) {
-                switch (nbtelement.asString()) {
-                    case "iron":
-                        attributeModifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uUID, "Armor modifier", ArmorMaterials.IRON.getProtection(type), EntityAttributeModifier.Operation.ADDITION));
-                        this.nbtMaterial = ArmorMaterials.IRON;
-                        break;
-                    case "diamond":
-                        attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uUID, "Armor toughness", 2, EntityAttributeModifier.Operation.ADDITION));
-                        attributeModifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uUID, "Armor modifier", ArmorMaterials.DIAMOND.getProtection(type), EntityAttributeModifier.Operation.ADDITION));
-                        this.nbtMaterial = ArmorMaterials.DIAMOND;
-                        break;
-                    case "netherite":
-                        attributeModifiers.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uUID, "Armor knockback resistance", 0.1, EntityAttributeModifier.Operation.ADDITION));
-                        attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uUID, "Armor toughness", 3, EntityAttributeModifier.Operation.ADDITION));
-                        attributeModifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uUID, "Armor modifier", ArmorMaterials.NETHERITE.getProtection(type), EntityAttributeModifier.Operation.ADDITION));
-                        this.nbtMaterial = ArmorMaterials.NETHERITE;
-                        break;
-
-                }
-            } else {
-                attributeModifiers.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uUID, "Armor modifier", getProtection(), EntityAttributeModifier.Operation.ADDITION));
-            }
-        }
-        return attributeModifiers;
     }
 
     public String getArmorTexture() {

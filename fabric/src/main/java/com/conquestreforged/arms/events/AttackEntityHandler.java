@@ -1,43 +1,42 @@
 package com.conquestreforged.arms.events;
 
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolItem;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.world.World;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 public class AttackEntityHandler implements AttackEntityCallback {
+
     @Override
-    public ActionResult interact(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult hitResult) {
-        if (world instanceof ServerWorld && !player.isSpectator()) {
+    public InteractionResult interact(Player player, Level level, InteractionHand interactionHand, net.minecraft.world.entity.Entity entity, net.minecraft.world.phys.@Nullable EntityHitResult entityHitResult) {
+        if (level instanceof ServerLevel && !player.isSpectator()) {
             if (entity instanceof LivingEntity) {
-                ItemStack stack = player.getMainHandStack();
-                if (stack.isIn(ItemTags.SWORDS)) {
+                ItemStack stack = player.getMainHandItem();
+                if (stack.is(ItemTags.SWORDS)) {
                     //String material = stack.getNbt().getString("material");
                     int maxdmg = stack.getMaxDamage();
-                    float dmg = stack.getDamage();
+                    float dmg = stack.getDamageValue();
                     float dmgPercentage = ((maxdmg - dmg) / maxdmg);
-                    float damageAmount = ((float) (player.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE)) * dmgPercentage);
-                    entity.damage(world.getDamageSources().playerAttack(player), damageAmount);
-                    player.sendMessage(Text.literal( String.valueOf(damageAmount)));
-                    stack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-                    return ActionResult.SUCCESS;
+                    float damageAmount = ((float) (player.getAttributeValue(Attributes.ATTACK_DAMAGE)) * dmgPercentage);
+                    entity.hurt(level.damageSources().playerAttack(player), damageAmount);
+                    player.sendSystemMessage(Component.literal( String.valueOf(damageAmount)));
+                    stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                    return InteractionResult.SUCCESS;
                 }
             }
         }
 
-        return ActionResult.PASS;
+        return InteractionResult.PASS;
     }
 }

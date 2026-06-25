@@ -1,13 +1,13 @@
 package com.conquestreforged.arms.init;
 
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 
 public class AttributeInit {
     //public static final EntityAttribute MATERIAL = register("generic.material", )
 
-    private static EntityAttribute register(String id, EntityAttribute attribute) {
-        return Registry.register(Registries.ATTRIBUTE, id, attribute);
+    private static Attribute register(String id, Attribute attribute) {
+        return Registry.register(BuiltInRegistries.ATTRIBUTE, id, attribute);
     }
 }

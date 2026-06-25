@@ -2,21 +2,17 @@ package com.conquestreforged.arms.init;
 
 import com.conquestreforged.arms.ConquestMedievalArms;
 import com.conquestreforged.arms.block.entity.custom.ArmorStationBlock;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
-
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import java.util.List;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
@@ -27,13 +23,13 @@ public class BlockInit {
 
     private static Block registerBlock(String name, Block block, String tooltipKey) {
         registerBlockItem(name, block, tooltipKey);
-        return Registry.register(Registries.BLOCK, new Identifier(MOD_ID, name), block);
+        return Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name), block);
     }
     private static Item registerBlockItem(String name, Block block, String tooltipKey) {
-        return Registry.register(Registries.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new FabricItemSettings()) {
+        return Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name), new BlockItem(block, new Item.Properties()) {
             @Override
-            public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-                tooltip.add(Text.translatable(tooltipKey));
+            public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag type) {
+                tooltip.add(Component.translatable(tooltipKey));
             }
         });
     }

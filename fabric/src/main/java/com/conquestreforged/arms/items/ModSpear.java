@@ -1,24 +1,19 @@
 package com.conquestreforged.arms.items;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.*;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.text.Text;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import java.util.List;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
-public class ModSpear extends ToolItem implements Vanishable {
+public class ModSpear extends TieredItem {
 
     private double range;
     private final double knockback;
@@ -27,10 +22,10 @@ public class ModSpear extends ToolItem implements Vanishable {
     private float speed;
     private final int linesAmt;
     private final String toolTipName;
-    private ToolMaterials nbtMaterial;
+    private Tiers nbtMaterial;
 
 
-    public ModSpear(Item.Settings props, String toolTipName, double range, double knockback, AttackStyleEnum attackStyle, ToolMaterial tier, int dmg, float speed, int linesAmt) {
+    public ModSpear(Item.Properties props, String toolTipName, double range, double knockback, AttackStyleEnum attackStyle, Tier tier, int dmg, float speed, int linesAmt) {
         super(tier, props);
         this.range = range;
         this.knockback = knockback;
@@ -42,53 +37,52 @@ public class ModSpear extends ToolItem implements Vanishable {
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         if (nbtMaterial != null) {
-            return nbtMaterial.getEnchantability();
+            return nbtMaterial.getEnchantmentValue();
         } else {
-            return super.getEnchantability();
+            return super.getEnchantmentValue();
         }
     }
 
     @Override
-    public ToolMaterial getMaterial() {
+    public Tier getTier() {
         if (nbtMaterial != null) {
             return nbtMaterial;
         } else {
-            return super.getMaterial();
+            return super.getTier();
         }
     }
 
     @Override
-    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+    public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) {
         if (nbtMaterial != null) {
             return nbtMaterial.getRepairIngredient().test(ingredient);
         } else {
-            return super.canRepair(stack, ingredient);
+            return super.isValidRepairItem(stack, ingredient);
         }
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        NbtCompound nbt = stack.getNbt();
-        NbtElement nbtelement = nbt.get("material");
-        if (nbtelement != null) {
-            switch (nbtelement.asString()) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        CustomData customData = stack.get(DataComponents.CUSTOM_DATA);
+        if (customData != null) {
+            switch (customData.copyTag().getString("material")) {
                 case "iron":
-                    tooltip.add(Text.translatable("\u00A7eMaterial: Iron\u00A7r"));
+                    tooltip.add(Component.translatable("\u00A7eMaterial: Iron\u00A7r"));
                     break;
                 case "diamond":
-                    tooltip.add(Text.translatable("\u00A7eMaterial: Diamond\u00A7r"));
+                    tooltip.add(Component.translatable("\u00A7eMaterial: Diamond\u00A7r"));
                     break;
                 case "netherite":
-                    tooltip.add(Text.translatable("\u00A7eMaterial: Netherite\u00A7r"));
+                    tooltip.add(Component.translatable("\u00A7eMaterial: Netherite\u00A7r"));
                     break;
 
             }
         }
 
         for (int i = 1; i <= linesAmt; i++) {
-            tooltip.add(Text.translatable("tooltip." + MOD_ID + ".item." + toolTipName + i));
+            tooltip.add(Component.translatable("tooltip." + MOD_ID + ".item." + toolTipName + i));
         }
     }
 
@@ -97,33 +91,18 @@ public class ModSpear extends ToolItem implements Vanishable {
     }
 
     @Override
-    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-        Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers = HashMultimap.create();
-        if (slot == EquipmentSlot.MAINHAND) {
-            NbtCompound nbt = stack.getNbt();
-            NbtElement nbtelement = nbt.get("material");
-            if (nbtelement != null) {
-                switch (nbtelement.asString()) {
-                    case "iron":
-                        attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.dmg + 3, EntityAttributeModifier.Operation.ADDITION));
-                        this.nbtMaterial = ToolMaterials.IRON;
-                        break;
-                    case "diamond":
-                        attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.dmg + 4, EntityAttributeModifier.Operation.ADDITION));
-                        this.nbtMaterial = ToolMaterials.DIAMOND;
-                        break;
-                    case "netherite":
-                        attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.dmg + 5, EntityAttributeModifier.Operation.ADDITION));
-                        this.nbtMaterial = ToolMaterials.NETHERITE;
-                        break;
-
-                }
-            } else {
-                attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "attribute.name.generic.attack_damage", this.dmg, EntityAttributeModifier.Operation.ADDITION));
-            }
-            attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", this.speed, EntityAttributeModifier.Operation.ADDITION));
-        }
-        return attributeModifiers;
+    public ItemAttributeModifiers getDefaultAttributeModifiers() {
+        float attackDamage = this.getTier().getAttackDamageBonus();
+        return ItemAttributeModifiers.builder()
+                .add(Attributes.ATTACK_DAMAGE,
+                        new AttributeModifier(BASE_ATTACK_DAMAGE_ID,
+                                attackDamage, AttributeModifier.Operation.ADD_VALUE),
+                        EquipmentSlotGroup.MAINHAND)
+                .add(Attributes.ATTACK_SPEED,
+                        new AttributeModifier(BASE_ATTACK_SPEED_ID,
+                                this.speed, AttributeModifier.Operation.ADD_VALUE),
+                        EquipmentSlotGroup.MAINHAND)
+                .build();
     }
 
     /*

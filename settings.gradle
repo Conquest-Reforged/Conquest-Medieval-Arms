@@ -11,4 +11,3 @@ rootProject.name = 'MedievalArmsCR'
 
 include 'common'
 include 'fabric'
-include 'forge'

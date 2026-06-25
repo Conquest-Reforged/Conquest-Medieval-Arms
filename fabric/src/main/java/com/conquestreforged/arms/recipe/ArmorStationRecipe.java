@@ -1,58 +1,133 @@
 package com.conquestreforged.arms.recipe;
 
 import com.conquestreforged.arms.init.BlockInit;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.DynamicRegistryManager;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterials;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
 
 public class ArmorStationRecipe extends SingleItemRecipe {
-    public ArmorStationRecipe(Identifier id, String group, Ingredient ingredient, ItemStack result) {
-        super(ModRecipeType.ARMS_STATION, ModRecipeSerializer.ARMS_STATION, id, group, ingredient, result);
+    public ArmorStationRecipe(String group, Ingredient ingredient, ItemStack result) {
+        super(ModRecipeType.ARMS_STATION, ModRecipeSerializer.ARMS_STATION, group, ingredient, result);
     }
 
     @Override
-    public boolean matches(Inventory inventory, World world) {
-        return this.input.test(inventory.getStack(0));
-    }
-
-    @Override
-    public ItemStack createIcon() {
+    public ItemStack getToastSymbol() {
         return new ItemStack(BlockInit.ARMS_STATION_BLOCK);
     }
 
-    //Suppress warnings being logged due to MC not knowing into which category to put these recipes
-    //Armor Station doesn't use the recipe book, regardless
     @Override
-    public boolean isIgnoredInRecipeBook() {
+    public boolean isSpecial() {
         return true;
     }
 
     @Override
-    public ItemStack craft(Inventory inventory, DynamicRegistryManager registryManager) {
+    public boolean matches(Input recipeInput, Level level) {
+        return this.input.test(recipeInput.getItem(0));
+    }
+
+    @Override
+    public ItemStack getResultItem(HolderLookup.Provider provider) {
+        return this.output;
+    }
+
+    @Override
+    public ItemStack assemble(Input inventory, HolderLookup.Provider provider) {
         ItemStack resultItem = this.output.copy();
-        ItemStack inputItemStack = inventory.getStack(0);
+        ItemStack inputItemStack = inventory.stack();
         Item inputItem = inputItemStack.getItem();
-        NbtCompound nbt = inputItemStack.getNbt();
 
-        //copy over existing NBT (eg: trims, enchants, renames)
-        resultItem.setNbt(nbt.copy());
+        // Copy existing components
+        CustomData existingData = inputItemStack.get(DataComponents.CUSTOM_DATA);
+        if (existingData != null) {
+            resultItem.set(DataComponents.CUSTOM_DATA, existingData);
+        }
+        var enchantments = inputItemStack.get(DataComponents.ENCHANTMENTS);
+        if (enchantments != null) {
+            resultItem.set(DataComponents.ENCHANTMENTS, enchantments);
+        }
+        var customName = inputItemStack.get(DataComponents.CUSTOM_NAME);
+        if (customName != null) {
+            resultItem.set(DataComponents.CUSTOM_NAME, customName);
+        }
 
-        //check material of input item and add it as NBT to be read elsewhere
-        if (inputItem.getName().toString().contains("iron")) {
-            resultItem.getOrCreateNbt().putString("material", "iron");
+        // Detect and write material
+        String material = null;
+        String description = inputItem.getDescription().getString();
+        if (description.contains("iron")) material = "iron";
+        else if (description.contains("netherite")) material = "netherite";
+        else if (description.contains("diamond")) material = "diamond";
+
+        if (material != null) {
+            String finalMaterial = material;
+            CustomData.update(DataComponents.CUSTOM_DATA, resultItem, tag -> tag.putString("material", finalMaterial));
         }
-        else if (inputItem.getName().toString().contains("netherite")) {
-            resultItem.getOrCreateNbt().putString("material", "netherite");
-        }
-        else if (inputItem.getName().toString().contains("diamond")) {
-            resultItem.getOrCreateNbt().putString("material", "diamond");
+
+        // Bake attribute modifiers onto the stack based on material
+        if (resultItem.getItem() instanceof ArmorItem armorItem) {
+            ArmorItem.Type armorType = armorItem.getType();
+            EquipmentSlotGroup slotGroup = EquipmentSlotGroup.bySlot(armorType.getSlot());
+
+            ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
+
+            switch (material != null ? material : "") {
+                case "iron" -> {
+                    builder.add(Attributes.ARMOR,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.body"),
+                                    ArmorMaterials.IRON.value().getDefense(armorType),
+                                    AttributeModifier.Operation.ADD_VALUE),
+                            slotGroup);
+                }
+                case "diamond" -> {
+                    builder.add(Attributes.ARMOR,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.body"),
+                                    ArmorMaterials.DIAMOND.value().getDefense(armorType),
+                                    AttributeModifier.Operation.ADD_VALUE),
+                            slotGroup);
+                    builder.add(Attributes.ARMOR_TOUGHNESS,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.toughness"),
+                                    2.0, AttributeModifier.Operation.ADD_VALUE),
+                            slotGroup);
+                }
+                case "netherite" -> {
+                    builder.add(Attributes.ARMOR,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.body"),
+                                    ArmorMaterials.NETHERITE.value().getDefense(armorType),
+                                    AttributeModifier.Operation.ADD_VALUE),
+                            slotGroup);
+                    builder.add(Attributes.ARMOR_TOUGHNESS,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.toughness"),
+                                    3.0, AttributeModifier.Operation.ADD_VALUE),
+                            slotGroup);
+                    builder.add(Attributes.KNOCKBACK_RESISTANCE,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.knockback_resistance"),
+                                    0.1, AttributeModifier.Operation.ADD_VALUE),
+                            slotGroup);
+                }
+                default -> {
+                    // Fall back to the result item's own material defaults
+                    builder.add(Attributes.ARMOR,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("armor.body"),
+                                    armorItem.getMaterial().value().getDefense(armorType),
+                                    AttributeModifier.Operation.ADD_VALUE),
+                            slotGroup);
+                }
+            }
+
+            resultItem.set(DataComponents.ATTRIBUTE_MODIFIERS, builder.build());
         }
 
         return resultItem;
-    }
-}
+    }}

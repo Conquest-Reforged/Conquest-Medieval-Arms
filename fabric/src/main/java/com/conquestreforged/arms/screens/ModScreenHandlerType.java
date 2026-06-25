@@ -1,21 +1,19 @@
 package com.conquestreforged.arms.screens;
 
-import com.conquestreforged.arms.screens.ArmorStationScreenHandler;
-import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.resource.featuretoggle.FeatureFlags;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 
 import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
 public class ModScreenHandlerType {
-    public static ScreenHandlerType<ArmorStationScreenHandler> ARMS_STATION_SCREEN;
+    public static MenuType<ArmorStationScreenHandler> ARMS_STATION_SCREEN;
 
-    private static <T extends ScreenHandler> ScreenHandlerType<T> registerScreenHandler(String id, ExtendedScreenHandlerType.Factory<T> factory) {
-        return Registry.register(Registries.SCREEN_HANDLER, new Identifier(MOD_ID, id), new ScreenHandlerType<>(factory, FeatureFlags.DEFAULT_ENABLED_FEATURES));
+    private static <T extends AbstractContainerMenu> MenuType<T> registerScreenHandler(String id, MenuType.MenuSupplier<T> factory) {
+        return Registry.register(BuiltInRegistries.MENU, ResourceLocation.fromNamespaceAndPath(MOD_ID, id), new MenuType<>(factory, FeatureFlags.DEFAULT_FLAGS));
     }
 
     public static void register() {

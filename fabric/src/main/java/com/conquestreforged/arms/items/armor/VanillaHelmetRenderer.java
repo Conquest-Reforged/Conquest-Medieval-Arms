@@ -1,38 +1,17 @@
 package com.conquestreforged.arms.items.armor;
 
-import com.conquestreforged.arms.items.armor.models.ModArmorModel;
-import com.conquestreforged.arms.items.armor.models.VanillaHelmetModel;
-import mod.azure.azurelibarmor.renderer.GeoArmorRenderer;
-import net.minecraft.entity.EquipmentSlot;
+import mod.azure.azurelib.common.render.armor.AzArmorRenderer;
+import mod.azure.azurelib.common.render.armor.AzArmorRendererConfig;
+import net.minecraft.resources.ResourceLocation;
 
-public class VanillaHelmetRenderer extends GeoArmorRenderer<VanillaHelmetItem> {
-    public VanillaHelmetRenderer() {
-        super(new VanillaHelmetModel());
-    }
+import static com.conquestreforged.arms.ConquestMedievalArms.MOD_ID;
 
-    @Override
-    protected void applyBoneVisibilityBySlot(EquipmentSlot currentSlot) {
-        this.setVisible(false);
-        switch(currentSlot) {
-            case HEAD:
-                this.setBoneVisible(this.head, true);
-                break;
-            case CHEST:
-            case LEGS:
-                this.setBoneVisible(this.body, true);
-                this.setBoneVisible(this.rightArm, true);
-                this.setBoneVisible(this.leftArm, true);
-                this.setBoneVisible(this.rightLeg, true);
-                this.setBoneVisible(this.leftLeg, true);
-                break;
-            case FEET:
-                this.setBoneVisible(this.rightLeg, true);
-                this.setBoneVisible(this.leftLeg, true);
-                this.setBoneVisible(this.rightBoot, true);
-                this.setBoneVisible(this.leftBoot, true);
-                break;
-            case MAINHAND:
-            case OFFHAND:
-        }
+public class VanillaHelmetRenderer extends AzArmorRenderer {
+
+    public VanillaHelmetRenderer(String geoPath, String texturePath) {
+        super(AzArmorRendererConfig.builder(
+                ResourceLocation.fromNamespaceAndPath(MOD_ID, "geo/" + geoPath + ".geo.json"),
+                ResourceLocation.parse(texturePath)
+        ).build());
     }
 }
