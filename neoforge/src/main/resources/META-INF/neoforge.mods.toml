@@ -1,0 +1,25 @@
+modLoader="javafml" #mandatory
+loaderVersion="[4,)"
+license="All rights reserved"
+issueTrackerURL=""
+
+[[mods]] #mandatory
+modId="conquest_armory" #mandatory
+version="2.0.0" #mandatory
+displayName="Conquest's Medieval Arms" #mandatory
+authors="Hippokleides, Monsterfish_, Kurgahn" #optional
+description='''
+A mod that adds realistic medieval weapons and armors
+'''
+[[dependencies.conquest_armory]] #optional
+modId="neoforge" #mandatory
+type = "required"
+versionRange="[21.1,)" #mandatory
+ordering="NONE"
+side="BOTH"
+[[dependencies.conquest_armory]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.21.1,]"
+ordering="NONE"
+side="BOTH"

@@ -24,7 +24,7 @@ public class ArmorStationRecipe extends SingleItemRecipe {  // YOUR SingleItemRe
 
     @Override
     public ItemStack getToastSymbol() {
-        return new ItemStack(BlockInit.ARMS_STATION_BLOCK);
+        return new ItemStack(BlockInit.ARMS_STATION_BLOCK.get());
     }
 
     @Override
